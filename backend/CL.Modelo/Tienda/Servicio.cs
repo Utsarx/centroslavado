@@ -17,13 +17,8 @@ namespace CL.Modelo
 
         [MaxLength(200), MinLength(5)]
         public string Nombre { get; set; }
-    
-        [MaxLength(200), MinLength(3)]
-        public double Precio { get; set; }
 
         public Guid CentroLavadoId { get; set; }
-
-
-        public CentroLavado CentroLavado { get; set; }
+        public ICollection<Precio> Precios { get; set; }
     }
 }
