@@ -21,7 +21,7 @@ namespace CL.Repositorio.data.migraciones
 
             modelBuilder.Entity("CL.Modelo.CentroLavado", b =>
                 {
-                    b.Property<Guid>("ID")
+                    b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier");
 
@@ -29,7 +29,7 @@ namespace CL.Repositorio.data.migraciones
                         .HasColumnType("nvarchar(200)")
                         .HasMaxLength(200);
 
-                    b.HasKey("ID");
+                    b.HasKey("Id");
 
                     b.ToTable("CentroLavado");
                 });
@@ -56,7 +56,7 @@ namespace CL.Repositorio.data.migraciones
 
             modelBuilder.Entity("CL.Modelo.Empleado", b =>
                 {
-                    b.Property<Guid>("ID")
+                    b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier");
 
@@ -67,7 +67,7 @@ namespace CL.Repositorio.data.migraciones
                         .HasColumnType("nvarchar(200)")
                         .HasMaxLength(200);
 
-                    b.HasKey("ID");
+                    b.HasKey("Id");
 
                     b.HasIndex("CentroLavadoId");
 
@@ -95,37 +95,9 @@ namespace CL.Repositorio.data.migraciones
                     b.ToTable("Empresa");
                 });
 
-            modelBuilder.Entity("CL.Modelo.Servicio", b =>
-                {
-                    b.Property<Guid>("ID")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<Guid>("CentroLavadoId")
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<string>("Clave")
-                        .HasColumnType("nvarchar(200)")
-                        .HasMaxLength(200);
-
-                    b.Property<string>("Nombre")
-                        .HasColumnType("nvarchar(200)")
-                        .HasMaxLength(200);
-
-                    b.Property<double>("Precio")
-                        .HasColumnType("float")
-                        .HasMaxLength(200);
-
-                    b.HasKey("ID");
-
-                    b.HasIndex("CentroLavadoId");
-
-                    b.ToTable("Servicio");
-                });
-
             modelBuilder.Entity("CL.Modelo.Tractor", b =>
                 {
-                    b.Property<Guid>("ID")
+                    b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier");
 
@@ -136,7 +108,7 @@ namespace CL.Repositorio.data.migraciones
                         .HasColumnType("nvarchar(100)")
                         .HasMaxLength(100);
 
-                    b.HasKey("ID");
+                    b.HasKey("Id");
 
                     b.HasIndex("EmpresaId");
 
@@ -156,15 +128,6 @@ namespace CL.Repositorio.data.migraciones
                 {
                     b.HasOne("CL.Modelo.CentroLavado", "CentroLavado")
                         .WithMany("Empleados")
-                        .HasForeignKey("CentroLavadoId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-                });
-
-            modelBuilder.Entity("CL.Modelo.Servicio", b =>
-                {
-                    b.HasOne("CL.Modelo.CentroLavado", "CentroLavado")
-                        .WithMany("Servicios")
                         .HasForeignKey("CentroLavadoId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();

@@ -10,7 +10,7 @@ namespace CL.Modelo
     public class Tractor
     {
         [Key]
-        public Guid ID { get; set; }
+        public Guid Id { get; set; }
 
         /// <summary>
         /// Este es el número económico o placas del tractor 

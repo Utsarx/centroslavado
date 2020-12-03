@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace CL.Repositorio.data.migraciones
 {
-    public partial class Inicial2 : Migration
+    public partial class Inicial : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -11,12 +11,12 @@ namespace CL.Repositorio.data.migraciones
                 name: "CentroLavado",
                 columns: table => new
                 {
-                    ID = table.Column<Guid>(nullable: false),
+                    Id = table.Column<Guid>(nullable: false),
                     Nombre = table.Column<string>(maxLength: 200, nullable: true)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_CentroLavado", x => x.ID);
+                    table.PrimaryKey("PK_CentroLavado", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
@@ -36,39 +36,18 @@ namespace CL.Repositorio.data.migraciones
                 name: "Empleado",
                 columns: table => new
                 {
-                    ID = table.Column<Guid>(nullable: false),
+                    Id = table.Column<Guid>(nullable: false),
                     Nombre = table.Column<string>(maxLength: 200, nullable: true),
                     CentroLavadoId = table.Column<Guid>(nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Empleado", x => x.ID);
+                    table.PrimaryKey("PK_Empleado", x => x.Id);
                     table.ForeignKey(
                         name: "FK_Empleado_CentroLavado_CentroLavadoId",
                         column: x => x.CentroLavadoId,
                         principalTable: "CentroLavado",
-                        principalColumn: "ID",
-                        onDelete: ReferentialAction.Restrict);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "Servicio",
-                columns: table => new
-                {
-                    ID = table.Column<Guid>(nullable: false),
-                    Clave = table.Column<string>(maxLength: 200, nullable: true),
-                    Nombre = table.Column<string>(maxLength: 200, nullable: true),
-                    Precio = table.Column<double>(maxLength: 200, nullable: false),
-                    CentroLavadoId = table.Column<Guid>(nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Servicio", x => x.ID);
-                    table.ForeignKey(
-                        name: "FK_Servicio_CentroLavado_CentroLavadoId",
-                        column: x => x.CentroLavadoId,
-                        principalTable: "CentroLavado",
-                        principalColumn: "ID",
+                        principalColumn: "Id",
                         onDelete: ReferentialAction.Restrict);
                 });
 
@@ -95,13 +74,13 @@ namespace CL.Repositorio.data.migraciones
                 name: "Tractor",
                 columns: table => new
                 {
-                    ID = table.Column<Guid>(nullable: false),
+                    Id = table.Column<Guid>(nullable: false),
                     Noeconomico = table.Column<string>(maxLength: 100, nullable: true),
                     EmpresaId = table.Column<Guid>(nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Tractor", x => x.ID);
+                    table.PrimaryKey("PK_Tractor", x => x.Id);
                     table.ForeignKey(
                         name: "FK_Tractor_Empresa_EmpresaId",
                         column: x => x.EmpresaId,
@@ -121,11 +100,6 @@ namespace CL.Repositorio.data.migraciones
                 column: "CentroLavadoId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Servicio_CentroLavadoId",
-                table: "Servicio",
-                column: "CentroLavadoId");
-
-            migrationBuilder.CreateIndex(
                 name: "IX_Tractor_EmpresaId",
                 table: "Tractor",
                 column: "EmpresaId");
@@ -138,9 +112,6 @@ namespace CL.Repositorio.data.migraciones
 
             migrationBuilder.DropTable(
                 name: "Empleado");
-
-            migrationBuilder.DropTable(
-                name: "Servicio");
 
             migrationBuilder.DropTable(
                 name: "Tractor");

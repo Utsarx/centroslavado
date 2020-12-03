@@ -18,4 +18,8 @@
     <ProjectReference Include="..\CL.Modelo\CL.Modelo.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="data\" />
+  </ItemGroup>
+
 </Project>

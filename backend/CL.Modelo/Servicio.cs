@@ -10,7 +10,7 @@ namespace CL.Modelo
    public class Servicio
     {
         [Key]
-        public Guid ID { get; set; }
+        public Guid Id { get; set; }
 
         [MaxLength(200), MinLength(5)]
         public string Clave { get; set; }
