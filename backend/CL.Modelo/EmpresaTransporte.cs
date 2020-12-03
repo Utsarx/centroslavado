@@ -25,6 +25,6 @@ namespace CL.Modelo
 
         public ICollection<Chofer> Choferes { get; set; }
 
-        //public ICollection<Tractor> Tractores { get; set; }
+        public ICollection<Tractor> Tractores { get; set; }
     }
 }

@@ -15,5 +15,12 @@ namespace CL.Repositorio
         
         DbSet<Chofer> Choferes { get; set; }
 
+        DbSet<Tractor> Tractores { get; set;  }
+
+        DbSet<CentroLavado> CentrosLavado { get; set;  }
+
+        DbSet<Servicio> Servicios { get; set; }
+
+        DbSet<Empleado> Empleados { get; set;  }
     }
 }
