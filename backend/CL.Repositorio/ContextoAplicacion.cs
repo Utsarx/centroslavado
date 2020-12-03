@@ -12,18 +12,18 @@ namespace CL.Repositorio
         }
 
         #region CentrosLavado
-        
-        DbSet<CentroLavado> CentrosLavado { get; set; }
-        DbSet<Empleado> Empleados { get; set; }
+
+        public DbSet<CentroLavado> CentrosLavado { get; set; }
+        public DbSet<Empleado> Empleados { get; set; }
 
         #endregion
 
         #region EmpresasTrasnporte
-        DbSet<EmpresaTransporte> Empresas { get; set; }
+        public DbSet<EmpresaTransporte> Empresas { get; set; }
 
-        DbSet<Chofer> Choferes { get; set; }
+        public DbSet<Chofer> Choferes { get; set; }
 
-        DbSet<Tractor> Tractores { get; set; }
+        public DbSet<Tractor> Tractores { get; set; }
 
         #endregion
 

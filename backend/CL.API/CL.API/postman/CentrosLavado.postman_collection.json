@@ -1,0 +1,138 @@
+{
+	"info": {
+		"_postman_id": "8a039ae5-1dce-410c-b35e-d4a18335488b",
+		"name": "CentrosLavado",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Empresas",
+			"item": [
+				{
+					"name": "Crear empresa",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n   \"Nombre\": \"Empresa 2\",\r\n    \"RFC\": \"AAAA000000XXX\"\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://localhost:5001/api/empresas",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "5001",
+							"path": [
+								"api",
+								"empresas"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Actualizar empresa",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n   \"Nombre\": \"Empresa 2a\",\r\n    \"RFC\": \"AAAA000000ZZZ\"\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://localhost:5001/api/empresas/ec15d2db-f1ca-4718-84fe-2d20d4b687c1",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "5001",
+							"path": [
+								"api",
+								"empresas",
+								"ec15d2db-f1ca-4718-84fe-2d20d4b687c1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Leer empresa por Id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://localhost:5001/api/empresas/ec15d2db-f1ca-4718-84fe-2d20d4b687c1",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "5001",
+							"path": [
+								"api",
+								"empresas",
+								"ec15d2db-f1ca-4718-84fe-2d20d4b687c1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Eliminar empresa",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "https://localhost:5001/api/empresas/ec15d2db-f1ca-4718-84fe-2d20d4b687c1",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "5001",
+							"path": [
+								"api",
+								"empresas",
+								"ec15d2db-f1ca-4718-84fe-2d20d4b687c1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Leer todas las empresa",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://localhost:5001/api/empresas/",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "5001",
+							"path": [
+								"api",
+								"empresas",
+								""
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		}
+	],
+	"protocolProfileBehavior": {}
+}
