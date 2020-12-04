@@ -15,8 +15,11 @@ namespace CL.Modelo
         [MaxLength(200), MinLength(5)]
         public string Nombre { get; set; }
 
-       // public ICollection<Empleado>Empleados{ get; set; }
+        public ICollection<Empleado>Empleados{ get; set; }
 
-       // public ICollection<Servicio> Servicios { get; set;  }
+        // public ICollection<ServiciosCentroLavado> Servicios { get; set; }
+
+
+        // public ICollection<Servicio> Servicios { get; set;  }
     }
 }

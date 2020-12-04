@@ -20,5 +20,7 @@ namespace CL.Modelo
 
         public Guid CentroLavadoId { get; set; }
         public ICollection<Precio> Precios { get; set; }
+
+        //public ICollection<ServiciosCentroLavado> CentrosLavado { get; set; }
     }
 }

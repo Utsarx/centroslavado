@@ -13,13 +13,15 @@ namespace CL.API.Controllers.CentrosLavado
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class CentrosLavadoController : ControllerBase
+    public partial class CentrosLavadoController : ControllerBase
     {
-        private readonly ContextoAplicacion db;
-        private readonly ILogger<CentrosLavadoController> log;
+        protected readonly ContextoAplicacion db;
+        protected readonly ILogger<CentrosLavadoController> log;
 
         //Constructor 
-        public CentrosLavadoController(ILogger<CentrosLavadoController> logger, ContextoAplicacion contexto)
+        public CentrosLavadoController(
+            ILogger<CentrosLavadoController> logger, 
+            ContextoAplicacion contexto)
         {
             db = contexto;
             log = logger; 
@@ -27,8 +29,8 @@ namespace CL.API.Controllers.CentrosLavado
         }
 
         // GET: api/CentroLavadoController
-        [HttpGet]
-        public ActionResult <IEnumerable<CentroLavado>> Get()
+        [HttpGet(Name = "GetCentrosLavado")]
+        public ActionResult <IEnumerable<CentroLavado>> GetCentrosLavado()
         {
             return db.CentrosLavado.ToList().OrderBy(x => x.Nombre).ToList(); 
         }
@@ -111,5 +113,27 @@ namespace CL.API.Controllers.CentrosLavado
             return NoContent(); 
 
         }
+
+        [HttpPut("{idcl}/{idemp}" , Name = "PutCambioCentroLavado")]
+        public ActionResult PutCambioCentroLavado(Guid idcl, Guid idemp)
+        {
+            var cent = db.CentrosLavado.Find(idcl);
+            if (cent == null)
+            {
+                return NotFound(idcl);
+            }
+
+            var emp = db.Empleados.Find(idemp);
+            if (emp == null)
+            {
+                return NotFound(idemp);
+            }
+
+            emp.CentroLavadoId = idcl;
+            db.SaveChanges();
+
+            return Ok();
+        }
+
     }
 }

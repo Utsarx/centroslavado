@@ -13,5 +13,7 @@ namespace CL.Modelo
         public Guid ServicioId { get; set; }
 
         public Servicio Servicio { get; set; }
+
+        //public ICollection<ServiciosCentroLavado> CentrosLavado { get; set; }
     }
 }

@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "8f200f32-0b85-4074-86ae-65b02b791d04",
+		"_postman_id": "db62f402-b55b-4d26-8b23-d5be46162659",
 		"name": "CentrosLavado",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
@@ -137,6 +137,141 @@
 			"name": "CentrosLavado",
 			"item": [
 				{
+					"name": "Empleados",
+					"item": [
+						{
+							"name": "Crear Empleado CL",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"Nombre\":  \"Oswaldo Diaz\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "https://localhost:5001/api/CentrosLavado/19022ca3-5f1d-4bd7-a0bd-5264b61c3778/empleados",
+									"protocol": "https",
+									"host": [
+										"localhost"
+									],
+									"port": "5001",
+									"path": [
+										"api",
+										"CentrosLavado",
+										"19022ca3-5f1d-4bd7-a0bd-5264b61c3778",
+										"empleados"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Obtner empleados CL",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "https://localhost:5001/api/CentrosLavado/19022ca3-5f1d-4bd7-a0bd-5264b61c3778/empleados",
+									"protocol": "https",
+									"host": [
+										"localhost"
+									],
+									"port": "5001",
+									"path": [
+										"api",
+										"CentrosLavado",
+										"19022ca3-5f1d-4bd7-a0bd-5264b61c3778",
+										"empleados"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Obtner emplead  unico",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "https://localhost:5001/api/CentrosLavado/empleados/e16f50ce-6629-463b-9842-7eb4c51c8871",
+									"protocol": "https",
+									"host": [
+										"localhost"
+									],
+									"port": "5001",
+									"path": [
+										"api",
+										"CentrosLavado",
+										"empleados",
+										"e16f50ce-6629-463b-9842-7eb4c51c8871"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Eliminar empleado",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "https://localhost:5001/api/CentrosLavado/empleados/e16f50ce-6629-463b-9842-7eb4c51c8871",
+									"protocol": "https",
+									"host": [
+										"localhost"
+									],
+									"port": "5001",
+									"path": [
+										"api",
+										"CentrosLavado",
+										"empleados",
+										"e16f50ce-6629-463b-9842-7eb4c51c8871"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Actualizar empleado",
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"Id\": \"e16f50ce-6629-463b-9842-7eb4c51c8871\",\r\n    \"Nombre\":  \"Raul Diaz\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "https://localhost:5001/api/CentrosLavado/empleados/e16f50ce-6629-463b-9842-7eb4c51c8871",
+									"protocol": "https",
+									"host": [
+										"localhost"
+									],
+									"port": "5001",
+									"path": [
+										"api",
+										"CentrosLavado",
+										"empleados",
+										"e16f50ce-6629-463b-9842-7eb4c51c8871"
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"protocolProfileBehavior": {},
+					"_postman_isSubFolder": true
+				},
+				{
 					"name": "Crear CentroLavado",
 					"request": {
 						"method": "POST",
@@ -196,12 +331,21 @@
 					"response": []
 				},
 				{
-					"name": "Leer CentroLavado por Id",
+					"name": "Actualizar CentroLavado de empleado",
 					"request": {
-						"method": "GET",
+						"method": "PUT",
 						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"Nombre\": \"CentritoLavado 1\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
 						"url": {
-							"raw": "https://localhost:5001/api/CentroLavadoController",
+							"raw": "https://localhost:5001/api/CentrosLavado/CA59E9BA-B6E2-4E54-9DB2-C073969A127E",
 							"protocol": "https",
 							"host": [
 								"localhost"
@@ -209,7 +353,28 @@
 							"port": "5001",
 							"path": [
 								"api",
-								"CentroLavadoController"
+								"CentrosLavado",
+								"CA59E9BA-B6E2-4E54-9DB2-C073969A127E"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Leer CentroLavado por Id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://localhost:5001/api/CentrosLavado",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "5001",
+							"path": [
+								"api",
+								"CentrosLavado"
 							]
 						}
 					},
@@ -251,7 +416,7 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "https://localhost:5001/api/CentroLavadoController",
+							"raw": "https://localhost:5001/api/CentrosLavado",
 							"protocol": "https",
 							"host": [
 								"localhost"
@@ -259,7 +424,7 @@
 							"port": "5001",
 							"path": [
 								"api",
-								"CentroLavadoController"
+								"CentrosLavado"
 							]
 						}
 					},
