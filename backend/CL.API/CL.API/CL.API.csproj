@@ -18,9 +18,5 @@
     <ProjectReference Include="..\..\CL.Repositorio\CL.Repositorio.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Controllers\CentrosLavado\" />
-  </ItemGroup>
-
 
 </Project>
