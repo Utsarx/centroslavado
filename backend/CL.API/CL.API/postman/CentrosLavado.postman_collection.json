@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "db62f402-b55b-4d26-8b23-d5be46162659",
+		"_postman_id": "9b035479-5115-48aa-a1f1-0f38d8508ecf",
 		"name": "CentrosLavado",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
@@ -9,13 +9,411 @@
 			"name": "Empresas",
 			"item": [
 				{
+					"name": "Choferes",
+					"item": [
+						{
+							"name": "Crear chofer empresa",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"Nombre\":  \"Chofer Diaz\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "https://localhost:5001/api/Empresas/60511C95-0436-4A1B-89AB-7FF6603D4186/choferes",
+									"protocol": "https",
+									"host": [
+										"localhost"
+									],
+									"port": "5001",
+									"path": [
+										"api",
+										"Empresas",
+										"60511C95-0436-4A1B-89AB-7FF6603D4186",
+										"choferes"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Obtener choferes empresa",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "https://localhost:5001/api/Empresas/60511C95-0436-4A1B-89AB-7FF6603D4186/choferes",
+									"protocol": "https",
+									"host": [
+										"localhost"
+									],
+									"port": "5001",
+									"path": [
+										"api",
+										"Empresas",
+										"60511C95-0436-4A1B-89AB-7FF6603D4186",
+										"choferes"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Obtener chofer unico",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "https://localhost:5001/api/Empresas/choferes/B26D4420-F2CC-47D7-B0BC-F44F4CBC8F3B",
+									"protocol": "https",
+									"host": [
+										"localhost"
+									],
+									"port": "5001",
+									"path": [
+										"api",
+										"Empresas",
+										"choferes",
+										"B26D4420-F2CC-47D7-B0BC-F44F4CBC8F3B"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Eliminar chofer",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "https://localhost:5001/api/Empresas/choferes/B26D4420-F2CC-47D7-B0BC-F44F4CBC8F3B",
+									"protocol": "https",
+									"host": [
+										"localhost"
+									],
+									"port": "5001",
+									"path": [
+										"api",
+										"Empresas",
+										"choferes",
+										"B26D4420-F2CC-47D7-B0BC-F44F4CBC8F3B"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Actualizar chofer",
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"Id\": \"8FF3635A-1B0B-4594-AE97-00308E89FC8E\",\r\n    \"Nombre\":  \"Chofersito\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "https://localhost:5001/api/Empresas/choferes/8FF3635A-1B0B-4594-AE97-00308E89FC8E",
+									"protocol": "https",
+									"host": [
+										"localhost"
+									],
+									"port": "5001",
+									"path": [
+										"api",
+										"Empresas",
+										"choferes",
+										"8FF3635A-1B0B-4594-AE97-00308E89FC8E"
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"protocolProfileBehavior": {},
+					"_postman_isSubFolder": true
+				},
+				{
+					"name": "Tractores",
+					"item": [
+						{
+							"name": "Crear tractor empresa",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"Noeconomico\":  \"12345678911\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "https://localhost:5001/api/Empresas/5F63BFA8-3A95-4A40-9156-8E3C2B102736/tractores",
+									"protocol": "https",
+									"host": [
+										"localhost"
+									],
+									"port": "5001",
+									"path": [
+										"api",
+										"Empresas",
+										"5F63BFA8-3A95-4A40-9156-8E3C2B102736",
+										"tractores"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Obtener tractores empresa",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "https://localhost:5001/api/Empresas/5F63BFA8-3A95-4A40-9156-8E3C2B102736/tractores",
+									"protocol": "https",
+									"host": [
+										"localhost"
+									],
+									"port": "5001",
+									"path": [
+										"api",
+										"Empresas",
+										"5F63BFA8-3A95-4A40-9156-8E3C2B102736",
+										"tractores"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Obtener tractor unico",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "https://localhost:5001/api/Empresas/tractores/2B9882C5-273C-4B02-8884-067A7013EA1D",
+									"protocol": "https",
+									"host": [
+										"localhost"
+									],
+									"port": "5001",
+									"path": [
+										"api",
+										"Empresas",
+										"tractores",
+										"2B9882C5-273C-4B02-8884-067A7013EA1D"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Eliminar tractor",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "https://localhost:5001/api/Empresas/tractores/0A634504-FEE4-4DAF-BAF3-3AF564C4442B",
+									"protocol": "https",
+									"host": [
+										"localhost"
+									],
+									"port": "5001",
+									"path": [
+										"api",
+										"Empresas",
+										"tractores",
+										"0A634504-FEE4-4DAF-BAF3-3AF564C4442B"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Actualizar tractor",
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"Id\": \"2B9882C5-273C-4B02-8884-067A7013EA1D\",\r\n    \"Noeconomico\":  \"12345678911\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "1234{    \"Id\": \"2B9882C5-273C-4B02-8884-067A7013EA1D\",    \"Noeconomico\":  \"12345678911\"}",
+									"host": [
+										"1234{    \"Id\": \"2B9882C5-273C-4B02-8884-067A7013EA1D\",    \"Noeconomico\""
+									],
+									"port": "  \"12345678911\"}"
+								}
+							},
+							"response": []
+						}
+					],
+					"protocolProfileBehavior": {},
+					"_postman_isSubFolder": true
+				},
+				{
+					"name": "Cajas",
+					"item": [
+						{
+							"name": "Crear caja empresa",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"Noeconomico\":  \"000003\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "https://localhost:5001/api/Empresas/60511C95-0436-4A1B-89AB-7FF6603D4186/cajas",
+									"protocol": "https",
+									"host": [
+										"localhost"
+									],
+									"port": "5001",
+									"path": [
+										"api",
+										"Empresas",
+										"60511C95-0436-4A1B-89AB-7FF6603D4186",
+										"cajas"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Obtener cajas empresa",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "https://localhost:5001/api/Empresas/60511C95-0436-4A1B-89AB-7FF6603D4186/cajas",
+									"protocol": "https",
+									"host": [
+										"localhost"
+									],
+									"port": "5001",
+									"path": [
+										"api",
+										"Empresas",
+										"60511C95-0436-4A1B-89AB-7FF6603D4186",
+										"cajas"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Obtener caja unica",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "https://localhost:5001/api/Empresas/cajas/4BDA3F73-7B41-4CC8-9B44-0AE68D8DE838",
+									"protocol": "https",
+									"host": [
+										"localhost"
+									],
+									"port": "5001",
+									"path": [
+										"api",
+										"Empresas",
+										"cajas",
+										"4BDA3F73-7B41-4CC8-9B44-0AE68D8DE838"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Eliminar caja",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "https://localhost:5001/api/Empresas/cajas/4BDA3F73-7B41-4CC8-9B44-0AE68D8DE838",
+									"protocol": "https",
+									"host": [
+										"localhost"
+									],
+									"port": "5001",
+									"path": [
+										"api",
+										"Empresas",
+										"cajas",
+										"4BDA3F73-7B41-4CC8-9B44-0AE68D8DE838"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Actualizar caja",
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"Id\": \"1FC0D19B-FA9B-4A3C-8734-8BBE5D120B1C\",\r\n    \"Noeconomico\": \"000001\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "https://localhost:5001/api/Empresas/cajas/1FC0D19B-FA9B-4A3C-8734-8BBE5D120B1C",
+									"protocol": "https",
+									"host": [
+										"localhost"
+									],
+									"port": "5001",
+									"path": [
+										"api",
+										"Empresas",
+										"cajas",
+										"1FC0D19B-FA9B-4A3C-8734-8BBE5D120B1C"
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"protocolProfileBehavior": {},
+					"_postman_isSubFolder": true
+				},
+				{
 					"name": "Crear empresa",
 					"request": {
 						"method": "POST",
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n   \"Nombre\": \"Empresa 2\",\r\n    \"RFC\": \"AAAA000000XXX\"\r\n}\r\n",
+							"raw": "{\r\n   \"Nombre\": \"Empresa 1\",\r\n    \"RFC\": \"AAAA000000XXB\"\r\n}\r\n",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -345,7 +743,7 @@
 							}
 						},
 						"url": {
-							"raw": "https://localhost:5001/api/CentrosLavado/CA59E9BA-B6E2-4E54-9DB2-C073969A127E",
+							"raw": "https://localhost:5001/api/CentrosLavado/CA59E9BA-B6E2-4E54-9DB2-C073969A127E/",
 							"protocol": "https",
 							"host": [
 								"localhost"
@@ -354,7 +752,8 @@
 							"path": [
 								"api",
 								"CentrosLavado",
-								"CA59E9BA-B6E2-4E54-9DB2-C073969A127E"
+								"CA59E9BA-B6E2-4E54-9DB2-C073969A127E",
+								""
 							]
 						}
 					},

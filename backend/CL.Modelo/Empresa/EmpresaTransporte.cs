@@ -1,4 +1,5 @@
-﻿using System;
+﻿using CL.Modelo.Empresa;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
@@ -26,5 +27,7 @@ namespace CL.Modelo
         public ICollection<Chofer> Choferes { get; set; }
 
         public ICollection<Tractor> Tractores { get; set; }
+
+        public ICollection<Caja> Cajas { get; set; }
     }
 }
