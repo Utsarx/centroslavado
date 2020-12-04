@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "8a039ae5-1dce-410c-b35e-d4a18335488b",
+		"_postman_id": "8f200f32-0b85-4074-86ae-65b02b791d04",
 		"name": "CentrosLavado",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
@@ -125,6 +125,141 @@
 								"api",
 								"empresas",
 								""
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "CentrosLavado",
+			"item": [
+				{
+					"name": "Crear CentroLavado",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"Nombre\":  \"Centro2\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://localhost:5001/api/CentrosLavado",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "5001",
+							"path": [
+								"api",
+								"CentrosLavado"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Actualizar CentroLavado",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"Nombre\": \"CentritoLavado 1\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://localhost:5001/api/CentrosLavado/CA59E9BA-B6E2-4E54-9DB2-C073969A127E",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "5001",
+							"path": [
+								"api",
+								"CentrosLavado",
+								"CA59E9BA-B6E2-4E54-9DB2-C073969A127E"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Leer CentroLavado por Id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://localhost:5001/api/CentroLavadoController",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "5001",
+							"path": [
+								"api",
+								"CentroLavadoController"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Eliminar CentroLavado",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://localhost:5001/api/CentrosLavado/E3D5D84E-2267-4854-84F6-42161285D036",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "5001",
+							"path": [
+								"api",
+								"CentrosLavado",
+								"E3D5D84E-2267-4854-84F6-42161285D036"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Leer todos los CentrosLavado",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://localhost:5001/api/CentroLavadoController",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "5001",
+							"path": [
+								"api",
+								"CentroLavadoController"
 							]
 						}
 					},
