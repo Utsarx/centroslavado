@@ -12,9 +12,11 @@ namespace CL.Modelo
         [Required]
         [MaxLength(10)]
         public string Id { get; set; }
-
+        
         [Required]
         [MaxLength(250), MinLength(1)]
         public string Nombre { get; set; }
+
+        public ICollection<MedioPago> MediosPago { get; set; }
     }
 }
