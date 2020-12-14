@@ -1,4 +1,5 @@
 ﻿using CL.Modelo;
+using CL.Modelo.Empresa;
 using Microsoft.EntityFrameworkCore;
 using System.Data;
 
@@ -25,6 +26,7 @@ namespace CL.Repositorio
 
         public DbSet<Tractor> Tractores { get; set; }
 
+        public DbSet<Caja> Cajas { get; set; }
         #endregion
 
 

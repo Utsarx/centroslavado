@@ -7,6 +7,8 @@
   <ItemGroup>
     <Compile Remove="data\migraciones\20201204021057_ActilizacionEntidades.cs" />
     <Compile Remove="data\migraciones\20201204021057_ActilizacionEntidades.Designer.cs" />
+    <Compile Remove="data\migraciones\20201204212844_Cajas.cs" />
+    <Compile Remove="data\migraciones\20201204212844_Cajas.Designer.cs" />
   </ItemGroup>
 
   <ItemGroup>

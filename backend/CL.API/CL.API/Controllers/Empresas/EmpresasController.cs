@@ -13,11 +13,11 @@ namespace CL.API.Controllers.Empresas
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class EmpresasController : ControllerBase
+    public partial class EmpresasController : ControllerBase
     {
 
-        private readonly ContextoAplicacion db;
-        private readonly ILogger<EmpresasController> log;
+        protected readonly ContextoAplicacion db;
+        protected readonly ILogger<EmpresasController> log;
         public EmpresasController(
             ILogger<EmpresasController> logger,
             ContextoAplicacion contexto)
@@ -133,5 +133,6 @@ namespace CL.API.Controllers.Empresas
             return NoContent();
 
         }
+
     }
 }
