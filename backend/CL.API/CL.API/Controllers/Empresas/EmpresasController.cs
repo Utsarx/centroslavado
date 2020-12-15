@@ -1,9 +1,11 @@
 ﻿using CL.Modelo;
 using CL.Repositorio;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -37,7 +39,7 @@ namespace CL.API.Controllers.Empresas
         [HttpGet]
         public ActionResult<IEnumerable<EmpresaTransporte>> Get()
         {
-            return db.Empresas.ToList().OrderBy(x => x.Nombre).ToList(); 
+            return db.Empresas.ToList().OrderBy(x => x.Nombre).ToList();
         }
 
         // GET api/Empresas/guid
@@ -46,7 +48,7 @@ namespace CL.API.Controllers.Empresas
         {
             log.LogError($"Id {id}");
             var emp = db.Empresas.Find(id);
-            if(emp==null)
+            if (emp == null)
             {
                 return NotFound(id);
             }
@@ -133,6 +135,63 @@ namespace CL.API.Controllers.Empresas
             return NoContent();
 
         }
+
+
+        [HttpPost("{idemp}/tipopago/{idpago}")]
+            public ActionResult PostMetodoPagoEmpresa(Guid idemp, String idpago)
+        {
+
+
+            var empresa = db.Empresas.Find(idemp);
+            if (empresa == null)
+            {
+                return NotFound();
+            }
+
+            var metpago = db.MedioPagos.Find(idpago);
+            if (metpago == null)
+            {
+                return NotFound();
+            }
+
+            if (db.medioPagoEmpresas.Any(x => x.EmpresaId == idemp
+            && x.MedioPagoId == idpago))
+            {
+                return Ok();
+            }
+
+            MedioPagoEmpresa m = new MedioPagoEmpresa() { 
+             EmpresaId = idemp, MedioPagoId = idpago
+            }; 
+
+            db.medioPagoEmpresas.Add(m);
+            db.SaveChanges();
+            return Ok(); 
+
+        }
+
+        // DELETE api/<EmpresasController>/5
+        [HttpDelete("{idemp}/tipopago/{idpago}")]
+        public ActionResult DeleteMedioPagoEmpresa(Guid idemp, String idpago)
+        {
+            var emp = db.Set<MedioPagoEmpresa>().Find(idemp, idpago); 
+
+            // var emp = db.medioPagoEmpresas.Find( idemp, idmp);
+       
+            if (emp == null)
+            {
+                return NotFound(emp);
+                 }
+            
+            db.medioPagoEmpresas.Remove(emp);
+            db.SaveChanges();
+
+            return NoContent();
+
+        }
+
+
+
 
     }
 }

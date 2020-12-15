@@ -18,7 +18,7 @@
 								"header": [],
 								"body": {
 									"mode": "raw",
-									"raw": "{\r\n    \"Nombre\":  \"Chofer Diaz\"\r\n}",
+									"raw": "{\r\n    \"Nombre\": \"German Diaz\"\r\n}",
 									"options": {
 										"raw": {
 											"language": "json"
@@ -26,7 +26,7 @@
 									}
 								},
 								"url": {
-									"raw": "https://localhost:5001/api/Empresas/60511C95-0436-4A1B-89AB-7FF6603D4186/choferes",
+									"raw": "https://localhost:5001/api/Empresas/252654D5-7FBC-442C-BB77-7F0BD2C66C92/choferes",
 									"protocol": "https",
 									"host": [
 										"localhost"
@@ -35,7 +35,7 @@
 									"path": [
 										"api",
 										"Empresas",
-										"60511C95-0436-4A1B-89AB-7FF6603D4186",
+										"252654D5-7FBC-442C-BB77-7F0BD2C66C92",
 										"choferes"
 									]
 								}
@@ -48,7 +48,7 @@
 								"method": "GET",
 								"header": [],
 								"url": {
-									"raw": "https://localhost:5001/api/Empresas/60511C95-0436-4A1B-89AB-7FF6603D4186/choferes",
+									"raw": "https://localhost:5001/api/Empresas/252654D5-7FBC-442C-BB77-7F0BD2C66C92/choferes",
 									"protocol": "https",
 									"host": [
 										"localhost"
@@ -57,7 +57,7 @@
 									"path": [
 										"api",
 										"Empresas",
-										"60511C95-0436-4A1B-89AB-7FF6603D4186",
+										"252654D5-7FBC-442C-BB77-7F0BD2C66C92",
 										"choferes"
 									]
 								}
@@ -70,7 +70,7 @@
 								"method": "GET",
 								"header": [],
 								"url": {
-									"raw": "https://localhost:5001/api/Empresas/choferes/B26D4420-F2CC-47D7-B0BC-F44F4CBC8F3B",
+									"raw": "https://localhost:5001/api/Empresas/choferes/EB08C6DB-5195-4927-B623-A9239E15EC46",
 									"protocol": "https",
 									"host": [
 										"localhost"
@@ -80,7 +80,7 @@
 										"api",
 										"Empresas",
 										"choferes",
-										"B26D4420-F2CC-47D7-B0BC-F44F4CBC8F3B"
+										"EB08C6DB-5195-4927-B623-A9239E15EC46"
 									]
 								}
 							},
@@ -92,7 +92,7 @@
 								"method": "DELETE",
 								"header": [],
 								"url": {
-									"raw": "https://localhost:5001/api/Empresas/choferes/B26D4420-F2CC-47D7-B0BC-F44F4CBC8F3B",
+									"raw": "https://localhost:5001/api/Empresas/choferes/EB08C6DB-5195-4927-B623-A9239E15EC46",
 									"protocol": "https",
 									"host": [
 										"localhost"
@@ -102,7 +102,7 @@
 										"api",
 										"Empresas",
 										"choferes",
-										"B26D4420-F2CC-47D7-B0BC-F44F4CBC8F3B"
+										"EB08C6DB-5195-4927-B623-A9239E15EC46"
 									]
 								}
 							},
@@ -115,7 +115,7 @@
 								"header": [],
 								"body": {
 									"mode": "raw",
-									"raw": "{\r\n    \"Id\": \"8FF3635A-1B0B-4594-AE97-00308E89FC8E\",\r\n    \"Nombre\":  \"Chofersito\"\r\n}",
+									"raw": "{\r\n    \"Id\": \"65DD4E13-FA1B-4F43-893E-C8A6D4F37CDA\",\r\n    \"Nombre\":  \"German Diaz\"\r\n}",
 									"options": {
 										"raw": {
 											"language": "json"
@@ -123,7 +123,7 @@
 									}
 								},
 								"url": {
-									"raw": "https://localhost:5001/api/Empresas/choferes/8FF3635A-1B0B-4594-AE97-00308E89FC8E",
+									"raw": "https://localhost:5001/api/Empresas/choferes/65DD4E13-FA1B-4F43-893E-C8A6D4F37CDA",
 									"protocol": "https",
 									"host": [
 										"localhost"
@@ -133,7 +133,7 @@
 										"api",
 										"Empresas",
 										"choferes",
-										"8FF3635A-1B0B-4594-AE97-00308E89FC8E"
+										"65DD4E13-FA1B-4F43-893E-C8A6D4F37CDA"
 									]
 								}
 							},
@@ -161,7 +161,7 @@
 									}
 								},
 								"url": {
-									"raw": "https://localhost:5001/api/Empresas/5F63BFA8-3A95-4A40-9156-8E3C2B102736/tractores",
+									"raw": "https://localhost:5001/api/Empresas/252654D5-7FBC-442C-BB77-7F0BD2C66C92/tractores",
 									"protocol": "https",
 									"host": [
 										"localhost"
@@ -170,7 +170,7 @@
 									"path": [
 										"api",
 										"Empresas",
-										"5F63BFA8-3A95-4A40-9156-8E3C2B102736",
+										"252654D5-7FBC-442C-BB77-7F0BD2C66C92",
 										"tractores"
 									]
 								}
@@ -183,7 +183,7 @@
 								"method": "GET",
 								"header": [],
 								"url": {
-									"raw": "https://localhost:5001/api/Empresas/5F63BFA8-3A95-4A40-9156-8E3C2B102736/tractores",
+									"raw": "https://localhost:5001/api/Empresas/252654D5-7FBC-442C-BB77-7F0BD2C66C92/tractores",
 									"protocol": "https",
 									"host": [
 										"localhost"
@@ -192,7 +192,7 @@
 									"path": [
 										"api",
 										"Empresas",
-										"5F63BFA8-3A95-4A40-9156-8E3C2B102736",
+										"252654D5-7FBC-442C-BB77-7F0BD2C66C92",
 										"tractores"
 									]
 								}
@@ -205,7 +205,7 @@
 								"method": "GET",
 								"header": [],
 								"url": {
-									"raw": "https://localhost:5001/api/Empresas/tractores/2B9882C5-273C-4B02-8884-067A7013EA1D",
+									"raw": "https://localhost:5001/api/Empresas/tractores/9A698298-BEB7-44E5-9A80-618DAD375020",
 									"protocol": "https",
 									"host": [
 										"localhost"
@@ -215,7 +215,7 @@
 										"api",
 										"Empresas",
 										"tractores",
-										"2B9882C5-273C-4B02-8884-067A7013EA1D"
+										"9A698298-BEB7-44E5-9A80-618DAD375020"
 									]
 								}
 							},
@@ -227,7 +227,7 @@
 								"method": "DELETE",
 								"header": [],
 								"url": {
-									"raw": "https://localhost:5001/api/Empresas/tractores/0A634504-FEE4-4DAF-BAF3-3AF564C4442B",
+									"raw": "https://localhost:5001/api/Empresas/tractores/9A698298-BEB7-44E5-9A80-618DAD375020",
 									"protocol": "https",
 									"host": [
 										"localhost"
@@ -237,7 +237,7 @@
 										"api",
 										"Empresas",
 										"tractores",
-										"0A634504-FEE4-4DAF-BAF3-3AF564C4442B"
+										"9A698298-BEB7-44E5-9A80-618DAD375020"
 									]
 								}
 							},
@@ -250,7 +250,7 @@
 								"header": [],
 								"body": {
 									"mode": "raw",
-									"raw": "{\r\n    \"Id\": \"2B9882C5-273C-4B02-8884-067A7013EA1D\",\r\n    \"Noeconomico\":  \"12345678911\"\r\n}",
+									"raw": "{\r\n    \"Id\": \"A81A62B2-E33A-4E05-9FEF-CE7E59490FC0\",\r\n    \"Noeconomico\":  \"12345678911\"\r\n}",
 									"options": {
 										"raw": {
 											"language": "json"
@@ -258,11 +258,18 @@
 									}
 								},
 								"url": {
-									"raw": "1234{    \"Id\": \"2B9882C5-273C-4B02-8884-067A7013EA1D\",    \"Noeconomico\":  \"12345678911\"}",
+									"raw": "https://localhost:5001/api/Empresas/tractores/A81A62B2-E33A-4E05-9FEF-CE7E59490FC0",
+									"protocol": "https",
 									"host": [
-										"1234{    \"Id\": \"2B9882C5-273C-4B02-8884-067A7013EA1D\",    \"Noeconomico\""
+										"localhost"
 									],
-									"port": "  \"12345678911\"}"
+									"port": "5001",
+									"path": [
+										"api",
+										"Empresas",
+										"tractores",
+										"A81A62B2-E33A-4E05-9FEF-CE7E59490FC0"
+									]
 								}
 							},
 							"response": []
@@ -281,7 +288,7 @@
 								"header": [],
 								"body": {
 									"mode": "raw",
-									"raw": "{\r\n    \"Noeconomico\":  \"000003\"\r\n}",
+									"raw": "{\r\n    \"Noeconomico\":  \"000002\"\r\n}",
 									"options": {
 										"raw": {
 											"language": "json"
@@ -289,7 +296,7 @@
 									}
 								},
 								"url": {
-									"raw": "https://localhost:5001/api/Empresas/60511C95-0436-4A1B-89AB-7FF6603D4186/cajas",
+									"raw": "https://localhost:5001/api/Empresas/252654D5-7FBC-442C-BB77-7F0BD2C66C92/cajas",
 									"protocol": "https",
 									"host": [
 										"localhost"
@@ -298,7 +305,7 @@
 									"path": [
 										"api",
 										"Empresas",
-										"60511C95-0436-4A1B-89AB-7FF6603D4186",
+										"252654D5-7FBC-442C-BB77-7F0BD2C66C92",
 										"cajas"
 									]
 								}
@@ -311,7 +318,7 @@
 								"method": "GET",
 								"header": [],
 								"url": {
-									"raw": "https://localhost:5001/api/Empresas/60511C95-0436-4A1B-89AB-7FF6603D4186/cajas",
+									"raw": "https://localhost:5001/api/Empresas/252654D5-7FBC-442C-BB77-7F0BD2C66C92/cajas",
 									"protocol": "https",
 									"host": [
 										"localhost"
@@ -320,7 +327,7 @@
 									"path": [
 										"api",
 										"Empresas",
-										"60511C95-0436-4A1B-89AB-7FF6603D4186",
+										"252654D5-7FBC-442C-BB77-7F0BD2C66C92",
 										"cajas"
 									]
 								}
@@ -333,7 +340,7 @@
 								"method": "GET",
 								"header": [],
 								"url": {
-									"raw": "https://localhost:5001/api/Empresas/cajas/4BDA3F73-7B41-4CC8-9B44-0AE68D8DE838",
+									"raw": "https://localhost:5001/api/Empresas/cajas/C663D9B8-E9C0-4038-A557-14B2EAF47677",
 									"protocol": "https",
 									"host": [
 										"localhost"
@@ -343,7 +350,7 @@
 										"api",
 										"Empresas",
 										"cajas",
-										"4BDA3F73-7B41-4CC8-9B44-0AE68D8DE838"
+										"C663D9B8-E9C0-4038-A557-14B2EAF47677"
 									]
 								}
 							},
@@ -355,7 +362,7 @@
 								"method": "DELETE",
 								"header": [],
 								"url": {
-									"raw": "https://localhost:5001/api/Empresas/cajas/4BDA3F73-7B41-4CC8-9B44-0AE68D8DE838",
+									"raw": "https://localhost:5001/api/Empresas/cajas/C663D9B8-E9C0-4038-A557-14B2EAF47677",
 									"protocol": "https",
 									"host": [
 										"localhost"
@@ -365,7 +372,7 @@
 										"api",
 										"Empresas",
 										"cajas",
-										"4BDA3F73-7B41-4CC8-9B44-0AE68D8DE838"
+										"C663D9B8-E9C0-4038-A557-14B2EAF47677"
 									]
 								}
 							},
@@ -378,7 +385,7 @@
 								"header": [],
 								"body": {
 									"mode": "raw",
-									"raw": "{\r\n    \"Id\": \"1FC0D19B-FA9B-4A3C-8734-8BBE5D120B1C\",\r\n    \"Noeconomico\": \"000001\"\r\n}",
+									"raw": "{\r\n    \"Id\": \"C62768F9-62C1-4EFB-8E2D-A956811FA86B\",\r\n    \"Noeconomico\": \"000001\"\r\n}",
 									"options": {
 										"raw": {
 											"language": "json"
@@ -386,7 +393,7 @@
 									}
 								},
 								"url": {
-									"raw": "https://localhost:5001/api/Empresas/cajas/1FC0D19B-FA9B-4A3C-8734-8BBE5D120B1C",
+									"raw": "https://localhost:5001/api/Empresas/cajas/C62768F9-62C1-4EFB-8E2D-A956811FA86B",
 									"protocol": "https",
 									"host": [
 										"localhost"
@@ -396,7 +403,7 @@
 										"api",
 										"Empresas",
 										"cajas",
-										"1FC0D19B-FA9B-4A3C-8734-8BBE5D120B1C"
+										"C62768F9-62C1-4EFB-8E2D-A956811FA86B"
 									]
 								}
 							},
@@ -413,7 +420,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n   \"Nombre\": \"Empresa 1\",\r\n    \"RFC\": \"AAAA000000XXB\"\r\n}\r\n",
+							"raw": "{\r\n   \"Nombre\": \"Empresa 3\",\r\n    \"RFC\": \"AAAA000000XXD\"\r\n}\r\n",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -442,7 +449,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n   \"Nombre\": \"Empresa 2a\",\r\n    \"RFC\": \"AAAA000000ZZZ\"\r\n}\r\n",
+							"raw": "{\r\n   \"Nombre\": \"Empresa 3a\",\r\n    \"RFC\": \"AAAA000000XXD\"\r\n}\r\n",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -450,7 +457,7 @@
 							}
 						},
 						"url": {
-							"raw": "https://localhost:5001/api/empresas/ec15d2db-f1ca-4718-84fe-2d20d4b687c1",
+							"raw": "https://localhost:5001/api/empresas/CB9EC53B-0F39-4084-BF41-EE3C4D482F58",
 							"protocol": "https",
 							"host": [
 								"localhost"
@@ -459,7 +466,7 @@
 							"path": [
 								"api",
 								"empresas",
-								"ec15d2db-f1ca-4718-84fe-2d20d4b687c1"
+								"CB9EC53B-0F39-4084-BF41-EE3C4D482F58"
 							]
 						}
 					},
@@ -471,7 +478,7 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "https://localhost:5001/api/empresas/ec15d2db-f1ca-4718-84fe-2d20d4b687c1",
+							"raw": "https://localhost:5001/api/empresas/CB9EC53B-0F39-4084-BF41-EE3C4D482F58",
 							"protocol": "https",
 							"host": [
 								"localhost"
@@ -480,7 +487,7 @@
 							"path": [
 								"api",
 								"empresas",
-								"ec15d2db-f1ca-4718-84fe-2d20d4b687c1"
+								"CB9EC53B-0F39-4084-BF41-EE3C4D482F58"
 							]
 						}
 					},
@@ -492,7 +499,7 @@
 						"method": "DELETE",
 						"header": [],
 						"url": {
-							"raw": "https://localhost:5001/api/empresas/ec15d2db-f1ca-4718-84fe-2d20d4b687c1",
+							"raw": "https://localhost:5001/api/empresas/CB9EC53B-0F39-4084-BF41-EE3C4D482F58",
 							"protocol": "https",
 							"host": [
 								"localhost"
@@ -501,7 +508,30 @@
 							"path": [
 								"api",
 								"empresas",
-								"ec15d2db-f1ca-4718-84fe-2d20d4b687c1"
+								"CB9EC53B-0F39-4084-BF41-EE3C4D482F58"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Eliminar metodo pago empresa",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "https://localhost:5001/api/empresas/252654D5-7FBC-442C-BB77-7F0BD2C66C92/tipopago/TD",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "5001",
+							"path": [
+								"api",
+								"empresas",
+								"252654D5-7FBC-442C-BB77-7F0BD2C66C92",
+								"tipopago",
+								"TD"
 							]
 						}
 					},
@@ -527,6 +557,29 @@
 						}
 					},
 					"response": []
+				},
+				{
+					"name": "CrearMedioPagoEmpresa",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "https://localhost:5001/api/empresas/252654D5-7FBC-442C-BB77-7F0BD2C66C92/tipopago/TD",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "5001",
+							"path": [
+								"api",
+								"empresas",
+								"252654D5-7FBC-442C-BB77-7F0BD2C66C92",
+								"tipopago",
+								"TD"
+							]
+						}
+					},
+					"response": []
 				}
 			],
 			"protocolProfileBehavior": {}
@@ -544,7 +597,7 @@
 								"header": [],
 								"body": {
 									"mode": "raw",
-									"raw": "{\r\n    \"Nombre\":  \"Oswaldo Diaz\"\r\n}",
+									"raw": "{\r\n    \"Nombre\":  \"Yoyo Diaz\"\r\n}",
 									"options": {
 										"raw": {
 											"language": "json"
@@ -552,7 +605,7 @@
 									}
 								},
 								"url": {
-									"raw": "https://localhost:5001/api/CentrosLavado/19022ca3-5f1d-4bd7-a0bd-5264b61c3778/empleados",
+									"raw": "https://localhost:5001/api/CentrosLavado/6FDF8CE4-0C4D-40D6-B28D-D2D49BFF8D73/empleados",
 									"protocol": "https",
 									"host": [
 										"localhost"
@@ -561,7 +614,7 @@
 									"path": [
 										"api",
 										"CentrosLavado",
-										"19022ca3-5f1d-4bd7-a0bd-5264b61c3778",
+										"6FDF8CE4-0C4D-40D6-B28D-D2D49BFF8D73",
 										"empleados"
 									]
 								}
@@ -574,7 +627,7 @@
 								"method": "GET",
 								"header": [],
 								"url": {
-									"raw": "https://localhost:5001/api/CentrosLavado/19022ca3-5f1d-4bd7-a0bd-5264b61c3778/empleados",
+									"raw": "https://localhost:5001/api/CentrosLavado/6FDF8CE4-0C4D-40D6-B28D-D2D49BFF8D73/empleados",
 									"protocol": "https",
 									"host": [
 										"localhost"
@@ -583,7 +636,7 @@
 									"path": [
 										"api",
 										"CentrosLavado",
-										"19022ca3-5f1d-4bd7-a0bd-5264b61c3778",
+										"6FDF8CE4-0C4D-40D6-B28D-D2D49BFF8D73",
 										"empleados"
 									]
 								}
@@ -596,7 +649,7 @@
 								"method": "GET",
 								"header": [],
 								"url": {
-									"raw": "https://localhost:5001/api/CentrosLavado/empleados/e16f50ce-6629-463b-9842-7eb4c51c8871",
+									"raw": "https://localhost:5001/api/CentrosLavado/empleados/55F77607-0912-47A3-BCE0-7282D76905C6",
 									"protocol": "https",
 									"host": [
 										"localhost"
@@ -606,7 +659,7 @@
 										"api",
 										"CentrosLavado",
 										"empleados",
-										"e16f50ce-6629-463b-9842-7eb4c51c8871"
+										"55F77607-0912-47A3-BCE0-7282D76905C6"
 									]
 								}
 							},
@@ -618,7 +671,7 @@
 								"method": "DELETE",
 								"header": [],
 								"url": {
-									"raw": "https://localhost:5001/api/CentrosLavado/empleados/e16f50ce-6629-463b-9842-7eb4c51c8871",
+									"raw": "https://localhost:5001/api/CentrosLavado/empleados/55F77607-0912-47A3-BCE0-7282D76905C6",
 									"protocol": "https",
 									"host": [
 										"localhost"
@@ -628,7 +681,7 @@
 										"api",
 										"CentrosLavado",
 										"empleados",
-										"e16f50ce-6629-463b-9842-7eb4c51c8871"
+										"55F77607-0912-47A3-BCE0-7282D76905C6"
 									]
 								}
 							},
@@ -641,7 +694,7 @@
 								"header": [],
 								"body": {
 									"mode": "raw",
-									"raw": "{\r\n    \"Id\": \"e16f50ce-6629-463b-9842-7eb4c51c8871\",\r\n    \"Nombre\":  \"Raul Diaz\"\r\n}",
+									"raw": "{\r\n    \"Id\": \"334D96C7-CD35-40CF-99BC-94C2062482D0\",\r\n    \"Nombre\":  \"Raul Diaz\"\r\n}",
 									"options": {
 										"raw": {
 											"language": "json"
@@ -649,7 +702,7 @@
 									}
 								},
 								"url": {
-									"raw": "https://localhost:5001/api/CentrosLavado/empleados/e16f50ce-6629-463b-9842-7eb4c51c8871",
+									"raw": "https://localhost:5001/api/CentrosLavado/empleados/334D96C7-CD35-40CF-99BC-94C2062482D0",
 									"protocol": "https",
 									"host": [
 										"localhost"
@@ -659,7 +712,7 @@
 										"api",
 										"CentrosLavado",
 										"empleados",
-										"e16f50ce-6629-463b-9842-7eb4c51c8871"
+										"334D96C7-CD35-40CF-99BC-94C2062482D0"
 									]
 								}
 							},
@@ -705,7 +758,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"Nombre\": \"CentritoLavado 1\"\r\n}",
+							"raw": "{\r\n    \"Nombre\": \"CentritoLavado 2\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -713,7 +766,7 @@
 							}
 						},
 						"url": {
-							"raw": "https://localhost:5001/api/CentrosLavado/CA59E9BA-B6E2-4E54-9DB2-C073969A127E",
+							"raw": "https://localhost:5001/api/CentrosLavado/18772420-3A09-4D09-B5BF-64983BE581CC",
 							"protocol": "https",
 							"host": [
 								"localhost"
@@ -722,7 +775,7 @@
 							"path": [
 								"api",
 								"CentrosLavado",
-								"CA59E9BA-B6E2-4E54-9DB2-C073969A127E"
+								"18772420-3A09-4D09-B5BF-64983BE581CC"
 							]
 						}
 					},
@@ -765,7 +818,7 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "https://localhost:5001/api/CentrosLavado",
+							"raw": "https://localhost:5001/api/CentrosLavado/18772420-3A09-4D09-B5BF-64983BE581CC",
 							"protocol": "https",
 							"host": [
 								"localhost"
@@ -773,7 +826,8 @@
 							"port": "5001",
 							"path": [
 								"api",
-								"CentrosLavado"
+								"CentrosLavado",
+								"18772420-3A09-4D09-B5BF-64983BE581CC"
 							]
 						}
 					},
@@ -794,7 +848,7 @@
 							}
 						},
 						"url": {
-							"raw": "https://localhost:5001/api/CentrosLavado/E3D5D84E-2267-4854-84F6-42161285D036",
+							"raw": "https://localhost:5001/api/CentrosLavado/18772420-3A09-4D09-B5BF-64983BE581CC",
 							"protocol": "https",
 							"host": [
 								"localhost"
@@ -803,7 +857,7 @@
 							"path": [
 								"api",
 								"CentrosLavado",
-								"E3D5D84E-2267-4854-84F6-42161285D036"
+								"18772420-3A09-4D09-B5BF-64983BE581CC"
 							]
 						}
 					},
@@ -824,6 +878,62 @@
 							"path": [
 								"api",
 								"CentrosLavado"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "Tienda",
+			"item": [
+				{
+					"name": "CrearMedioPago",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"Id\": \"TD\",\r\n\"Nombre\": \"Tarjeta de debito\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://localhost:5001/api/MediosPago",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "5001",
+							"path": [
+								"api",
+								"MediosPago"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Eliminar MedioPago",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "https://localhost:5001/api/MediosPago/TD",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "5001",
+							"path": [
+								"api",
+								"MediosPago",
+								"TD"
 							]
 						}
 					},

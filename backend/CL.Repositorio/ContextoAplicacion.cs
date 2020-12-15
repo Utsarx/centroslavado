@@ -7,6 +7,13 @@ namespace CL.Repositorio
 {
     public class ContextoAplicacion : DbContext
     {
+
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<MedioPagoEmpresa>()
+                .HasKey(mp => new { mp.EmpresaId, mp.MedioPagoId } );
+        }
+
         public ContextoAplicacion(DbContextOptions<ContextoAplicacion> options)
             : base(options)
         {
@@ -27,12 +34,14 @@ namespace CL.Repositorio
         public DbSet<Tractor> Tractores { get; set; }
 
         public DbSet<Caja> Cajas { get; set; }
+
+        public DbSet<MedioPagoEmpresa> medioPagoEmpresas { get; set; }
         #endregion
 
 
+        #region Tienda 
+        public DbSet<MedioPago> MedioPagos { get; set; }
 
-        // DbSet<Servicio> Servicios { get; set; }
-
-
+        #endregion
     }
 }

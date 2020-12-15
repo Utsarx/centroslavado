@@ -33,6 +33,18 @@ namespace CL.Repositorio.data.migraciones
                 });
 
             migrationBuilder.CreateTable(
+                name: "MedioPago",
+                columns: table => new
+                {
+                    Id = table.Column<string>(maxLength: 10, nullable: false),
+                    Nombre = table.Column<string>(maxLength: 250, nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_MedioPago", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "Empleado",
                 columns: table => new
                 {
@@ -47,6 +59,25 @@ namespace CL.Repositorio.data.migraciones
                         name: "FK_Empleado_CentroLavado_CentroLavadoId",
                         column: x => x.CentroLavadoId,
                         principalTable: "CentroLavado",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Caja",
+                columns: table => new
+                {
+                    Id = table.Column<Guid>(nullable: false),
+                    Noeconomico = table.Column<string>(maxLength: 100, nullable: true),
+                    EmpresaId = table.Column<Guid>(nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Caja", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_Caja_Empresa_EmpresaId",
+                        column: x => x.EmpresaId,
+                        principalTable: "Empresa",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Restrict);
                 });
@@ -89,6 +120,35 @@ namespace CL.Repositorio.data.migraciones
                         onDelete: ReferentialAction.Restrict);
                 });
 
+            migrationBuilder.CreateTable(
+                name: "medioPagoEmpresas",
+                columns: table => new
+                {
+                    MedioPagoId = table.Column<string>(nullable: false),
+                    EmpresaId = table.Column<Guid>(nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_medioPagoEmpresas", x => new { x.EmpresaId, x.MedioPagoId });
+                    table.ForeignKey(
+                        name: "FK_medioPagoEmpresas_Empresa_EmpresaId",
+                        column: x => x.EmpresaId,
+                        principalTable: "Empresa",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
+                    table.ForeignKey(
+                        name: "FK_medioPagoEmpresas_MedioPago_MedioPagoId",
+                        column: x => x.MedioPagoId,
+                        principalTable: "MedioPago",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
+                });
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Caja_EmpresaId",
+                table: "Caja",
+                column: "EmpresaId");
+
             migrationBuilder.CreateIndex(
                 name: "IX_Chofer_EmpresaId",
                 table: "Chofer",
@@ -100,6 +160,11 @@ namespace CL.Repositorio.data.migraciones
                 column: "CentroLavadoId");
 
             migrationBuilder.CreateIndex(
+                name: "IX_medioPagoEmpresas_MedioPagoId",
+                table: "medioPagoEmpresas",
+                column: "MedioPagoId");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_Tractor_EmpresaId",
                 table: "Tractor",
                 column: "EmpresaId");
@@ -108,16 +173,25 @@ namespace CL.Repositorio.data.migraciones
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
+                name: "Caja");
+
+            migrationBuilder.DropTable(
                 name: "Chofer");
 
             migrationBuilder.DropTable(
                 name: "Empleado");
 
             migrationBuilder.DropTable(
+                name: "medioPagoEmpresas");
+
+            migrationBuilder.DropTable(
                 name: "Tractor");
 
             migrationBuilder.DropTable(
                 name: "CentroLavado");
+
+            migrationBuilder.DropTable(
+                name: "MedioPago");
 
             migrationBuilder.DropTable(
                 name: "Empresa");

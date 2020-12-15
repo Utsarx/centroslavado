@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace CL.Repositorio.data.migraciones
 {
     [DbContext(typeof(ContextoAplicacion))]
-    [Migration("20201204213041_Cajas")]
-    partial class Cajas
+    [Migration("20201214233050_Inicial")]
+    partial class Inicial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -117,6 +117,37 @@ namespace CL.Repositorio.data.migraciones
                     b.ToTable("Empresa");
                 });
 
+            modelBuilder.Entity("CL.Modelo.MedioPago", b =>
+                {
+                    b.Property<string>("Id")
+                        .HasColumnType("nvarchar(10)")
+                        .HasMaxLength(10);
+
+                    b.Property<string>("Nombre")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(250)")
+                        .HasMaxLength(250);
+
+                    b.HasKey("Id");
+
+                    b.ToTable("MedioPago");
+                });
+
+            modelBuilder.Entity("CL.Modelo.MedioPagoEmpresa", b =>
+                {
+                    b.Property<Guid>("EmpresaId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<string>("MedioPagoId")
+                        .HasColumnType("nvarchar(10)");
+
+                    b.HasKey("EmpresaId", "MedioPagoId");
+
+                    b.HasIndex("MedioPagoId");
+
+                    b.ToTable("medioPagoEmpresas");
+                });
+
             modelBuilder.Entity("CL.Modelo.Tractor", b =>
                 {
                     b.Property<Guid>("Id")
@@ -160,6 +191,21 @@ namespace CL.Repositorio.data.migraciones
                     b.HasOne("CL.Modelo.EmpresaTransporte", "Empresa")
                         .WithMany("Cajas")
                         .HasForeignKey("EmpresaId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("CL.Modelo.MedioPagoEmpresa", b =>
+                {
+                    b.HasOne("CL.Modelo.EmpresaTransporte", "Empresa")
+                        .WithMany("MediosPago")
+                        .HasForeignKey("EmpresaId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("CL.Modelo.MedioPago", "MedioPago")
+                        .WithMany("MediosEmpresa")
+                        .HasForeignKey("MedioPagoId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });

@@ -29,5 +29,7 @@ namespace CL.Modelo
         public ICollection<Tractor> Tractores { get; set; }
 
         public ICollection<Caja> Cajas { get; set; }
+
+        public ICollection<MedioPagoEmpresa> MediosPago { get; set; }
     }
 }
