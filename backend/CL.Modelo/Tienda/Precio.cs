@@ -9,11 +9,9 @@ namespace CL.Modelo
         public Guid Id { get; set; }
         public string Descripcion { get; set; }
         public double Monto { get; set; }
-
+        public Moneda Moneda { get; set; }
         public Guid ServicioId { get; set; }
-
         public Servicio Servicio { get; set; }
-
-        //public ICollection<ServiciosCentroLavado> CentrosLavado { get; set; }
+        public ICollection<ServiciosCentroLavado> CentrosLavado { get; set; }
     }
 }

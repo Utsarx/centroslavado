@@ -12,15 +12,28 @@ namespace CL.Modelo
         [Key]
         public Guid Id { get; set; }
 
+        /// <summary>
+        /// Clave del servicio
+        /// </summary>
         [MaxLength(200), MinLength(5)]
         public string Clave { get; set; }
 
+
+        /// <summary>
+        /// NOmbre del servicio
+        /// </summary>
         [MaxLength(200), MinLength(5)]
         public string Nombre { get; set; }
 
-        public Guid CentroLavadoId { get; set; }
-        public ICollection<Precio> Precios { get; set; }
 
-        //public ICollection<ServiciosCentroLavado> CentrosLavado { get; set; }
+        /// <summary>
+        /// Precios asociados al servicio
+        /// </summary>
+        public ICollection<Precio> Precios { get; set; }
+        
+        /// <summary>
+        /// Centros de lavados que utilizan el servicio
+        /// </summary>
+        public ICollection<ServiciosCentroLavado> CentrosLavado { get; set; }
     }
 }

@@ -17,9 +17,9 @@ namespace CL.Modelo
 
         public ICollection<Empleado>Empleados{ get; set; }
 
-        // public ICollection<ServiciosCentroLavado> Servicios { get; set; }
+        public ICollection<EmpleadoCentroLavado> Emmpleados { get; set; }
 
-
-        // public ICollection<Servicio> Servicios { get; set;  }
+        public ICollection<ServiciosCentroLavado> Servicios { get; set; }
+        
     }
 }

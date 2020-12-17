@@ -1,5 +1,4 @@
 ﻿using CL.Modelo;
-using CL.Modelo.Empresa;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;

@@ -1,5 +1,4 @@
 ﻿using CL.Modelo;
-using CL.Modelo.Empresa;
 using Microsoft.EntityFrameworkCore;
 using System.Data;
 
@@ -12,6 +11,9 @@ namespace CL.Repositorio
         {
             modelBuilder.Entity<MedioPagoEmpresa>()
                 .HasKey(mp => new { mp.EmpresaId, mp.MedioPagoId } );
+
+            modelBuilder.Entity<EmpleadoCentroLavado>()
+                .HasKey(ecl => new { ecl.CentroLavadoId, ecl.EmpleadoId });
         }
 
         public ContextoAplicacion(DbContextOptions<ContextoAplicacion> options)
@@ -19,10 +21,15 @@ namespace CL.Repositorio
         {
         }
 
+        #region Contabilidad
+        public DbSet<AbonoPrepago> AbonosPrepago { get; set; }
+        #endregion
+
         #region CentrosLavado
 
         public DbSet<CentroLavado> CentrosLavado { get; set; }
         public DbSet<Empleado> Empleados { get; set; }
+        public DbSet<EmpleadoCentroLavado> EmpleadosCentroLavado { get; set; }
 
         #endregion
 

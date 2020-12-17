@@ -129,7 +129,6 @@ namespace CL.API.Controllers.CentrosLavado
                 return NotFound(idemp);
             }
 
-            emp.CentroLavadoId = idcl;
             db.SaveChanges();
 
             return Ok();

@@ -18,12 +18,14 @@ namespace CL.API.Controllers.CentrosLavado
 
         // GET: api/CentroLavadoController
         [HttpGet("{clid}/empleados", Name = "GetEmpleados")]
-        public ActionResult<IEnumerable<CentroLavado>> GetEmpleados(Guid clid)
+        public ActionResult<IEnumerable<Empleado>> GetEmpleados(Guid clid)
         {
-            return Ok(
-                db.Empleados.Where(x => x.CentroLavadoId == clid)
-                .ToList().OrderBy(x => x.Nombre).ToList()
-                );
+            return Ok(new List<Empleado>());
+
+            //return Ok(
+            //    db.Empleados.Where(x => x.CentroLavadoId == clid)
+            //    .ToList().OrderBy(x => x.Nombre).ToList()
+            //    );
         }
 
         // GET api/<CentroLavadoController>/5
@@ -55,7 +57,6 @@ namespace CL.API.Controllers.CentrosLavado
             }
 
             empleado.Id = Guid.NewGuid();
-            empleado.CentroLavadoId = clid;
             db.Empleados.Add(empleado);
             db.SaveChanges();
             return Ok(empleado.Id);

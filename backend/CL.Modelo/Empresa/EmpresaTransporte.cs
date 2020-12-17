@@ -1,4 +1,4 @@
-﻿using CL.Modelo.Empresa;
+﻿using CL.Modelo;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
@@ -24,12 +24,16 @@ namespace CL.Modelo
         [MaxLength(14), MinLength(12)]
         public string RFC { get; set; }
 
+        /// <summary>
+        /// Total existete en el prepago, se calcula del total de aboonos de prepago
+        /// menos la lista de cargos realizados a la empresa por este método
+        /// </summary>
+        public decimal SaldoPrepago { get; set; }
+
         public ICollection<Chofer> Choferes { get; set; }
-
         public ICollection<Tractor> Tractores { get; set; }
-
         public ICollection<Caja> Cajas { get; set; }
-
         public ICollection<MedioPagoEmpresa> MediosPago { get; set; }
+        public ICollection<AbonoPrepago> AbonosPrepago { get; set; }
     }
 }
