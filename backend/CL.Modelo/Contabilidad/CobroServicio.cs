@@ -1,10 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Text;
 
 namespace CL.Modelo.Contabilidad
 {
+    [Table("CobroServicio")]
     public class CobroServicio
     {
         /// <summary>
@@ -52,6 +54,12 @@ namespace CL.Modelo.Contabilidad
         /// <summary>
         /// Identificador del servicio por el cual se cobra
         /// </summary>
+        public Guid CategoriaId { get; set; }
+
+
+        /// <summary>
+        /// Identificador del servicio por el cual se cobra
+        /// </summary>
         public Guid ServicioId { get; set; }
 
         /// <summary>
@@ -70,6 +78,12 @@ namespace CL.Modelo.Contabilidad
         /// Estos campos aceptan NULOS por eso el símbolo ?
         /// </summary>
         public Guid? CajaId { get; set; }
+
+        /// <summary>
+        /// Añadir todas las propiedades de navegación para las FK 
+        /// </summary>
+
+        public Caja Caja { get; set; }
 
     }
 }

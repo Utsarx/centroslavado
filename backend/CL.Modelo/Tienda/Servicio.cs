@@ -35,5 +35,9 @@ namespace CL.Modelo
         /// Centros de lavados que utilizan el servicio
         /// </summary>
         public ICollection<ServiciosCentroLavado> CentrosLavado { get; set; }
+
+
+        // Categoría 
+        public Categoria Categorias { get; set;  }
     }
 }

@@ -6,6 +6,7 @@ using System.Text;
 
 namespace CL.Modelo
 {
+    [Table("ServiciosCentroLavado")]
     public class ServiciosCentroLavado
     {
         [Key]

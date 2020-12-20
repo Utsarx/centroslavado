@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Text;
 
 namespace CL.Modelo
@@ -9,6 +10,8 @@ namespace CL.Modelo
     /// <summary>
     /// Controla los abonos al prepago de una empresa de trasnporte
     /// </summary>
+    
+    [Table("AbonoPrepago")]
     public class AbonoPrepago
     {
         [Key]

@@ -6,6 +6,7 @@ using System.Text;
 
 namespace CL.Modelo
 {
+    [Table("MedioPagoEmpresa")]
     public class MedioPagoEmpresa
     {
 

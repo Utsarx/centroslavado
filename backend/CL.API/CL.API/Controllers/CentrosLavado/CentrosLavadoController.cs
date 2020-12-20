@@ -52,6 +52,8 @@ namespace CL.API.Controllers.CentrosLavado
         [HttpPost]
         public ActionResult<Guid> Post([FromBody] CentroLavado centro)
         {
+           /// centro.Emmpleados.First().Empleado.Nombre => Propiedades de naavegacion 
+
             if (!ModelState.IsValid)
             {
                 return BadRequest(); 

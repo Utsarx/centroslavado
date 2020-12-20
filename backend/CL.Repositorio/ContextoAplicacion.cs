@@ -1,4 +1,5 @@
 ﻿using CL.Modelo;
+using CL.Modelo.Contabilidad;
 using Microsoft.EntityFrameworkCore;
 using System.Data;
 
@@ -10,19 +11,21 @@ namespace CL.Repositorio
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<MedioPagoEmpresa>()
-                .HasKey(mp => new { mp.EmpresaId, mp.MedioPagoId } );
+                .HasKey(mp => new { mp.EmpresaId, mp.MedioPagoId });
 
             modelBuilder.Entity<EmpleadoCentroLavado>()
                 .HasKey(ecl => new { ecl.CentroLavadoId, ecl.EmpleadoId });
+
+
         }
 
-        public ContextoAplicacion(DbContextOptions<ContextoAplicacion> options)
-            : base(options)
-        {
-        }
 
         #region Contabilidad
+
         public DbSet<AbonoPrepago> AbonosPrepago { get; set; }
+        public DbSet<MedioPago> MedioPagos { get; set; }
+
+        public DbSet<CobroServicio> CobroServicios { get; set; }
         #endregion
 
         #region CentrosLavado
@@ -30,6 +33,8 @@ namespace CL.Repositorio
         public DbSet<CentroLavado> CentrosLavado { get; set; }
         public DbSet<Empleado> Empleados { get; set; }
         public DbSet<EmpleadoCentroLavado> EmpleadosCentroLavado { get; set; }
+       
+        public DbSet<ServiciosCentroLavado> serviciosCentroLavados { get; set; }
 
         #endregion
 
@@ -47,7 +52,15 @@ namespace CL.Repositorio
 
 
         #region Tienda 
-        public DbSet<MedioPago> MedioPagos { get; set; }
+
+        public DbSet<Categoria> Categorias { get; set; }
+
+        public DbSet<Servicio> Servicios { get; set; }
+
+        public DbSet<Precio> Precios { get; set; }
+
+        
+
 
         #endregion
     }
