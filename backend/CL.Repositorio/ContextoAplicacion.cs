@@ -8,6 +8,11 @@ namespace CL.Repositorio
     public class ContextoAplicacion : DbContext
     {
 
+        public ContextoAplicacion(DbContextOptions<ContextoAplicacion> options)
+         : base(options)
+        {
+        }
+
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<MedioPagoEmpresa>()
@@ -15,6 +20,10 @@ namespace CL.Repositorio
 
             modelBuilder.Entity<EmpleadoCentroLavado>()
                 .HasKey(ecl => new { ecl.CentroLavadoId, ecl.EmpleadoId });
+
+            
+                modelBuilder.Entity<ServiciosCentroLavado>()
+                .HasKey(serv => new { serv.CentroLavadoId, serv.ServicioId, serv.PrecioId });
 
 
         }

@@ -57,5 +57,13 @@ namespace CL.Modelo
         /// </summary>
         public ICollection<EmpleadoCentroLavado> CentrosLavado { get; set; }
 
+
+        /// <summary>
+        /// Sirve para la autenticacion no incluirlo en la base de datos por ahora
+        /// </summary>
+        [NotMapped]
+        [JsonIgnore]
+        public List<string> RefreshTokens { get; set; }
+
     }
 }

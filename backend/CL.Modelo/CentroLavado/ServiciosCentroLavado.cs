@@ -9,16 +9,10 @@ namespace CL.Modelo
     [Table("ServiciosCentroLavado")]
     public class ServiciosCentroLavado
     {
-        [Key]
-        [Column(Order = 1)]
         public Guid CentroLavadoId { get; set; }
         
-        [Key]
-        [Column(Order = 3)]
         public Guid ServicioId { get; set; }
         
-        [Key]
-        [Column(Order = 2)]
         public Guid PrecioId { get; set; }
 
         public CentroLavado CentroLavado { get; set; }
