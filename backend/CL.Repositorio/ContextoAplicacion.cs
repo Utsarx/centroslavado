@@ -16,14 +16,14 @@ namespace CL.Repositorio
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<MedioPagoEmpresa>()
-                .HasKey(mp => new { mp.EmpresaId, mp.MedioPagoId });
+                   .HasKey(m => new { m.EmpresaId, m.MedioPago });
 
             modelBuilder.Entity<EmpleadoCentroLavado>()
                 .HasKey(ecl => new { ecl.CentroLavadoId, ecl.EmpleadoId });
 
-            
-                modelBuilder.Entity<ServiciosCentroLavado>()
-                .HasKey(serv => new { serv.CentroLavadoId, serv.ServicioId, serv.PrecioId });
+
+            modelBuilder.Entity<ServiciosCentroLavado>()
+            .HasKey(serv => new { serv.CentroLavadoId, serv.ServicioId, serv.PrecioId });
 
 
         }
@@ -32,7 +32,6 @@ namespace CL.Repositorio
         #region Contabilidad
 
         public DbSet<AbonoPrepago> AbonosPrepago { get; set; }
-        public DbSet<MedioPago> MedioPagos { get; set; }
 
         public DbSet<CobroServicio> CobroServicios { get; set; }
         #endregion
@@ -42,8 +41,7 @@ namespace CL.Repositorio
         public DbSet<CentroLavado> CentrosLavado { get; set; }
         public DbSet<Empleado> Empleados { get; set; }
         public DbSet<EmpleadoCentroLavado> EmpleadosCentroLavado { get; set; }
-       
-        public DbSet<ServiciosCentroLavado> serviciosCentroLavados { get; set; }
+        public DbSet<ServiciosCentroLavado> ServiciosCentroLavados { get; set; }
 
         #endregion
 
@@ -56,7 +54,7 @@ namespace CL.Repositorio
 
         public DbSet<Caja> Cajas { get; set; }
 
-        public DbSet<MedioPagoEmpresa> medioPagoEmpresas { get; set; }
+        public DbSet<MedioPagoEmpresa> MedioPagoEmpresas { get; set; }
         #endregion
 
 
@@ -68,7 +66,7 @@ namespace CL.Repositorio
 
         public DbSet<Precio> Precios { get; set; }
 
-        
+
 
 
         #endregion

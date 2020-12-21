@@ -18,6 +18,11 @@ namespace CL.Modelo
         [MaxLength(200), MinLength(5)]
         public string Clave { get; set; }
 
+        /// <summary>
+        /// Categoría  a la que petenece el servicio
+        /// </summary>
+        [Required]
+        public Guid CetegoriaId { get; set; }
 
         /// <summary>
         /// NOmbre del servicio
@@ -30,10 +35,10 @@ namespace CL.Modelo
         /// Precios asociados al servicio
         /// </summary>
         public ICollection<Precio> Precios { get; set; }
-        
-        /// <summary>
-        /// Centros de lavados que utilizan el servicio
-        /// </summary>
+
+        // <summary>
+        // Centros de lavados que utilizan el servicio
+        // </summary>
         public ICollection<ServiciosCentroLavado> CentrosLavado { get; set; }
 
 

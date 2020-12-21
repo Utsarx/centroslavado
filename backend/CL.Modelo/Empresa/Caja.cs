@@ -14,7 +14,7 @@ namespace CL.Modelo
         public  Guid Id { get; set; }
 
         [MaxLength(100), MinLength(1)]
-        public string Noeconomico { get; set; }
+        public string NoEconomico { get; set; }
 
         public Guid EmpresaId { get; set; }
 

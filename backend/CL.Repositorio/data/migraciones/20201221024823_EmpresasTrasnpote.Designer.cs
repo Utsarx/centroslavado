@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace CL.Repositorio.data.migraciones
 {
     [DbContext(typeof(ContextoAplicacion))]
-    [Migration("20201214233050_Inicial")]
-    partial class Inicial
+    [Migration("20201221024823_EmpresasTrasnpote")]
+    partial class EmpresasTrasnpote
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -20,6 +20,26 @@ namespace CL.Repositorio.data.migraciones
                 .HasAnnotation("ProductVersion", "3.1.10")
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+            modelBuilder.Entity("CL.Modelo.Caja", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<Guid>("EmpresaId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<string>("NoEconomico")
+                        .HasColumnType("nvarchar(100)")
+                        .HasMaxLength(100);
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("EmpresaId");
+
+                    b.ToTable("Caja");
+                });
 
             modelBuilder.Entity("CL.Modelo.CentroLavado", b =>
                 {
@@ -62,38 +82,49 @@ namespace CL.Repositorio.data.migraciones
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier");
 
-                    b.Property<Guid>("CentroLavadoId")
-                        .HasColumnType("uniqueidentifier");
+                    b.Property<bool>("Activo")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("Hash")
+                        .HasColumnType("nvarchar(500)")
+                        .HasMaxLength(500);
 
                     b.Property<string>("Nombre")
                         .HasColumnType("nvarchar(200)")
                         .HasMaxLength(200);
 
-                    b.HasKey("Id");
+                    b.Property<string>("NombreUsuario")
+                        .HasColumnType("nvarchar(100)")
+                        .HasMaxLength(100);
 
-                    b.HasIndex("CentroLavadoId");
+                    b.Property<string>("Salt")
+                        .HasColumnType("nvarchar(50)")
+                        .HasMaxLength(50);
+
+                    b.Property<DateTime?>("UltimoAcceso")
+                        .HasColumnType("datetime2");
+
+                    b.Property<bool>("UsuarioSistema")
+                        .HasColumnType("bit");
+
+                    b.HasKey("Id");
 
                     b.ToTable("Empleado");
                 });
 
-            modelBuilder.Entity("CL.Modelo.Empresa.Caja", b =>
+            modelBuilder.Entity("CL.Modelo.EmpleadoCentroLavado", b =>
                 {
-                    b.Property<Guid>("Id")
-                        .ValueGeneratedOnAdd()
+                    b.Property<Guid>("CentroLavadoId")
                         .HasColumnType("uniqueidentifier");
 
-                    b.Property<Guid>("EmpresaId")
+                    b.Property<Guid>("EmpleadoId")
                         .HasColumnType("uniqueidentifier");
 
-                    b.Property<string>("Noeconomico")
-                        .HasColumnType("nvarchar(100)")
-                        .HasMaxLength(100);
+                    b.HasKey("CentroLavadoId", "EmpleadoId");
 
-                    b.HasKey("Id");
+                    b.HasIndex("EmpleadoId");
 
-                    b.HasIndex("EmpresaId");
-
-                    b.ToTable("Caja");
+                    b.ToTable("EmpleadosCentroLavado");
                 });
 
             modelBuilder.Entity("CL.Modelo.EmpresaTransporte", b =>
@@ -112,40 +143,12 @@ namespace CL.Repositorio.data.migraciones
                         .HasColumnType("nvarchar(14)")
                         .HasMaxLength(14);
 
+                    b.Property<decimal>("SaldoPrepago")
+                        .HasColumnType("decimal(18,2)");
+
                     b.HasKey("Id");
 
                     b.ToTable("Empresa");
-                });
-
-            modelBuilder.Entity("CL.Modelo.MedioPago", b =>
-                {
-                    b.Property<string>("Id")
-                        .HasColumnType("nvarchar(10)")
-                        .HasMaxLength(10);
-
-                    b.Property<string>("Nombre")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(250)")
-                        .HasMaxLength(250);
-
-                    b.HasKey("Id");
-
-                    b.ToTable("MedioPago");
-                });
-
-            modelBuilder.Entity("CL.Modelo.MedioPagoEmpresa", b =>
-                {
-                    b.Property<Guid>("EmpresaId")
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<string>("MedioPagoId")
-                        .HasColumnType("nvarchar(10)");
-
-                    b.HasKey("EmpresaId", "MedioPagoId");
-
-                    b.HasIndex("MedioPagoId");
-
-                    b.ToTable("medioPagoEmpresas");
                 });
 
             modelBuilder.Entity("CL.Modelo.Tractor", b =>
@@ -168,6 +171,15 @@ namespace CL.Repositorio.data.migraciones
                     b.ToTable("Tractor");
                 });
 
+            modelBuilder.Entity("CL.Modelo.Caja", b =>
+                {
+                    b.HasOne("CL.Modelo.EmpresaTransporte", "Empresa")
+                        .WithMany("Cajas")
+                        .HasForeignKey("EmpresaId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
             modelBuilder.Entity("CL.Modelo.Chofer", b =>
                 {
                     b.HasOne("CL.Modelo.EmpresaTransporte", "Empresa")
@@ -177,35 +189,17 @@ namespace CL.Repositorio.data.migraciones
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("CL.Modelo.Empleado", b =>
+            modelBuilder.Entity("CL.Modelo.EmpleadoCentroLavado", b =>
                 {
                     b.HasOne("CL.Modelo.CentroLavado", "CentroLavado")
-                        .WithMany("Empleados")
+                        .WithMany("Emmpleados")
                         .HasForeignKey("CentroLavadoId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
-                });
 
-            modelBuilder.Entity("CL.Modelo.Empresa.Caja", b =>
-                {
-                    b.HasOne("CL.Modelo.EmpresaTransporte", "Empresa")
-                        .WithMany("Cajas")
-                        .HasForeignKey("EmpresaId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-                });
-
-            modelBuilder.Entity("CL.Modelo.MedioPagoEmpresa", b =>
-                {
-                    b.HasOne("CL.Modelo.EmpresaTransporte", "Empresa")
-                        .WithMany("MediosPago")
-                        .HasForeignKey("EmpresaId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("CL.Modelo.MedioPago", "MedioPago")
-                        .WithMany("MediosEmpresa")
-                        .HasForeignKey("MedioPagoId")
+                    b.HasOne("CL.Modelo.Empleado", "Empleado")
+                        .WithMany("CentrosLavado")
+                        .HasForeignKey("EmpleadoId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });

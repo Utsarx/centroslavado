@@ -4,14 +4,16 @@ using CL.Repositorio;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace CL.Repositorio.data.migraciones
 {
     [DbContext(typeof(ContextoAplicacion))]
-    partial class ContextoAplicacionModelSnapshot : ModelSnapshot
+    [Migration("20201221030242_CoboroServicis")]
+    partial class CoboroServicis
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -324,26 +326,6 @@ namespace CL.Repositorio.data.migraciones
                     b.ToTable("Servicio");
                 });
 
-            modelBuilder.Entity("CL.Modelo.ServiciosCentroLavado", b =>
-                {
-                    b.Property<Guid>("CentroLavadoId")
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<Guid>("ServicioId")
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<Guid>("PrecioId")
-                        .HasColumnType("uniqueidentifier");
-
-                    b.HasKey("CentroLavadoId", "ServicioId", "PrecioId");
-
-                    b.HasIndex("PrecioId");
-
-                    b.HasIndex("ServicioId");
-
-                    b.ToTable("ServiciosCentroLavado");
-                });
-
             modelBuilder.Entity("CL.Modelo.Tractor", b =>
                 {
                     b.Property<Guid>("Id")
@@ -466,27 +448,6 @@ namespace CL.Repositorio.data.migraciones
                     b.HasOne("CL.Modelo.Categoria", "Categorias")
                         .WithMany("Servicios")
                         .HasForeignKey("CategoriasId");
-                });
-
-            modelBuilder.Entity("CL.Modelo.ServiciosCentroLavado", b =>
-                {
-                    b.HasOne("CL.Modelo.CentroLavado", "CentroLavado")
-                        .WithMany("Servicios")
-                        .HasForeignKey("CentroLavadoId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("CL.Modelo.Precio", "PrecioDefault")
-                        .WithMany("PrecioCentroLavado")
-                        .HasForeignKey("PrecioId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("CL.Modelo.Servicio", "Servicio")
-                        .WithMany("CentrosLavado")
-                        .HasForeignKey("ServicioId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
                 });
 
             modelBuilder.Entity("CL.Modelo.Tractor", b =>

@@ -5,6 +5,13 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="data\migraciones\20201221024328_EmpreasTransporte.cs" />
+    <Compile Remove="data\migraciones\20201221024328_EmpreasTransporte.Designer.cs" />
+    <Compile Remove="data\migraciones\20201221030153_CoboroServicis.cs" />
+    <Compile Remove="data\migraciones\20201221030153_CoboroServicis.Designer.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="3.1.10" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Relational" Version="3.1.10" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="3.1.10" />

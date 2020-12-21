@@ -31,14 +31,12 @@ namespace CL.Modelo.Contabilidad
         /// Identificador de la empresa receptora del cobro
         /// </summary>
         [Required]
-        public Guid EmpresaTransporteId { get; set; }
+        public Guid? EmpresaTransporteId { get; set; }
 
         /// <summary>
-        /// Identificador del medio de pago
+        /// Medio de pago utilizado para el cobro
         /// </summary>
-        [MaxLength(10), MinLength(1)]
-        [Required]
-        public string MedioPagoId { get; set; }
+        public MedioPago MedioPago { get; set; }
 
         /// <summary>
         /// Monto pagado
@@ -65,7 +63,7 @@ namespace CL.Modelo.Contabilidad
         /// <summary>
         /// Identificador del chofer que recibe el servicio
         /// </summary>
-        public Guid ChoferId { get; set; }
+        public Guid? ChoferId { get; set; }
 
         /// <summary>
         /// Identificador del tractor al cual se aplico el servicio
@@ -83,7 +81,13 @@ namespace CL.Modelo.Contabilidad
         /// Añadir todas las propiedades de navegación para las FK 
         /// </summary>
 
+        public EmpresaTransporte Empresa { get; set; }
         public Caja Caja { get; set; }
+        public Tractor Tractor { get; set; }
+        public Servicio Servicio { get; set; }
+        public Chofer Chofer { get; set; }
+        public CentroLavado CentroLavado { get; set; }
+        public Categoria Categoria { get; set; }
 
     }
 }

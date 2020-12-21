@@ -10,18 +10,11 @@ namespace CL.Modelo
     public class MedioPagoEmpresa
     {
 
-        public MedioPagoEmpresa()
-        {
- 
-            
-        }
-        
-        
         public Guid EmpresaId { get; set; }
 
-        public string MedioPagoId { get; set; }
-        public EmpresaTransporte Empresa { get; set; }
         public MedioPago MedioPago { get; set; }
-
+        
+        public EmpresaTransporte Empresa { get; set; }
+       
     }
 }

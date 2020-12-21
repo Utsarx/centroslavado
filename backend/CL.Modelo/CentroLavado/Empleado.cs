@@ -50,7 +50,7 @@ namespace CL.Modelo
         /// Indica cuando fue la última vez que el usuario hizo login, el singo ? significa que este valor puede ser nulo
         /// NO DEBE LLENARSE EN EL CRUD, se llenará con el proceso de login
         /// </summary>
-        public DateTimeKind? UltimoAcceso { get; set; }
+        public DateTime? UltimoAcceso { get; set; }
 
         /// <summary>
         /// Lista de los empleados asociados al centro de lavado

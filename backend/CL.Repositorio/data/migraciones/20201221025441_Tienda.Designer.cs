@@ -4,48 +4,22 @@ using CL.Repositorio;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace CL.Repositorio.data.migraciones
 {
     [DbContext(typeof(ContextoAplicacion))]
-    partial class ContextoAplicacionModelSnapshot : ModelSnapshot
+    [Migration("20201221025441_Tienda")]
+    partial class Tienda
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
                 .HasAnnotation("ProductVersion", "3.1.10")
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-            modelBuilder.Entity("CL.Modelo.AbonoPrepago", b =>
-                {
-                    b.Property<Guid>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<Guid>("EmpesaId")
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<Guid?>("EmpresaId")
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<DateTime>("Fecha")
-                        .HasColumnType("datetime2");
-
-                    b.Property<int>("Moneda")
-                        .HasColumnType("int");
-
-                    b.Property<decimal>("Monto")
-                        .HasColumnType("decimal(18,2)");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("EmpresaId");
-
-                    b.ToTable("AbonoPrepago");
-                });
 
             modelBuilder.Entity("CL.Modelo.Caja", b =>
                 {
@@ -116,66 +90,6 @@ namespace CL.Repositorio.data.migraciones
                     b.HasIndex("EmpresaId");
 
                     b.ToTable("Chofer");
-                });
-
-            modelBuilder.Entity("CL.Modelo.Contabilidad.CobroServicio", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<Guid?>("CajaId")
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<Guid>("CategoriaId")
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<Guid>("CentroLavadoId")
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<Guid?>("ChoferId")
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<Guid?>("EmpresaTransporteId")
-                        .IsRequired()
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<DateTime>("Fecha")
-                        .HasColumnType("datetime2");
-
-                    b.Property<int>("MedioPago")
-                        .HasColumnType("int");
-
-                    b.Property<int>("Moneda")
-                        .HasColumnType("int");
-
-                    b.Property<decimal>("Monto")
-                        .HasColumnType("decimal(18,2)");
-
-                    b.Property<Guid>("ServicioId")
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<Guid?>("TractorId")
-                        .HasColumnType("uniqueidentifier");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("CajaId");
-
-                    b.HasIndex("CategoriaId");
-
-                    b.HasIndex("CentroLavadoId");
-
-                    b.HasIndex("ChoferId");
-
-                    b.HasIndex("EmpresaTransporteId");
-
-                    b.HasIndex("ServicioId");
-
-                    b.HasIndex("TractorId");
-
-                    b.ToTable("CobroServicio");
                 });
 
             modelBuilder.Entity("CL.Modelo.Empleado", b =>
@@ -253,19 +167,6 @@ namespace CL.Repositorio.data.migraciones
                     b.ToTable("Empresa");
                 });
 
-            modelBuilder.Entity("CL.Modelo.MedioPagoEmpresa", b =>
-                {
-                    b.Property<Guid>("EmpresaId")
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<int>("MedioPago")
-                        .HasColumnType("int");
-
-                    b.HasKey("EmpresaId", "MedioPago");
-
-                    b.ToTable("MedioPagoEmpresa");
-                });
-
             modelBuilder.Entity("CL.Modelo.Precio", b =>
                 {
                     b.Property<Guid>("Id")
@@ -324,26 +225,6 @@ namespace CL.Repositorio.data.migraciones
                     b.ToTable("Servicio");
                 });
 
-            modelBuilder.Entity("CL.Modelo.ServiciosCentroLavado", b =>
-                {
-                    b.Property<Guid>("CentroLavadoId")
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<Guid>("ServicioId")
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<Guid>("PrecioId")
-                        .HasColumnType("uniqueidentifier");
-
-                    b.HasKey("CentroLavadoId", "ServicioId", "PrecioId");
-
-                    b.HasIndex("PrecioId");
-
-                    b.HasIndex("ServicioId");
-
-                    b.ToTable("ServiciosCentroLavado");
-                });
-
             modelBuilder.Entity("CL.Modelo.Tractor", b =>
                 {
                     b.Property<Guid>("Id")
@@ -364,13 +245,6 @@ namespace CL.Repositorio.data.migraciones
                     b.ToTable("Tractor");
                 });
 
-            modelBuilder.Entity("CL.Modelo.AbonoPrepago", b =>
-                {
-                    b.HasOne("CL.Modelo.EmpresaTransporte", "Empresa")
-                        .WithMany()
-                        .HasForeignKey("EmpresaId");
-                });
-
             modelBuilder.Entity("CL.Modelo.Caja", b =>
                 {
                     b.HasOne("CL.Modelo.EmpresaTransporte", "Empresa")
@@ -389,45 +263,6 @@ namespace CL.Repositorio.data.migraciones
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("CL.Modelo.Contabilidad.CobroServicio", b =>
-                {
-                    b.HasOne("CL.Modelo.Caja", "Caja")
-                        .WithMany()
-                        .HasForeignKey("CajaId");
-
-                    b.HasOne("CL.Modelo.Categoria", "Categoria")
-                        .WithMany()
-                        .HasForeignKey("CategoriaId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("CL.Modelo.CentroLavado", "CentroLavado")
-                        .WithMany()
-                        .HasForeignKey("CentroLavadoId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("CL.Modelo.Chofer", "Chofer")
-                        .WithMany()
-                        .HasForeignKey("ChoferId");
-
-                    b.HasOne("CL.Modelo.EmpresaTransporte", "Empresa")
-                        .WithMany()
-                        .HasForeignKey("EmpresaTransporteId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("CL.Modelo.Servicio", "Servicio")
-                        .WithMany()
-                        .HasForeignKey("ServicioId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("CL.Modelo.Tractor", "Tractor")
-                        .WithMany()
-                        .HasForeignKey("TractorId");
-                });
-
             modelBuilder.Entity("CL.Modelo.EmpleadoCentroLavado", b =>
                 {
                     b.HasOne("CL.Modelo.CentroLavado", "CentroLavado")
@@ -439,15 +274,6 @@ namespace CL.Repositorio.data.migraciones
                     b.HasOne("CL.Modelo.Empleado", "Empleado")
                         .WithMany("CentrosLavado")
                         .HasForeignKey("EmpleadoId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-                });
-
-            modelBuilder.Entity("CL.Modelo.MedioPagoEmpresa", b =>
-                {
-                    b.HasOne("CL.Modelo.EmpresaTransporte", "Empresa")
-                        .WithMany()
-                        .HasForeignKey("EmpresaId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });
@@ -466,27 +292,6 @@ namespace CL.Repositorio.data.migraciones
                     b.HasOne("CL.Modelo.Categoria", "Categorias")
                         .WithMany("Servicios")
                         .HasForeignKey("CategoriasId");
-                });
-
-            modelBuilder.Entity("CL.Modelo.ServiciosCentroLavado", b =>
-                {
-                    b.HasOne("CL.Modelo.CentroLavado", "CentroLavado")
-                        .WithMany("Servicios")
-                        .HasForeignKey("CentroLavadoId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("CL.Modelo.Precio", "PrecioDefault")
-                        .WithMany("PrecioCentroLavado")
-                        .HasForeignKey("PrecioId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("CL.Modelo.Servicio", "Servicio")
-                        .WithMany("CentrosLavado")
-                        .HasForeignKey("ServicioId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
                 });
 
             modelBuilder.Entity("CL.Modelo.Tractor", b =>
