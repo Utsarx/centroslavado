@@ -19,6 +19,85 @@ namespace CL.Repositorio.data.migraciones
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
+            modelBuilder.Entity("CL.Modelo.AbonoPrepago", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<Guid>("EmpesaId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<Guid?>("EmpresaId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<DateTime>("Fecha")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int>("Moneda")
+                        .HasColumnType("int");
+
+                    b.Property<decimal>("Monto")
+                        .HasColumnType("decimal(18,2)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("EmpresaId");
+
+                    b.ToTable("AbonoPrepago");
+                });
+
+            modelBuilder.Entity("CL.Modelo.Caja", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<Guid>("EmpresaId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<string>("NoEconomico")
+                        .HasColumnType("nvarchar(100)")
+                        .HasMaxLength(100);
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("EmpresaId");
+
+                    b.ToTable("Caja");
+                });
+
+            modelBuilder.Entity("CL.Modelo.Categoria", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<string>("Nombre")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(100)")
+                        .HasMaxLength(100);
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Categoria");
+                });
+
+            modelBuilder.Entity("CL.Modelo.CentroLavado", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<string>("Nombre")
+                        .HasColumnType("nvarchar(200)")
+                        .HasMaxLength(200);
+
+                    b.HasKey("Id");
+
+                    b.ToTable("CentroLavado");
+                });
+
             modelBuilder.Entity("CL.Modelo.Chofer", b =>
                 {
                     b.Property<Guid>("Id")
@@ -39,6 +118,117 @@ namespace CL.Repositorio.data.migraciones
                     b.ToTable("Chofer");
                 });
 
+            modelBuilder.Entity("CL.Modelo.Contabilidad.CobroServicio", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<Guid?>("CajaId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<Guid>("CategoriaId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<Guid>("CentroLavadoId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<Guid?>("ChoferId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<Guid?>("EmpresaTransporteId")
+                        .IsRequired()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<DateTime>("Fecha")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int>("MedioPago")
+                        .HasColumnType("int");
+
+                    b.Property<int>("Moneda")
+                        .HasColumnType("int");
+
+                    b.Property<decimal>("Monto")
+                        .HasColumnType("decimal(18,2)");
+
+                    b.Property<Guid>("ServicioId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<Guid?>("TractorId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("CajaId");
+
+                    b.HasIndex("CategoriaId");
+
+                    b.HasIndex("CentroLavadoId");
+
+                    b.HasIndex("ChoferId");
+
+                    b.HasIndex("EmpresaTransporteId");
+
+                    b.HasIndex("ServicioId");
+
+                    b.HasIndex("TractorId");
+
+                    b.ToTable("CobroServicio");
+                });
+
+            modelBuilder.Entity("CL.Modelo.Empleado", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<bool>("Activo")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("Hash")
+                        .HasColumnType("nvarchar(500)")
+                        .HasMaxLength(500);
+
+                    b.Property<string>("Nombre")
+                        .HasColumnType("nvarchar(200)")
+                        .HasMaxLength(200);
+
+                    b.Property<string>("NombreUsuario")
+                        .HasColumnType("nvarchar(100)")
+                        .HasMaxLength(100);
+
+                    b.Property<string>("Salt")
+                        .HasColumnType("nvarchar(50)")
+                        .HasMaxLength(50);
+
+                    b.Property<DateTime?>("UltimoAcceso")
+                        .HasColumnType("datetime2");
+
+                    b.Property<bool>("UsuarioSistema")
+                        .HasColumnType("bit");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Empleado");
+                });
+
+            modelBuilder.Entity("CL.Modelo.EmpleadoCentroLavado", b =>
+                {
+                    b.Property<Guid>("CentroLavadoId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<Guid>("EmpleadoId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.HasKey("CentroLavadoId", "EmpleadoId");
+
+                    b.HasIndex("EmpleadoId");
+
+                    b.ToTable("EmpleadosCentroLavado");
+                });
+
             modelBuilder.Entity("CL.Modelo.EmpresaTransporte", b =>
                 {
                     b.Property<Guid>("Id")
@@ -55,15 +245,254 @@ namespace CL.Repositorio.data.migraciones
                         .HasColumnType("nvarchar(14)")
                         .HasMaxLength(14);
 
+                    b.Property<decimal>("SaldoPrepago")
+                        .HasColumnType("decimal(18,2)");
+
                     b.HasKey("Id");
 
                     b.ToTable("Empresa");
+                });
+
+            modelBuilder.Entity("CL.Modelo.MedioPagoEmpresa", b =>
+                {
+                    b.Property<Guid>("EmpresaId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<int>("MedioPago")
+                        .HasColumnType("int");
+
+                    b.HasKey("EmpresaId", "MedioPago");
+
+                    b.ToTable("MedioPagoEmpresa");
+                });
+
+            modelBuilder.Entity("CL.Modelo.Precio", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<string>("Descripcion")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(200)")
+                        .HasMaxLength(200);
+
+                    b.Property<bool>("EsDefault")
+                        .HasColumnType("bit");
+
+                    b.Property<int>("Moneda")
+                        .HasColumnType("int");
+
+                    b.Property<double>("Monto")
+                        .HasColumnType("float")
+                        .HasMaxLength(200);
+
+                    b.Property<Guid>("ServicioId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("ServicioId");
+
+                    b.ToTable("Precio");
+                });
+
+            modelBuilder.Entity("CL.Modelo.Servicio", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<Guid?>("CategoriasId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<Guid>("CetegoriaId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<string>("Clave")
+                        .HasColumnType("nvarchar(200)")
+                        .HasMaxLength(200);
+
+                    b.Property<string>("Nombre")
+                        .HasColumnType("nvarchar(200)")
+                        .HasMaxLength(200);
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("CategoriasId");
+
+                    b.ToTable("Servicio");
+                });
+
+            modelBuilder.Entity("CL.Modelo.ServiciosCentroLavado", b =>
+                {
+                    b.Property<Guid>("CentroLavadoId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<Guid>("ServicioId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<Guid>("PrecioId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.HasKey("CentroLavadoId", "ServicioId", "PrecioId");
+
+                    b.HasIndex("PrecioId");
+
+                    b.HasIndex("ServicioId");
+
+                    b.ToTable("ServiciosCentroLavado");
+                });
+
+            modelBuilder.Entity("CL.Modelo.Tractor", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<Guid>("EmpresaId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<string>("Noeconomico")
+                        .HasColumnType("nvarchar(100)")
+                        .HasMaxLength(100);
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("EmpresaId");
+
+                    b.ToTable("Tractor");
+                });
+
+            modelBuilder.Entity("CL.Modelo.AbonoPrepago", b =>
+                {
+                    b.HasOne("CL.Modelo.EmpresaTransporte", "Empresa")
+                        .WithMany()
+                        .HasForeignKey("EmpresaId");
+                });
+
+            modelBuilder.Entity("CL.Modelo.Caja", b =>
+                {
+                    b.HasOne("CL.Modelo.EmpresaTransporte", "Empresa")
+                        .WithMany("Cajas")
+                        .HasForeignKey("EmpresaId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
                 });
 
             modelBuilder.Entity("CL.Modelo.Chofer", b =>
                 {
                     b.HasOne("CL.Modelo.EmpresaTransporte", "Empresa")
                         .WithMany("Choferes")
+                        .HasForeignKey("EmpresaId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("CL.Modelo.Contabilidad.CobroServicio", b =>
+                {
+                    b.HasOne("CL.Modelo.Caja", "Caja")
+                        .WithMany()
+                        .HasForeignKey("CajaId");
+
+                    b.HasOne("CL.Modelo.Categoria", "Categoria")
+                        .WithMany()
+                        .HasForeignKey("CategoriaId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("CL.Modelo.CentroLavado", "CentroLavado")
+                        .WithMany()
+                        .HasForeignKey("CentroLavadoId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("CL.Modelo.Chofer", "Chofer")
+                        .WithMany()
+                        .HasForeignKey("ChoferId");
+
+                    b.HasOne("CL.Modelo.EmpresaTransporte", "Empresa")
+                        .WithMany()
+                        .HasForeignKey("EmpresaTransporteId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("CL.Modelo.Servicio", "Servicio")
+                        .WithMany()
+                        .HasForeignKey("ServicioId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("CL.Modelo.Tractor", "Tractor")
+                        .WithMany()
+                        .HasForeignKey("TractorId");
+                });
+
+            modelBuilder.Entity("CL.Modelo.EmpleadoCentroLavado", b =>
+                {
+                    b.HasOne("CL.Modelo.CentroLavado", "CentroLavado")
+                        .WithMany("Emmpleados")
+                        .HasForeignKey("CentroLavadoId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("CL.Modelo.Empleado", "Empleado")
+                        .WithMany("CentrosLavado")
+                        .HasForeignKey("EmpleadoId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("CL.Modelo.MedioPagoEmpresa", b =>
+                {
+                    b.HasOne("CL.Modelo.EmpresaTransporte", "Empresa")
+                        .WithMany()
+                        .HasForeignKey("EmpresaId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("CL.Modelo.Precio", b =>
+                {
+                    b.HasOne("CL.Modelo.Servicio", "Servicio")
+                        .WithMany("Precios")
+                        .HasForeignKey("ServicioId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("CL.Modelo.Servicio", b =>
+                {
+                    b.HasOne("CL.Modelo.Categoria", "Categorias")
+                        .WithMany("Servicios")
+                        .HasForeignKey("CategoriasId");
+                });
+
+            modelBuilder.Entity("CL.Modelo.ServiciosCentroLavado", b =>
+                {
+                    b.HasOne("CL.Modelo.CentroLavado", "CentroLavado")
+                        .WithMany("Servicios")
+                        .HasForeignKey("CentroLavadoId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("CL.Modelo.Precio", "PrecioDefault")
+                        .WithMany("PrecioCentroLavado")
+                        .HasForeignKey("PrecioId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("CL.Modelo.Servicio", "Servicio")
+                        .WithMany("CentrosLavado")
+                        .HasForeignKey("ServicioId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("CL.Modelo.Tractor", b =>
+                {
+                    b.HasOne("CL.Modelo.EmpresaTransporte", "Empresa")
+                        .WithMany("Tractores")
                         .HasForeignKey("EmpresaId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();

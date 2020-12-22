@@ -5,8 +5,10 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Compile Remove="data\migraciones\20201202025713_Inicial.cs" />
-    <Compile Remove="data\migraciones\20201202025713_Inicial.Designer.cs" />
+    <Compile Remove="data\migraciones\20201221024328_EmpreasTransporte.cs" />
+    <Compile Remove="data\migraciones\20201221024328_EmpreasTransporte.Designer.cs" />
+    <Compile Remove="data\migraciones\20201221030153_CoboroServicis.cs" />
+    <Compile Remove="data\migraciones\20201221030153_CoboroServicis.Designer.cs" />
   </ItemGroup>
 
   <ItemGroup>
@@ -21,11 +23,6 @@
 
   <ItemGroup>
     <ProjectReference Include="..\CL.Modelo\CL.Modelo.csproj" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="data\" />
-    <Folder Include="data\migraciones\" />
   </ItemGroup>
 
 </Project>

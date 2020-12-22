@@ -1,0 +1,947 @@
+{
+	"info": {
+		"_postman_id": "9b035479-5115-48aa-a1f1-0f38d8508ecf",
+		"name": "CentrosLavado",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Empresas",
+			"item": [
+				{
+					"name": "Choferes",
+					"item": [
+						{
+							"name": "Crear chofer empresa",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"Nombre\": \"German Diaz\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "https://localhost:5001/api/Empresas/252654D5-7FBC-442C-BB77-7F0BD2C66C92/choferes",
+									"protocol": "https",
+									"host": [
+										"localhost"
+									],
+									"port": "5001",
+									"path": [
+										"api",
+										"Empresas",
+										"252654D5-7FBC-442C-BB77-7F0BD2C66C92",
+										"choferes"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Obtener choferes empresa",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "https://localhost:5001/api/Empresas/252654D5-7FBC-442C-BB77-7F0BD2C66C92/choferes",
+									"protocol": "https",
+									"host": [
+										"localhost"
+									],
+									"port": "5001",
+									"path": [
+										"api",
+										"Empresas",
+										"252654D5-7FBC-442C-BB77-7F0BD2C66C92",
+										"choferes"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Obtener chofer unico",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "https://localhost:5001/api/Empresas/choferes/EB08C6DB-5195-4927-B623-A9239E15EC46",
+									"protocol": "https",
+									"host": [
+										"localhost"
+									],
+									"port": "5001",
+									"path": [
+										"api",
+										"Empresas",
+										"choferes",
+										"EB08C6DB-5195-4927-B623-A9239E15EC46"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Eliminar chofer",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "https://localhost:5001/api/Empresas/choferes/EB08C6DB-5195-4927-B623-A9239E15EC46",
+									"protocol": "https",
+									"host": [
+										"localhost"
+									],
+									"port": "5001",
+									"path": [
+										"api",
+										"Empresas",
+										"choferes",
+										"EB08C6DB-5195-4927-B623-A9239E15EC46"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Actualizar chofer",
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"Id\": \"65DD4E13-FA1B-4F43-893E-C8A6D4F37CDA\",\r\n    \"Nombre\":  \"German Diaz\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "https://localhost:5001/api/Empresas/choferes/65DD4E13-FA1B-4F43-893E-C8A6D4F37CDA",
+									"protocol": "https",
+									"host": [
+										"localhost"
+									],
+									"port": "5001",
+									"path": [
+										"api",
+										"Empresas",
+										"choferes",
+										"65DD4E13-FA1B-4F43-893E-C8A6D4F37CDA"
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"protocolProfileBehavior": {},
+					"_postman_isSubFolder": true
+				},
+				{
+					"name": "Tractores",
+					"item": [
+						{
+							"name": "Crear tractor empresa",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"Noeconomico\":  \"12345678911\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "https://localhost:5001/api/Empresas/252654D5-7FBC-442C-BB77-7F0BD2C66C92/tractores",
+									"protocol": "https",
+									"host": [
+										"localhost"
+									],
+									"port": "5001",
+									"path": [
+										"api",
+										"Empresas",
+										"252654D5-7FBC-442C-BB77-7F0BD2C66C92",
+										"tractores"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Obtener tractores empresa",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "https://localhost:5001/api/Empresas/252654D5-7FBC-442C-BB77-7F0BD2C66C92/tractores",
+									"protocol": "https",
+									"host": [
+										"localhost"
+									],
+									"port": "5001",
+									"path": [
+										"api",
+										"Empresas",
+										"252654D5-7FBC-442C-BB77-7F0BD2C66C92",
+										"tractores"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Obtener tractor unico",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "https://localhost:5001/api/Empresas/tractores/9A698298-BEB7-44E5-9A80-618DAD375020",
+									"protocol": "https",
+									"host": [
+										"localhost"
+									],
+									"port": "5001",
+									"path": [
+										"api",
+										"Empresas",
+										"tractores",
+										"9A698298-BEB7-44E5-9A80-618DAD375020"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Eliminar tractor",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "https://localhost:5001/api/Empresas/tractores/9A698298-BEB7-44E5-9A80-618DAD375020",
+									"protocol": "https",
+									"host": [
+										"localhost"
+									],
+									"port": "5001",
+									"path": [
+										"api",
+										"Empresas",
+										"tractores",
+										"9A698298-BEB7-44E5-9A80-618DAD375020"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Actualizar tractor",
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"Id\": \"A81A62B2-E33A-4E05-9FEF-CE7E59490FC0\",\r\n    \"Noeconomico\":  \"12345678911\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "https://localhost:5001/api/Empresas/tractores/A81A62B2-E33A-4E05-9FEF-CE7E59490FC0",
+									"protocol": "https",
+									"host": [
+										"localhost"
+									],
+									"port": "5001",
+									"path": [
+										"api",
+										"Empresas",
+										"tractores",
+										"A81A62B2-E33A-4E05-9FEF-CE7E59490FC0"
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"protocolProfileBehavior": {},
+					"_postman_isSubFolder": true
+				},
+				{
+					"name": "Cajas",
+					"item": [
+						{
+							"name": "Crear caja empresa",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"Noeconomico\":  \"000002\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "https://localhost:5001/api/Empresas/252654D5-7FBC-442C-BB77-7F0BD2C66C92/cajas",
+									"protocol": "https",
+									"host": [
+										"localhost"
+									],
+									"port": "5001",
+									"path": [
+										"api",
+										"Empresas",
+										"252654D5-7FBC-442C-BB77-7F0BD2C66C92",
+										"cajas"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Obtener cajas empresa",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "https://localhost:5001/api/Empresas/252654D5-7FBC-442C-BB77-7F0BD2C66C92/cajas",
+									"protocol": "https",
+									"host": [
+										"localhost"
+									],
+									"port": "5001",
+									"path": [
+										"api",
+										"Empresas",
+										"252654D5-7FBC-442C-BB77-7F0BD2C66C92",
+										"cajas"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Obtener caja unica",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "https://localhost:5001/api/Empresas/cajas/C663D9B8-E9C0-4038-A557-14B2EAF47677",
+									"protocol": "https",
+									"host": [
+										"localhost"
+									],
+									"port": "5001",
+									"path": [
+										"api",
+										"Empresas",
+										"cajas",
+										"C663D9B8-E9C0-4038-A557-14B2EAF47677"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Eliminar caja",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "https://localhost:5001/api/Empresas/cajas/C663D9B8-E9C0-4038-A557-14B2EAF47677",
+									"protocol": "https",
+									"host": [
+										"localhost"
+									],
+									"port": "5001",
+									"path": [
+										"api",
+										"Empresas",
+										"cajas",
+										"C663D9B8-E9C0-4038-A557-14B2EAF47677"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Actualizar caja",
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"Id\": \"C62768F9-62C1-4EFB-8E2D-A956811FA86B\",\r\n    \"Noeconomico\": \"000001\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "https://localhost:5001/api/Empresas/cajas/C62768F9-62C1-4EFB-8E2D-A956811FA86B",
+									"protocol": "https",
+									"host": [
+										"localhost"
+									],
+									"port": "5001",
+									"path": [
+										"api",
+										"Empresas",
+										"cajas",
+										"C62768F9-62C1-4EFB-8E2D-A956811FA86B"
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"protocolProfileBehavior": {},
+					"_postman_isSubFolder": true
+				},
+				{
+					"name": "Crear empresa",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n   \"Nombre\": \"Empresa 3\",\r\n    \"RFC\": \"AAAA000000XXD\"\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://localhost:5001/api/empresas",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "5001",
+							"path": [
+								"api",
+								"empresas"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Actualizar empresa",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n   \"Nombre\": \"Empresa 3a\",\r\n    \"RFC\": \"AAAA000000XXD\"\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://localhost:5001/api/empresas/CB9EC53B-0F39-4084-BF41-EE3C4D482F58",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "5001",
+							"path": [
+								"api",
+								"empresas",
+								"CB9EC53B-0F39-4084-BF41-EE3C4D482F58"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Leer empresa por Id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://localhost:5001/api/empresas/CB9EC53B-0F39-4084-BF41-EE3C4D482F58",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "5001",
+							"path": [
+								"api",
+								"empresas",
+								"CB9EC53B-0F39-4084-BF41-EE3C4D482F58"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Eliminar empresa",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "https://localhost:5001/api/empresas/CB9EC53B-0F39-4084-BF41-EE3C4D482F58",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "5001",
+							"path": [
+								"api",
+								"empresas",
+								"CB9EC53B-0F39-4084-BF41-EE3C4D482F58"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Eliminar metodo pago empresa",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "https://localhost:5001/api/empresas/252654D5-7FBC-442C-BB77-7F0BD2C66C92/tipopago/TD",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "5001",
+							"path": [
+								"api",
+								"empresas",
+								"252654D5-7FBC-442C-BB77-7F0BD2C66C92",
+								"tipopago",
+								"TD"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Leer todas las empresa",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://localhost:5001/api/empresas/",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "5001",
+							"path": [
+								"api",
+								"empresas",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "CrearMedioPagoEmpresa",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "https://localhost:5001/api/empresas/252654D5-7FBC-442C-BB77-7F0BD2C66C92/tipopago/TD",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "5001",
+							"path": [
+								"api",
+								"empresas",
+								"252654D5-7FBC-442C-BB77-7F0BD2C66C92",
+								"tipopago",
+								"TD"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "CentrosLavado",
+			"item": [
+				{
+					"name": "Empleados",
+					"item": [
+						{
+							"name": "Crear Empleado CL",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"Nombre\":  \"Yoyo Diaz\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "https://localhost:5001/api/CentrosLavado/6FDF8CE4-0C4D-40D6-B28D-D2D49BFF8D73/empleados",
+									"protocol": "https",
+									"host": [
+										"localhost"
+									],
+									"port": "5001",
+									"path": [
+										"api",
+										"CentrosLavado",
+										"6FDF8CE4-0C4D-40D6-B28D-D2D49BFF8D73",
+										"empleados"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Obtner empleados CL",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "https://localhost:5001/api/CentrosLavado/6FDF8CE4-0C4D-40D6-B28D-D2D49BFF8D73/empleados",
+									"protocol": "https",
+									"host": [
+										"localhost"
+									],
+									"port": "5001",
+									"path": [
+										"api",
+										"CentrosLavado",
+										"6FDF8CE4-0C4D-40D6-B28D-D2D49BFF8D73",
+										"empleados"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Obtner emplead  unico",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "https://localhost:5001/api/CentrosLavado/empleados/55F77607-0912-47A3-BCE0-7282D76905C6",
+									"protocol": "https",
+									"host": [
+										"localhost"
+									],
+									"port": "5001",
+									"path": [
+										"api",
+										"CentrosLavado",
+										"empleados",
+										"55F77607-0912-47A3-BCE0-7282D76905C6"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Eliminar empleado",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "https://localhost:5001/api/CentrosLavado/empleados/55F77607-0912-47A3-BCE0-7282D76905C6",
+									"protocol": "https",
+									"host": [
+										"localhost"
+									],
+									"port": "5001",
+									"path": [
+										"api",
+										"CentrosLavado",
+										"empleados",
+										"55F77607-0912-47A3-BCE0-7282D76905C6"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Actualizar empleado",
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"Id\": \"334D96C7-CD35-40CF-99BC-94C2062482D0\",\r\n    \"Nombre\":  \"Raul Diaz\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "https://localhost:5001/api/CentrosLavado/empleados/334D96C7-CD35-40CF-99BC-94C2062482D0",
+									"protocol": "https",
+									"host": [
+										"localhost"
+									],
+									"port": "5001",
+									"path": [
+										"api",
+										"CentrosLavado",
+										"empleados",
+										"334D96C7-CD35-40CF-99BC-94C2062482D0"
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"protocolProfileBehavior": {},
+					"_postman_isSubFolder": true
+				},
+				{
+					"name": "Crear CentroLavado",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"Nombre\":  \"Centro2\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://localhost:5001/api/CentrosLavado",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "5001",
+							"path": [
+								"api",
+								"CentrosLavado"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Actualizar CentroLavado",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"Nombre\": \"CentritoLavado 2\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://localhost:5001/api/CentrosLavado/18772420-3A09-4D09-B5BF-64983BE581CC",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "5001",
+							"path": [
+								"api",
+								"CentrosLavado",
+								"18772420-3A09-4D09-B5BF-64983BE581CC"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Actualizar CentroLavado de empleado",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"Nombre\": \"CentritoLavado 1\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://localhost:5001/api/CentrosLavado/CA59E9BA-B6E2-4E54-9DB2-C073969A127E/",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "5001",
+							"path": [
+								"api",
+								"CentrosLavado",
+								"CA59E9BA-B6E2-4E54-9DB2-C073969A127E",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Leer CentroLavado por Id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://localhost:5001/api/CentrosLavado/18772420-3A09-4D09-B5BF-64983BE581CC",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "5001",
+							"path": [
+								"api",
+								"CentrosLavado",
+								"18772420-3A09-4D09-B5BF-64983BE581CC"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Eliminar CentroLavado",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://localhost:5001/api/CentrosLavado/18772420-3A09-4D09-B5BF-64983BE581CC",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "5001",
+							"path": [
+								"api",
+								"CentrosLavado",
+								"18772420-3A09-4D09-B5BF-64983BE581CC"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Leer todos los CentrosLavado",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://localhost:5001/api/CentrosLavado",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "5001",
+							"path": [
+								"api",
+								"CentrosLavado"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "Tienda",
+			"item": [
+				{
+					"name": "CrearMedioPago",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"Id\": \"TD\",\r\n\"Nombre\": \"Tarjeta de debito\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://localhost:5001/api/MediosPago",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "5001",
+							"path": [
+								"api",
+								"MediosPago"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Eliminar MedioPago",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "https://localhost:5001/api/MediosPago/TD",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "5001",
+							"path": [
+								"api",
+								"MediosPago",
+								"TD"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		}
+	],
+	"protocolProfileBehavior": {}
+}
