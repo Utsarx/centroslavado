@@ -18,18 +18,16 @@ namespace CL.Modelo
         public Guid Id { get; set; }
 
         [Required]
-        [MaxLength(250), MinLength(5)]
+        [MaxLength(250), MinLength(1)]
         public string Nombre { get; set; }
 
-        [Required]
-        [MaxLength(14), MinLength(12)]
+
         public string RFC { get; set; }
 
         /// <summary>
         /// Total existete en el prepago, se calcula del total de aboonos de prepago
         /// menos la lista de cargos realizados a la empresa por este método
         /// </summary>
-        [Required]
         [DefaultValue(0)]
         public decimal SaldoPrepago { get; set; }
 

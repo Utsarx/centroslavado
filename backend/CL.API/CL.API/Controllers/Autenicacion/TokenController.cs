@@ -29,7 +29,12 @@ namespace CL.API.Controllers.Autenicacion
         {
             try
             {
-                return Ok(_userService.Login(auth));
+                var result = _userService.Login(auth);
+                if(result == null)
+                {
+                    return BadRequest(auth);
+                }
+                return Ok(result);
             }
             catch (Exception e)
             {

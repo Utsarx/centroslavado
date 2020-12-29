@@ -1,0 +1,14 @@
+<nb-card>
+    <nb-card-header>Eliminar</nb-card-header>
+    <nb-card-body>
+        <div class="row">
+            <div class="col-lg-12">
+                ¿Desea eliminar el elemento {{nombre}}?
+            </div>
+        </div>
+    </nb-card-body>
+    <nb-card-footer>
+      <button nbButton ghost (click)="dismiss()">Cancelar</button>
+      <button nbButton ghost status="primary" (click)="eliminar()">Eliminar</button>
+    </nb-card-footer>
+  </nb-card>

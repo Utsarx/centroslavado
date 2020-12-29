@@ -11,6 +11,11 @@ import {
 
 export const routes: Routes = [
   {
+    path: '',
+    loadChildren: () => import('./cl/cl.module')
+      .then(m => m.ClModule),
+  },
+  {
     path: 'pages',
     loadChildren: () => import('./pages/pages.module')
       .then(m => m.PagesModule),
@@ -45,8 +50,8 @@ export const routes: Routes = [
       },
     ],
   },
-  { path: '', redirectTo: 'pages', pathMatch: 'full' },
-  { path: '**', redirectTo: 'pages' },
+  { path: '', redirectTo: 'empresas', pathMatch: 'full' },
+  { path: '**', redirectTo: 'empresas' },
 ];
 
 const config: ExtraOptions = {
