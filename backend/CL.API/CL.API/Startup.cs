@@ -17,6 +17,7 @@ using Microsoft.IdentityModel.Tokens;
 using Microsoft.Extensions.Options;
 using System.Text;
 using CL.API.Autenticacion;
+using CL.API.Modelos;
 
 namespace CL.API
 {
@@ -39,6 +40,30 @@ namespace CL.API
                 {
                     options.UseSqlServer("name=ConnectionStrings:DefaultConnection");
                 });
+
+            Server apiep = new Server();
+            Configuration.GetSection("Server").Bind(apiep);
+
+            services.AddControllers().AddJsonOptions(options =>
+            {
+                options.JsonSerializerOptions.PropertyNameCaseInsensitive = true;
+                options.JsonSerializerOptions.Converters.Add(new System.Text.Json.Serialization.JsonStringEnumConverter());
+                options.JsonSerializerOptions.IgnoreNullValues = true;
+            });
+
+            services.AddCors(options =>
+            {
+                // this defines a CORS policy called "default"
+                options.AddPolicy("default", policy =>
+                {
+                    policy.WithOrigins(apiep.Cors.Split(','))
+# if DEBUG
+                        .AllowAnyOrigin()
+#endif
+                        .AllowAnyHeader()
+                        .AllowAnyMethod();
+                });
+            });
 
             JwtBearerOptions options(JwtBearerOptions jwtBearerOptions, string audience)
             {
@@ -83,11 +108,13 @@ namespace CL.API
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
+
+            app.UseCors("default");
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
             }
-
+            
             app.UseHttpsRedirection();
             app.UseRouting();
             app.UseAuthorization();

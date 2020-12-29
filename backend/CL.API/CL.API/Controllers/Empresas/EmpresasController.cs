@@ -28,21 +28,15 @@ namespace CL.API.Controllers.Empresas
             log = logger;
         }
 
-    //    // Patron CRUD 
-    //    // Insertar	---> HttpPost
-    //    // Actualizar	---> HttpPut
-    //    // Eliminar	---> HttpDelete
-    //    // Leer 		---> HttpGet
 
-
-    //    // GET: api/<EmpresasController>
+        // GET: api/<EmpresasController>
         [HttpGet]
         public ActionResult<IEnumerable<EmpresaTransporte>> Get()
         {
             return db.Empresas.ToList().OrderBy(x => x.Nombre).ToList();
         }
 
-    //    // GET api/Empresas/guid
+        // GET api/Empresas/guid
         [HttpGet("{id}")]
         public ActionResult<EmpresaTransporte> Get(Guid id)
         {
@@ -55,7 +49,7 @@ namespace CL.API.Controllers.Empresas
             return Ok(emp);
         }
 
-    //    // POST api/<EmpresasController>
+        // POST api/<EmpresasController>
         [HttpPost]
         public ActionResult<Guid> Post([FromBody] EmpresaTransporte empresa)
         {
@@ -72,7 +66,7 @@ namespace CL.API.Controllers.Empresas
 
         }
 
-    //    // PUT api/Empresas/guid
+        // PUT api/Empresas/guid
         [HttpPut("{id}")]
         public ActionResult Put(Guid id, [FromBody] EmpresaTransporte empresa)
         {
@@ -87,7 +81,6 @@ namespace CL.API.Controllers.Empresas
                return NotFound(id);
            }
 
-    //        // LINQ
             var empresaTemp = db.Empresas.Where(
                 xempresa => xempresa.Nombre == empresa.Nombre
                 && xempresa.Id != id
@@ -118,7 +111,7 @@ namespace CL.API.Controllers.Empresas
             return NoContent();
         }
 
-    //    // DELETE api/<EmpresasController>/5
+        // DELETE api/<EmpresasController>/5
         [HttpDelete("{id}")]
         public ActionResult Delete(Guid id)
         {
@@ -135,63 +128,5 @@ namespace CL.API.Controllers.Empresas
             return NoContent();
 
         }
-
-
-    //    [HttpPost("{idemp}/tipopago/{idpago}")]
-    //        public ActionResult PostMetodoPagoEmpresa(Guid idemp, String idpago)
-    //    {
-
-
-    //        var empresa = db.Empresas.Find(idemp);
-    //        if (empresa == null)
-    //        {
-    //            return NotFound();
-    //        }
-
-    //        var metpago = db.MedioPagos.Find(idpago);
-    //        if (metpago == null)
-    //        {
-    //            return NotFound();
-    //        }
-
-    //        if (db.medioPagoEmpresas.Any(x => x.EmpresaId == idemp
-    //        && x.MedioPagoId == idpago))
-    //        {
-    //            return Ok();
-    //        }
-
-    //        MedioPagoEmpresa m = new MedioPagoEmpresa() { 
-    //         EmpresaId = idemp, MedioPagoId = idpago
-    //        }; 
-
-    //        db.medioPagoEmpresas.Add(m);
-    //        db.SaveChanges();
-    //        return Ok(); 
-
-    //    }
-
-    //    // DELETE api/<EmpresasController>/5
-    //    [HttpDelete("{idemp}/tipopago/{idpago}")]
-    //    public ActionResult DeleteMedioPagoEmpresa(Guid idemp, String idpago)
-    //    {
-    //        var emp = db.Set<MedioPagoEmpresa>().Find(idemp, idpago); 
-
-    //        // var emp = db.medioPagoEmpresas.Find( idemp, idmp);
-       
-    //        if (emp == null)
-    //        {
-    //            return NotFound(emp);
-    //             }
-            
-    //        db.medioPagoEmpresas.Remove(emp);
-    //        db.SaveChanges();
-
-    //        return NoContent();
-
-    //    }
-
-
-
-
     }
 }
