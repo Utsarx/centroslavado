@@ -156,8 +156,8 @@ namespace CL.API.Controllers.CentrosLavado
             return Ok();
         }
 
-        [HttpPut("{idcl}/servicios/{idserv}/precios/preid")]
-        public ActionResult IntegrarServicio(Guid idcl, Guid idserv, Guid preid)
+        [HttpPut("{idcl}/servicios/{idserv}/precios/{idpre}")]
+        public ActionResult IntegrarServicio(Guid idcl, Guid idserv, Guid idpre)
         {
             var idcentro = db.CentrosLavado.Find(idcl);
             if (idcentro == null)
@@ -169,17 +169,17 @@ namespace CL.API.Controllers.CentrosLavado
             {
                 return NotFound(idserv);
             }
-            var idprecio = db.Precios.Find(preid); 
+            var idprecio = db.Precios.Find(idpre); 
             if (idprecio == null)
             {
-                return NotFound(preid); 
+                return NotFound(idpre); 
             }
 
             var servcl = new ServiciosCentroLavado
             {
                 CentroLavadoId = idcl,
                 ServicioId = idserv,
-                PrecioId = preid
+                PrecioId = idpre
 
             };
             db.ServiciosCentroLavados.Add(servcl);
@@ -188,7 +188,7 @@ namespace CL.API.Controllers.CentrosLavado
         }
 
 
-        [HttpDelete("{idcl}/servicios/{idserv}/precios/idpre")]
+        [HttpDelete("{idcl}/servicios/{idserv}/precios/{idpre}")]
         public ActionResult RemoverServicio(Guid idcl, Guid idserv, Guid idpre)
         {
             var relacion = db.ServiciosCentroLavados.Find(idcl, idserv, idpre);

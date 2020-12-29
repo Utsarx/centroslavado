@@ -22,11 +22,12 @@ namespace CL.API.Controllers.Contabilidad
             db = contexto;
             log = logger; 
         }
+
         // GET: api/<AbonosPrepagoController>
-        [HttpGet]
-        public ActionResult<IEnumerable<AbonoPrepago>> Get()
+        [HttpGet("empresa/{idemp}")]
+        public ActionResult<IEnumerable<AbonoPrepago>> GetPorEmpresa(Guid idemp)
         {
-            return db.AbonosPrepago.ToList().OrderBy(x => x.Id).ToList();
+            return db.AbonosPrepago.Where(p=>p.EmpesaId == idemp).ToList().OrderBy(x => x.Fecha).ToList();
         }
 
         // GET api/<AbonosPrepagoController>/5
@@ -34,12 +35,12 @@ namespace CL.API.Controllers.Contabilidad
         public ActionResult<AbonoPrepago> Get(Guid id)
         {
             log.LogError($"Id {id}");
-            var abono = db.AbonosPrepago.Find(id); 
-            if(abono == null)
+            var abono = db.AbonosPrepago.Find(id);
+            if (abono == null)
             {
-                return NotFound(id); 
+                return NotFound(id);
             }
-            return Ok(abono); 
+            return Ok(abono);
         }
 
 
@@ -57,56 +58,6 @@ namespace CL.API.Controllers.Contabilidad
             return (abono.Id); 
         }
 
-        // PUT api/<AbonosPrepagoController>/5
-        [HttpPut("{id}")]
-        public ActionResult Put(Guid id, [FromBody] AbonoPrepago abono)
-        {
-            if (!ModelState.IsValid)
-            {
-                return BadRequest(); 
-            }
-
-            var ab = db.AbonosPrepago.Find(id);
-            if (ab == null)
-            {
-                return NotFound(id); 
-            }
-
-            //LINQ 
-
-            var abonotemp = db.AbonosPrepago.Where(
-                xabono => xabono.Fecha == abono.Fecha
-                && xabono.Id != id).SingleOrDefault();
-            if (abonotemp != null)
-            {
-                return Conflict(abono.Fecha); 
-            }
-
-            abonotemp = db.AbonosPrepago.Where(
-                xabono => xabono.Monto == abono.Monto
-                && xabono.Id != id).SingleOrDefault();
-            if (abonotemp != null)
-            {
-                return Conflict(abono.Monto);
-            }
-
-            abonotemp = db.AbonosPrepago.Where(
-                xabono => xabono.Moneda == abono.Moneda
-                && xabono.Id != id).SingleOrDefault();
-            if (abonotemp != null)
-            {
-                return Conflict(abono.Moneda);
-            }
-
-            ab.Fecha = abono.Fecha;
-            ab.Monto = abono.Monto;
-            ab.Moneda = abono.Moneda;
-            db.SaveChanges();
-
-
-            return NoContent();
-
-        }
 
         // DELETE api/<AbonosPrepagoController>/5
         [HttpDelete("{id}")]
