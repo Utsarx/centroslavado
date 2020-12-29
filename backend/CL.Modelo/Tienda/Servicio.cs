@@ -22,7 +22,7 @@ namespace CL.Modelo
         /// Categoría  a la que petenece el servicio
         /// </summary>
         [Required]
-        public Guid CetegoriaId { get; set; }
+        public Guid CategoriaId { get; set; }
 
         /// <summary>
         /// NOmbre del servicio
@@ -41,8 +41,7 @@ namespace CL.Modelo
         // </summary>
         public ICollection<ServiciosCentroLavado> CentrosLavado { get; set; }
 
-
         // Categoría 
-        public Categoria Categorias { get; set;  }
+        public Categoria Categoria { get; set;  }
     }
 }

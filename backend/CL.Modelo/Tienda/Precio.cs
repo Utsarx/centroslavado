@@ -17,7 +17,6 @@ namespace CL.Modelo
         [Required]
         public string Descripcion { get; set; }
 
-        [MaxLength(200), MinLength(5)]
         public double Monto { get; set; }
 
         [Required]

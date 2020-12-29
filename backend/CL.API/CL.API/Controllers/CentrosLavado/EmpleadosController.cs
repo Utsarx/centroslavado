@@ -1,4 +1,5 @@
 ﻿using CL.Modelo;
+using CL.Repositorio;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
@@ -13,14 +14,26 @@ namespace CL.API.Controllers.CentrosLavado
     /// <summary>
     /// Administarción de empleados
     /// </summary>
-    public partial class CentrosLavadoController : ControllerBase
+    [Route("api/[controller]")]
+    public class EmpleadosController : ControllerBase
     {
+        protected readonly ContextoAplicacion db;
+        protected readonly ILogger<EmpleadosController> log;
+        public EmpleadosController(
+             ILogger<EmpleadosController> logger,
+             ContextoAplicacion contexto)
+        {
+            db = contexto;
+            log = logger;
+        }
 
         // GET: api/CentroLavadoController
-        [HttpGet("{clid}/empleados", Name = "GetEmpleados")]
-        public ActionResult<IEnumerable<Empleado>> GetEmpleados(Guid clid)
+        [HttpGet( Name = "GetEmpleados")]
+        public ActionResult<IEnumerable<Empleado>> Get()
         {
-            return Ok(new List<Empleado>());
+            return db.Empleados.ToList().OrderBy(x => x.Nombre).ToList(); 
+
+            //return Ok(new List<Empleado>());
 
             //return Ok(
             //    db.Empleados.Where(x => x.CentroLavadoId == clid)
@@ -28,8 +41,8 @@ namespace CL.API.Controllers.CentrosLavado
             //    );
         }
 
-        // GET api/<CentroLavadoController>/5
-        [HttpGet("empleados/{id}", Name = "GetEmpleado")]
+        // GET api/Empleados/5
+        [HttpGet("{id}", Name = "GetEmpleado")]
         public ActionResult GetEmpleado(Guid id)
         {
             var emp = db.Empleados.Find(id);
@@ -41,19 +54,13 @@ namespace CL.API.Controllers.CentrosLavado
         }
 
         // POST api/centrolavado/{clid}
-        [HttpPost("{clid}/empleados", Name = "PostEmpleado")]
-        public ActionResult<Guid> PostEmpleado(Guid clid, [FromBody] Empleado empleado)
+        [HttpPost( Name = "PostEmpleado")]
+        public ActionResult<Guid> PostEmpleado([FromBody] Empleado empleado)
         {
 
             if (!ModelState.IsValid)
             {
                 return BadRequest();
-            }
-
-            var centro = db.CentrosLavado.Find(clid);
-            if (centro == null)
-            {
-                return NotFound();
             }
 
             empleado.Id = Guid.NewGuid();
@@ -64,7 +71,7 @@ namespace CL.API.Controllers.CentrosLavado
         }
 
         // PUT api/<CentroLavadoController>/5
-        [HttpPut("empleados/{id}", Name = "PutEmpleado")]
+        [HttpPut("{id}", Name = "PutEmpleado")]
         public ActionResult PutEmpleado(Guid id, [FromBody] Empleado empleado)
         {
             if(empleado.Id != id) return BadRequest();
@@ -88,7 +95,7 @@ namespace CL.API.Controllers.CentrosLavado
         }
 
         // DELETE api/<CentroLavadoController>/5
-        [HttpDelete("empleados/{id}", Name = "DeleteEmpleado")]
+        [HttpDelete("{id}", Name = "DeleteEmpleado")]
         public ActionResult DeleteEmpleado(Guid id)
 
         {
