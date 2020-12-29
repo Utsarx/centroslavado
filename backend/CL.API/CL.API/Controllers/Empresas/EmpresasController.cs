@@ -58,8 +58,14 @@ namespace CL.API.Controllers.Empresas
                 return BadRequest();
             }
 
+            
             empresa.Id = Guid.NewGuid();
             db.Empresas.Add(empresa);
+
+            ///Crear medio de pafo en efectivo para la empresa
+            MedioPagoEmpresa mp = new MedioPagoEmpresa();
+            // .. bl blb bla
+
             db.SaveChanges();
 
             return Ok(empresa.Id);
@@ -128,5 +134,20 @@ namespace CL.API.Controllers.Empresas
             return NoContent();
 
         }
+
+        [HttpPut("{idemp}/mediopago/{tipo}")]
+        public ActionResult AdicionaMedioPago(Guid idemp, MedioPago tipo)
+        {
+            // Si el medio de pago ya existe devolver OK
+            return Ok();
+        }
+
+        [HttpDelete("{idemp}/mediopago/{tipo}")]
+        public ActionResult EliminarMedioPago(Guid idemp, MedioPago tipo)
+        {
+            // Si el medio de pago no existe devolver ok
+            return Ok();
+        }
+
     }
 }

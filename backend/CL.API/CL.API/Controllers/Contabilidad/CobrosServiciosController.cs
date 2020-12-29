@@ -51,7 +51,7 @@ namespace CL.API.Controllers.Contabilidad
             {
                 return BadRequest(); 
             }
-            cobro.Id = new int();
+            
             db.CobroServicios.Add(cobro);
             db.SaveChanges();
             return Ok(cobro.Id); 
@@ -90,8 +90,11 @@ namespace CL.API.Controllers.Contabilidad
                 return Conflict(cobro.Monto); 
             }
 
+            // A{adr validacion de m,edio de pagp
+
             cob.Fecha = cobro.Fecha;
             cob.Monto = cobro.Monto;
+            cob.MedioPago = cobro.MedioPago;
 
             db.SaveChanges();
             return NoContent(); 
