@@ -20,19 +20,19 @@ namespace CL.API.Controllers.CentrosLavado
 
         //Constructor 
         public CentrosLavadoController(
-            ILogger<CentrosLavadoController> logger, 
+            ILogger<CentrosLavadoController> logger,
             ContextoAplicacion contexto)
         {
             db = contexto;
-            log = logger; 
+            log = logger;
 
         }
 
         // GET: api/CentroLavadoController
         [HttpGet(Name = "GetCentrosLavado")]
-        public ActionResult <IEnumerable<CentroLavado>> GetCentrosLavado()
+        public ActionResult<IEnumerable<CentroLavado>> GetCentrosLavado()
         {
-            return db.CentrosLavado.ToList().OrderBy(x => x.Nombre).ToList(); 
+            return db.CentrosLavado.ToList().OrderBy(x => x.Nombre).ToList();
         }
 
         // GET api/<CentroLavadoController>/5
@@ -40,29 +40,29 @@ namespace CL.API.Controllers.CentrosLavado
         public ActionResult Get(Guid id)
         {
             log.LogError($"Id :{id}");
-            var centro = db.CentrosLavado.Find(id); 
-            if(centro == null)
+            var centro = db.CentrosLavado.Find(id);
+            if (centro == null)
             {
-                return NotFound(); 
+                return NotFound();
             }
-            return Ok(centro); 
+            return Ok(centro);
         }
 
         // POST api/CentroLavadoController/guid
         [HttpPost]
         public ActionResult<Guid> Post([FromBody] CentroLavado centro)
         {
-           /// centro.Emmpleados.First().Empleado.Nombre => Propiedades de naavegacion 
+            /// centro.Emmpleados.First().Empleado.Nombre => Propiedades de naavegacion 
 
             if (!ModelState.IsValid)
             {
-                return BadRequest(); 
+                return BadRequest();
             }
             centro.Id = Guid.NewGuid();
             db.CentrosLavado.Add(centro);
             db.SaveChanges();
-            return Ok(centro.Id); 
-            
+            return Ok(centro.Id);
+
         }
 
         // PUT api/<CentroLavadoController>/5
@@ -75,19 +75,19 @@ namespace CL.API.Controllers.CentrosLavado
                 return BadRequest();
             }
 
-            var cent = db.CentrosLavado.Find(id); 
-            if(cent == null)
+            var cent = db.CentrosLavado.Find(id);
+            if (cent == null)
             {
-                return NotFound(id); 
+                return NotFound(id);
             }
 
             //LINQ
             var centroTemp = db.CentrosLavado.Where(
                 xcentro => xcentro.Nombre == centro.Nombre
-                && xcentro.Id != id).SingleOrDefault(); 
-            if(centroTemp != null)
+                && xcentro.Id != id).SingleOrDefault();
+            if (centroTemp != null)
             {
-                return Conflict(centro.Nombre); 
+                return Conflict(centro.Nombre);
             }
 
             cent.Nombre = centro.Nombre;
@@ -105,36 +105,98 @@ namespace CL.API.Controllers.CentrosLavado
         {
             log.LogError($"Eliminar {id}");
             var cent = db.CentrosLavado.Find(id);
-            if(cent == null)
+            if (cent == null)
             {
                 return NotFound(id);
             }
 
             db.CentrosLavado.Remove(cent);
             db.SaveChanges();
-            return NoContent(); 
+            return NoContent();
 
         }
 
-        [HttpPut("{idcl}/{idemp}" , Name = "PutCambioCentroLavado")]
-        public ActionResult PutCambioCentroLavado(Guid idcl, Guid idemp)
+        // https://server/centrolavado/111-2222-333/empeleados/aaa-bbb-ccc..
+        [HttpPut("{idcl}/empleados/{idemp}")]
+        public ActionResult IntegrarEmpleado(Guid idcl, Guid idemp)
         {
-            var cent = db.CentrosLavado.Find(idcl);
-            if (cent == null)
+            var idcentro = db.CentrosLavado.Find(idcl);
+            if (idcentro == null)
             {
                 return NotFound(idcl);
             }
 
-            var emp = db.Empleados.Find(idemp);
-            if (emp == null)
+            var idempl = db.Empleados.Find(idemp);
+            if (idempl == null)
             {
                 return NotFound(idemp);
             }
+
+            var ecl = new EmpleadoCentroLavado()
+            {
+                CentroLavadoId = idcl,
+                EmpleadoId = idemp
+            };
+
+            db.EmpleadosCentroLavado.Add(ecl);
 
             db.SaveChanges();
 
             return Ok();
         }
 
+        [HttpDelete("{idcl}/empleados/{idemp}")]
+        public ActionResult RemoverEmpleado(Guid idcl, Guid idemp)
+        {
+            var relacion = db.EmpleadosCentroLavado.Find(idcl, idemp);
+
+            db.Remove(relacion);
+            db.SaveChanges();
+
+            return Ok();
+        }
+
+        [HttpPut("{idcl}/servicios/{idserv}/precios/preid")]
+        public ActionResult IntegrarServicio(Guid idcl, Guid idserv, Guid preid)
+        {
+            var idcentro = db.CentrosLavado.Find(idcl);
+            if (idcentro == null)
+            {
+                return NotFound(idcl);
+            }
+            var idservicio = db.Servicios.Find(idserv);
+            if (idservicio == null)
+            {
+                return NotFound(idserv);
+            }
+            var idprecio = db.Precios.Find(preid); 
+            if (idprecio == null)
+            {
+                return NotFound(preid); 
+            }
+
+            var servcl = new ServiciosCentroLavado
+            {
+                CentroLavadoId = idcl,
+                ServicioId = idserv,
+                PrecioId = preid
+
+            };
+            db.ServiciosCentroLavados.Add(servcl);
+            db.SaveChanges();
+            return Ok();
+        }
+
+
+        [HttpDelete("{idcl}/servicios/{idserv}/precios/idpre")]
+        public ActionResult RemoverServicio(Guid idcl, Guid idserv, Guid idpre)
+        {
+            var relacion = db.ServiciosCentroLavados.Find(idcl, idserv, idpre);
+            db.Remove(relacion);
+            db.SaveChanges();
+            return Ok(); 
+        }
+
     }
+
 }

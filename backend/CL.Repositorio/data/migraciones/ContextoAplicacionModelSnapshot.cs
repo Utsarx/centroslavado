@@ -303,10 +303,7 @@ namespace CL.Repositorio.data.migraciones
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier");
 
-                    b.Property<Guid?>("CategoriasId")
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<Guid>("CetegoriaId")
+                    b.Property<Guid>("CategoriaId")
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<string>("Clave")
@@ -319,7 +316,7 @@ namespace CL.Repositorio.data.migraciones
 
                     b.HasKey("Id");
 
-                    b.HasIndex("CategoriasId");
+                    b.HasIndex("CategoriaId");
 
                     b.ToTable("Servicio");
                 });
@@ -463,9 +460,11 @@ namespace CL.Repositorio.data.migraciones
 
             modelBuilder.Entity("CL.Modelo.Servicio", b =>
                 {
-                    b.HasOne("CL.Modelo.Categoria", "Categorias")
+                    b.HasOne("CL.Modelo.Categoria", "Categoria")
                         .WithMany("Servicios")
-                        .HasForeignKey("CategoriasId");
+                        .HasForeignKey("CategoriaId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
                 });
 
             modelBuilder.Entity("CL.Modelo.ServiciosCentroLavado", b =>

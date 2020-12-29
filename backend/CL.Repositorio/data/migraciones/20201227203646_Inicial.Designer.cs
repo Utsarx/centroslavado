@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace CL.Repositorio.data.migraciones
 {
     [DbContext(typeof(ContextoAplicacion))]
-    [Migration("20201221030521_ServiciosCentroLavado")]
-    partial class ServiciosCentroLavado
+    [Migration("20201227203646_Inicial")]
+    partial class Inicial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -305,10 +305,7 @@ namespace CL.Repositorio.data.migraciones
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier");
 
-                    b.Property<Guid?>("CategoriasId")
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<Guid>("CetegoriaId")
+                    b.Property<Guid>("CategoriaId")
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<string>("Clave")
@@ -321,7 +318,7 @@ namespace CL.Repositorio.data.migraciones
 
                     b.HasKey("Id");
 
-                    b.HasIndex("CategoriasId");
+                    b.HasIndex("CategoriaId");
 
                     b.ToTable("Servicio");
                 });
@@ -465,9 +462,11 @@ namespace CL.Repositorio.data.migraciones
 
             modelBuilder.Entity("CL.Modelo.Servicio", b =>
                 {
-                    b.HasOne("CL.Modelo.Categoria", "Categorias")
+                    b.HasOne("CL.Modelo.Categoria", "Categoria")
                         .WithMany("Servicios")
-                        .HasForeignKey("CategoriasId");
+                        .HasForeignKey("CategoriaId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
                 });
 
             modelBuilder.Entity("CL.Modelo.ServiciosCentroLavado", b =>
