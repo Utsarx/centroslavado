@@ -51,7 +51,7 @@ namespace CL.API.Controllers.Contabilidad
             {
                 return BadRequest(); 
             }
-            
+            cobro.Moneda = 0; 
             db.CobroServicios.Add(cobro);
             db.SaveChanges();
             return Ok(cobro.Id); 
@@ -91,6 +91,13 @@ namespace CL.API.Controllers.Contabilidad
             }
 
             // A{adr validacion de m,edio de pagp
+            cobrotemp = db.CobroServicios.Where(
+                xcobrotemp => xcobrotemp.MedioPago == cobro.MedioPago
+                && xcobrotemp.Id != id).SingleOrDefault(); 
+            if(cobrotemp != null)
+            {
+                return Conflict(cobro.MedioPago); 
+            }
 
             cob.Fecha = cobro.Fecha;
             cob.Monto = cobro.Monto;
