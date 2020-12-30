@@ -4,14 +4,16 @@ using CL.Repositorio;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace CL.Repositorio.data.migraciones
 {
     [DbContext(typeof(ContextoAplicacion))]
-    partial class ContextoAplicacionModelSnapshot : ModelSnapshot
+    [Migration("20201230003018_ActualizacionAbonoEmpresa")]
+    partial class ActualizacionAbonoEmpresa
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -291,28 +293,6 @@ namespace CL.Repositorio.data.migraciones
                     b.ToTable("Precio");
                 });
 
-            modelBuilder.Entity("CL.Modelo.RefreshToken", b =>
-                {
-                    b.Property<Guid>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<Guid>("EmpleadoId")
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<string>("Jwt")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Token")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("EmpleadoId");
-
-                    b.ToTable("RefreshTokens");
-                });
-
             modelBuilder.Entity("CL.Modelo.Servicio", b =>
                 {
                     b.Property<Guid>("Id")
@@ -472,15 +452,6 @@ namespace CL.Repositorio.data.migraciones
                     b.HasOne("CL.Modelo.Servicio", "Servicio")
                         .WithMany("Precios")
                         .HasForeignKey("ServicioId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-                });
-
-            modelBuilder.Entity("CL.Modelo.RefreshToken", b =>
-                {
-                    b.HasOne("CL.Modelo.Empleado", "Empleado")
-                        .WithMany()
-                        .HasForeignKey("EmpleadoId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });

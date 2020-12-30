@@ -192,7 +192,7 @@ namespace CL.API.Controllers.CentrosLavado
         public ActionResult RemoverServicio(Guid idcl, Guid idserv, Guid idpre)
         {
             var relacion = db.ServiciosCentroLavados.Find(idcl, idserv, idpre);
-            db.Remove(relacion);
+            db.ServiciosCentroLavados.Remove(relacion);
             db.SaveChanges();
             return Ok(); 
         }

@@ -27,7 +27,7 @@ namespace CL.API.Controllers.Contabilidad
         [HttpGet("empresa/{idemp}")]
         public ActionResult<IEnumerable<AbonoPrepago>> GetPorEmpresa(Guid idemp)
         {
-            return db.AbonosPrepago.Where(p=>p.EmpesaId == idemp).ToList().OrderBy(x => x.Fecha).ToList();
+            return db.AbonosPrepago.Where(p=>p.EmpresaId == idemp).ToList().OrderBy(x => x.Fecha).ToList();
         }
 
         // GET api/<AbonosPrepagoController>/5
@@ -45,14 +45,16 @@ namespace CL.API.Controllers.Contabilidad
 
 
         // POST api/<AbonosPrepagoController>
-        [HttpPost]
-        public ActionResult<Guid> Post([FromBody] AbonoPrepago abono)
+        [HttpPost("empresa/{idemp}")]
+        public ActionResult<Guid> Post(Guid idemp, [FromBody] AbonoPrepago abono)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest();
             }
             abono.Id = Guid.NewGuid();
+            abono.Moneda = Moneda.PesoMexicano;
+            abono.EmpresaId = idemp; 
             db.AbonosPrepago.Add(abono);
             db.SaveChanges();
             return (abono.Id); 
