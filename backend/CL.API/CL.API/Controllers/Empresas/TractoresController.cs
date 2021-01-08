@@ -1,5 +1,7 @@
 ﻿using CL.Modelo;
+using CL.Repositorio;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,13 +9,27 @@ using System.Threading.Tasks;
 
 namespace CL.API.Controllers.Empresas
 {
- /// <summary>
- /// Administarción de tractores 
- /// </summary>
-   public partial class EmpresasController : ControllerBase
+    /// <summary>
+    /// Administarción de tractores 
+    /// </summary>
+
+    [Route("api/[controller]")]
+    [ApiController]
+    public partial class TractoresController : ControllerBase
     {
-   //     // GET: api/TractoresController
-       [HttpGet("{empid}/tractores", Name = "GetTractores")]
+
+        protected readonly ContextoAplicacion db;
+        protected readonly ILogger<TractoresController> log;
+        public TractoresController(
+             ILogger<TractoresController> logger,
+             ContextoAplicacion contexto)
+        {
+            db = contexto;
+            log = logger;
+        }
+
+        // GET: api/TractoresController
+        [HttpGet(Name = "GetTractores")]
         public ActionResult<IEnumerable<EmpresaTransporte>> GetTractores(Guid empid)
         {
             return Ok(
@@ -22,21 +38,21 @@ namespace CL.API.Controllers.Empresas
                 );
         }
 
-   //     // GET api/<TractoresController>/5
-        [HttpGet("tractores/{id}", Name = "GetTractor")]
+        // GET api/<TractoresController>/5
+        [HttpGet("{id}", Name = "GetTractor")]
         public ActionResult GetTractor(Guid id)
         {
             var trac = db.Tractores.Find(id);
-            if (trac== null)
+            if (trac == null)
             {
                 return NotFound();
             }
-           return Ok(trac);
+            return Ok(trac);
         }
 
-   //     // POST api/Empresas/{empid}
-       [HttpPost("{empid}/tractores", Name = "PostTractor")]
-       public ActionResult<Guid> PostTractor(Guid empid, [FromBody] Tractor trac)
+        // POST api/Empresas/{empid}
+        [HttpPost(Name = "PostTractor")]
+        public ActionResult<Guid> PostTractor(Guid empid, [FromBody] Tractor trac)
         {
 
             if (!ModelState.IsValid)
@@ -47,8 +63,8 @@ namespace CL.API.Controllers.Empresas
             var Empresa = db.Empresas.Find(empid);
             if (Empresa == null)
             {
-               return NotFound();
-           }
+                return NotFound();
+            }
 
             trac.Id = Guid.NewGuid();
             trac.EmpresaId = empid;
@@ -57,15 +73,15 @@ namespace CL.API.Controllers.Empresas
             return Ok(trac.Id);
         }
 
-   //     // PUT api/<EmpresasController>/5
-        [HttpPut("tractores/{id}", Name = "PutTractor")]
+        // PUT api/<EmpresasController>/5
+        [HttpPut("{id}", Name = "PutTractor")]
         public ActionResult PutTractor(Guid id, [FromBody] Tractor trac)
         {
             if (trac.Id != id) return BadRequest();
 
             if (!ModelState.IsValid)
             {
-               return BadRequest();
+                return BadRequest();
             }
 
             var tract = db.Tractores.Find(id);
@@ -80,12 +96,12 @@ namespace CL.API.Controllers.Empresas
             return NoContent();
         }
 
-   //     // DELETE api/EmpresasController>/5
-        [HttpDelete("tractores/{id}", Name = "DeleteTractor")]
+        // DELETE api/EmpresasController>/5
+        [HttpDelete("{id}", Name = "DeleteTractor")]
         public ActionResult DeleteTractor(Guid id)
 
-       {
-           var trac = db.Tractores.Find(id);
+        {
+            var trac = db.Tractores.Find(id);
             if (trac == null)
             {
                 return NotFound(id);

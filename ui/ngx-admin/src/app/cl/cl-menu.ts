@@ -2,18 +2,18 @@ import { NbMenuItem } from '@nebular/theme';
 
 export const MENU_ITEMS: NbMenuItem[] = [
   {
-    title: 'E-commerce',
+    title: 'Punto de venta',
     icon: 'shopping-cart-outline',
-    link: '/pages/dashboard',
+    link: '',
     home: true,
   },
   {
-    title: 'IoT Dashboard',
-    icon: 'home-outline',
-    link: '/pages/iot-dashboard',
-  },
+    title: 'Reportes',
+    icon: 'bar-chart-2-outline',
+    link: '',
+  },  
   {
-    title: 'FEATURES',
+    title: 'OPCIONES',
     group: true,
   },
   {
@@ -22,6 +22,14 @@ export const MENU_ITEMS: NbMenuItem[] = [
     children: [
       {
         title: 'Empresas',
+        link: '/Empresas',
+      },
+      {
+        title: 'Centros de lavado',
+        link: '/Empresas',
+      },
+      {
+        title: 'Servicios',
         link: '/Empresas',
       },
     ],

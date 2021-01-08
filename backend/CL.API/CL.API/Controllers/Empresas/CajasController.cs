@@ -1,18 +1,36 @@
 ﻿using CL.Modelo;
+using CL.Repositorio;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
 namespace CL.API.Controllers.Empresas
-{/// <summary>
-/// Administración de cajas 
-/// </summary>
-    public partial class EmpresasController : ControllerBase
+{
+    /// <summary>
+    /// Administración de cajas 
+    /// </summary>
+    [Route("api/[controller]")]
+    [ApiController]
+    public partial class CajasController : ControllerBase
     {
-    //    // GET: api/EmpresasController
-        [HttpGet("{empid}/cajas", Name = "GetCajas")]
+
+        protected readonly ContextoAplicacion db;
+        protected readonly ILogger<EmpresasController> log;
+        public CajasController(
+             ILogger<EmpresasController> logger,
+             ContextoAplicacion contexto)
+        {
+            db = contexto;
+            log = logger;
+        }
+
+
+
+        // GET: api/EmpresasController
+        [HttpGet(Name = "GetCajas")]
         public ActionResult<IEnumerable<EmpresaTransporte>> GetCajas(Guid empid)
         {
             return Ok(
@@ -22,20 +40,20 @@ namespace CL.API.Controllers.Empresas
         }
 
 
-    //    // GET api/<EmpresasController>/5
-        [HttpGet("cajas/{id}", Name = "GetCaja")]
+        // GET api/<EmpresasController>/5
+        [HttpGet("{id}", Name = "GetCaja")]
         public ActionResult GetCaja(Guid id)
         {
             var caja = db.Cajas.Find(id);
             if (caja == null)
-           {
-               return NotFound();
+            {
+                return NotFound();
             }
             return Ok(caja);
         }
 
-    //    // POST api/Empresas/{empid}
-        [HttpPost("{empid}/cajas", Name = "PostCaja")]
+        // POST api/Empresas/{empid}
+        [HttpPost(Name = "PostCaja")]
         public ActionResult<Guid> PostCaja(Guid empid, [FromBody] Caja caja)
         {
 
@@ -57,8 +75,8 @@ namespace CL.API.Controllers.Empresas
             return Ok(caja.Id);
         }
 
-    //    // PUT api/<EmpresasController>/5
-        [HttpPut("cajas/{id}", Name = "PutCaja")]
+        // PUT api/<EmpresasController>/5
+        [HttpPut("{id}", Name = "PutCaja")]
         public ActionResult PutCaja(Guid id, [FromBody] Caja caja)
         {
             if (caja.Id != id) return BadRequest();
@@ -80,8 +98,8 @@ namespace CL.API.Controllers.Empresas
             return NoContent();
         }
 
-    //    // DELETE api/EmpresasController>/5
-        [HttpDelete("cajas/{id}", Name = "DeleteCaja")]
+        // DELETE api/EmpresasController>/5
+        [HttpDelete("{id}", Name = "DeleteCaja")]
         public ActionResult DeleteCaja(Guid id)
 
         {

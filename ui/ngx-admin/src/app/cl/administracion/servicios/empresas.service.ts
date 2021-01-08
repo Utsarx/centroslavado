@@ -57,9 +57,9 @@ export class EmpresasService {
     return `${environment.apiUrl}/api/choferes`;
   }
 
-  public GetChoferes(): Observable<Chofer[]> {
+  public GetChoferes(id: string): Observable<Chofer[]> {
     console.log(this.getApiEmpresas());
-    return this.http.get<Chofer[]>(this.getApiChofer());
+    return this.http.get<Chofer[]>(this.getApiChofer() + '/empresa/' + id );
   }
 
   public GetChofer(id: string): Observable<Chofer> {
