@@ -25,6 +25,7 @@ namespace CL.Repositorio
             modelBuilder.Entity<ServiciosCentroLavado>()
             .HasKey(serv => new { serv.CentroLavadoId, serv.ServicioId, serv.PrecioId });
 
+            modelBuilder.Entity<RefreshToken>().HasIndex(x => x.EmpleadoId);
 
         }
 
@@ -40,6 +41,7 @@ namespace CL.Repositorio
 
         public DbSet<CentroLavado> CentrosLavado { get; set; }
         public DbSet<Empleado> Empleados { get; set; }
+        public DbSet<RefreshToken> RefreshTokens { get; set; }
         public DbSet<EmpleadoCentroLavado> EmpleadosCentroLavado { get; set; }
         public DbSet<ServiciosCentroLavado> ServiciosCentroLavados { get; set; }
 

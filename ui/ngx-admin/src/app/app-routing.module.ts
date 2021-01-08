@@ -8,10 +8,12 @@ import {
   NbRequestPasswordComponent,
   NbResetPasswordComponent,
 } from '@nebular/auth';
+import { AuthGuard } from './services/auth-guard';
 
 export const routes: Routes = [
   {
     path: '',
+    canActivate: [AuthGuard],
     loadChildren: () => import('./cl/cl.module')
       .then(m => m.ClModule),
   },
@@ -22,33 +24,33 @@ export const routes: Routes = [
   },
   {
     path: 'auth',
-    component: NbAuthComponent,
-    children: [
-      {
-        path: '',
-        component: NbLoginComponent,
-      },
-      {
-        path: 'login',
-        component: NbLoginComponent,
-      },
-      {
-        path: 'register',
-        component: NbRegisterComponent,
-      },
-      {
-        path: 'logout',
-        component: NbLogoutComponent,
-      },
-      {
-        path: 'request-password',
-        component: NbRequestPasswordComponent,
-      },
-      {
-        path: 'reset-password',
-        component: NbResetPasswordComponent,
-      },
-    ],
+    loadChildren: './auth/auth.module#NgxAuthModule',
+    // children: [
+    //   {
+    //     path: '',
+    //     component: NbLoginComponent,
+    //   },
+    //   {
+    //     path: 'login',
+    //     component: NbLoginComponent,
+    //   },
+    //   {
+    //     path: 'register',
+    //     component: NbRegisterComponent,
+    //   },
+    //   {
+    //     path: 'logout',
+    //     component: NbLogoutComponent,
+    //   },
+    //   {
+    //     path: 'request-password',
+    //     component: NbRequestPasswordComponent,
+    //   },
+    //   {
+    //     path: 'reset-password',
+    //     component: NbResetPasswordComponent,
+    //   },
+    // ],
   },
   { path: '', redirectTo: 'empresas', pathMatch: 'full' },
   { path: '**', redirectTo: 'empresas' },

@@ -9,8 +9,12 @@ using System.Text.Json.Serialization;
 namespace CL.Modelo
 {
     [Table("Empleado")]
-   public class Empleado
+    public class Empleado
     {
+        public Empleado() {
+            this.RefreshTokens = new List<RefreshToken>();
+        }
+
         [Key]
         public Guid Id { get; set; }
 
@@ -27,6 +31,7 @@ namespace CL.Modelo
         ///  entonces este campo es requerido
         /// </summary>
         [MaxLength(100)]
+        [EmailAddress]
         public string NombreUsuario { get; set; }
 
         /// <summary>
@@ -63,7 +68,7 @@ namespace CL.Modelo
         /// </summary>
         [NotMapped]
         [JsonIgnore]
-        public List<string> RefreshTokens { get; set; }
+        public List<RefreshToken> RefreshTokens { get; set; }
 
     }
 }

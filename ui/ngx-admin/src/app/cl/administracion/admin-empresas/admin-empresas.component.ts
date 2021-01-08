@@ -1,4 +1,4 @@
-import { NavegarEmpresaComponent } from './../components/boton-navegar-tabla/navegar-empresa.component';
+import { NavegarEmpresaComponent } from './../components/navegar-empresa/navegar-empresa.component';
 import { ConfirmarEliminarComponent } from './../components/confirmar-eliminar/confirmar-eliminar.component';
 import { EmpresaTransporte } from './../modelos/empresa-trasnporte';
 import { DialogoEmpresaComponent } from './../components/dialogo-empresa/dialogo-empresa.component';

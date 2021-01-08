@@ -26,36 +26,35 @@ namespace CL.API.Autenticacion
 
         public Tokens Login(Authentication authentication)
         {
+
+
             Empleado user;
-            if (authentication.Username == "demo")
-            {
-                user = new Empleado() { NombreUsuario = "demo" };
 
-                var fakeRefreshToken = TokenManager.GenerateRefreshToken(user);
-
-                return new Tokens
-                {
-                    AccessToken = TokenManager.GenerateAccessToken(user),
-                    RefreshToken = fakeRefreshToken.jwt
-                };
-            }
-
-            user = db.Empleados.Where(u => u.NombreUsuario == authentication.Username).FirstOrDefault();
+            user = db.Empleados.Where(u => u.NombreUsuario == authentication.Email).FirstOrDefault();
 
             bool validPassword = user.Hash == authentication.Password;
-
+            Console.WriteLine($"{validPassword}");
             if (validPassword)
             {
+
+                List<RefreshToken> rts = db.RefreshTokens.Where(x => x.EmpleadoId == user.Id).ToList();
+                if (rts.Count > 0)
+                {
+                    db.RefreshTokens.RemoveRange(rts);
+                }
+
                 var refreshToken = TokenManager.GenerateRefreshToken(user);
+                var t = new RefreshToken()
+                {
+                    Id = new Guid(),
+                    EmpleadoId = user.Id,
+                    Token = refreshToken.refreshToken,
+                    Jwt = refreshToken.jwt
 
-                if (user.RefreshTokens == null)
-                    user.RefreshTokens = new List<string>();
+                };
 
-                user.RefreshTokens.Add(refreshToken.refreshToken);
-
-                /// AQUI DEBE GAURDARSE EL TOKEN DE REFRSCO EN SQL
-
-                //_users.ReplaceOne(u => u.Id == user.Id, user);
+                db.RefreshTokens.Add(t);
+                db.SaveChanges();
 
                 return new Tokens
                 {
@@ -65,7 +64,7 @@ namespace CL.API.Autenticacion
             }
             else
             {
-                throw new System.Exception("Username or password incorrect");
+                return null;
             }
         }
 
@@ -76,22 +75,25 @@ namespace CL.API.Autenticacion
             if (user == null)
                 throw new System.Exception("User doesn't exist");
 
-            if (user.RefreshTokens == null)
-                user.RefreshTokens = new List<string>();
-
-            string token = user.RefreshTokens.FirstOrDefault(x => x == refreshClaim.Value);
+            RefreshToken token = db.RefreshTokens.Where(x => x.EmpleadoId == user.Id).FirstOrDefault();
 
             if (token != null)
             {
+
                 var refreshToken = TokenManager.GenerateRefreshToken(user);
 
-                user.RefreshTokens.Add(refreshToken.refreshToken);
+                var t = new RefreshToken()
+                {
+                    Id = new Guid(),
+                    EmpleadoId = user.Id,
+                    Token = refreshToken.refreshToken,
+                    Jwt = refreshToken.jwt
 
-                user.RefreshTokens.Remove(token);
+                };
 
-                /// AQUI DEBE GAURDARSE EL TOKEN DE REFRSCO EN SQL
-
-                //_users.ReplaceOne(u => u.Id == user.Id, user);
+                db.RefreshTokens.Add(t);
+                db.RefreshTokens.Remove(token);
+                db.SaveChanges();
 
                 return new Tokens
                 {

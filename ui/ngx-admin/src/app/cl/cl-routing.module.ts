@@ -4,6 +4,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { NgModule } from '@angular/core';
 
 import { ClComponent } from './cl.component';
+import { AuthGuard } from 'app/services/auth-guard';
 
 const routes: Routes = [{
   path: '',

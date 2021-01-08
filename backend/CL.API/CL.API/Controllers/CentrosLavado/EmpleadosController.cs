@@ -53,7 +53,7 @@ namespace CL.API.Controllers.CentrosLavado
             return Ok(emp);
         }
 
-        // POST api/centrolavado/{clid}
+        // POST api/centrolavado
         [HttpPost( Name = "PostEmpleado")]
         public ActionResult<Guid> PostEmpleado([FromBody] Empleado empleado)
         {
@@ -63,6 +63,24 @@ namespace CL.API.Controllers.CentrosLavado
                 return BadRequest();
             }
 
+            if (empleado.UsuarioSistema)
+            {
+                if (string.IsNullOrEmpty(empleado.Hash) ||
+                    string.IsNullOrEmpty(empleado.NombreUsuario))
+                {
+                    return BadRequest("Debe icluir una contraseña en el campo Hash y un nombre de usuario");
+                } else
+                {
+                    empleado.Salt = empleado.Hash;
+                }
+
+                if(db.Empleados.Any(x=>x.NombreUsuario.ToLower() == empleado.NombreUsuario.ToLower()))
+                {
+                    return BadRequest("El nombre del usuario ya esta en uso");
+                }
+            }
+
+            empleado.Activo = true;
             empleado.Id = Guid.NewGuid();
             db.Empleados.Add(empleado);
             db.SaveChanges();
