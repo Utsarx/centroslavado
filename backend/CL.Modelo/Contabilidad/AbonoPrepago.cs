@@ -21,7 +21,7 @@ namespace CL.Modelo
         /// Identificador de la empresa para el prepago
         /// </summary>
         [Required]
-        public Guid EmpesaId { get; set; }
+        public Guid EmpresaId { get; set; }
         
         /// <summary>
         /// Fecha de creación del prepago
