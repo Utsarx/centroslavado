@@ -7,7 +7,7 @@ namespace CL.API.Autenticacion
 {
     public class Authentication
     {
-        public string Username { get; set; }
+        public string Email { get; set; }
         public string Password { get; set; }
     }
 }

@@ -7,7 +7,7 @@ import { NbIconModule } from '@nebular/theme';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgModule } from '@angular/core';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { CoreModule } from './@core/core.module';
 import { ThemeModule } from './@theme/theme.module';
 import { AppComponent } from './app.component';
@@ -25,6 +25,8 @@ import { FormsModule } from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms';
 import { AppLogService } from './services/app-log-service';
 import { NbEvaIconsModule } from '@nebular/eva-icons';
+import { AuthInterceptorService } from './services/auth-interceptor-service';
+import { AuthGuard } from './services/auth-guard';
 
 @NgModule({
   declarations: [AppComponent],
@@ -49,7 +51,13 @@ import { NbEvaIconsModule } from '@nebular/eva-icons';
     ThemeModule.forRoot(),
   ],
   providers: [
+    AuthGuard,
     AppLogService,
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: AuthInterceptorService,
+      multi: true
+    }
   ],
   bootstrap: [AppComponent],
 })
