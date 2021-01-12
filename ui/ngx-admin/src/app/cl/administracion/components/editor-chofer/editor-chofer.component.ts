@@ -40,10 +40,12 @@ export class EditorChoferComponent implements OnInit, OnChanges {
   }
 
   private UpdateUI() {
-     console.log(this.chofer);
-    this.formaChofer.get('id').setValue(this.chofer.id);
-    this.formaChofer.get('nombre').setValue(this.chofer.nombre);
-    this.formaChofer.get('empresaId').setValue(this.chofer.empresaId);
+     if (this.chofer!=null){
+      this.formaChofer.get('id').setValue(this.chofer.id);
+      this.formaChofer.get('nombre').setValue(this.chofer.nombre);
+      this.formaChofer.get('empresaId').setValue(this.chofer.empresaId);
+     }
+
   }
 
   ngOnInit(): void {

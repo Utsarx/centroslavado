@@ -111,6 +111,7 @@ export class AdminEmpresasComponent implements OnInit {
         this.apiEmpresas.PostEmpresa(empresa).
         subscribe(
         (ok) => {
+            empresa.id = ok;
             this.source.add(empresa);
             this.source.refresh();
         }, 

@@ -1,3 +1,4 @@
+import { AdminTractoresComponent } from './administracion/admin-tractores/admin-tractores.component';
 import { AdminChoferesComponent } from './administracion/admin-choferes/admin-choferes.component';
 import { AdminEmpresasComponent } from './administracion/admin-empresas/admin-empresas.component';
 import { RouterModule, Routes } from '@angular/router';
@@ -17,6 +18,10 @@ const routes: Routes = [{
     {
       path: 'choferes',
       component: AdminChoferesComponent,
+    }, 
+    {
+      path: 'tractores',
+      component: AdminTractoresComponent,
     },
   ],
 }];

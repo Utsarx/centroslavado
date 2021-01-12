@@ -15,6 +15,9 @@ import { ConfirmarEliminarComponent } from './administracion/components/confirma
 import { AdminChoferesComponent } from './administracion/admin-choferes/admin-choferes.component';
 import { DialogoChoferComponent } from './administracion/components/dialogo-chofer/dialogo-chofer.component';
 import { EditorChoferComponent } from './administracion/components/editor-chofer/editor-chofer.component';
+import { AdminTractoresComponent } from './administracion/admin-tractores/admin-tractores.component';
+import { DialogoTractorComponent } from './administracion/components/dialogo-tractor/dialogo-tractor.component';
+import { EditorTractorComponent } from './administracion/components/editor-tractor/editor-tractor.component';
 
 @NgModule({
   imports: [
@@ -44,6 +47,9 @@ import { EditorChoferComponent } from './administracion/components/editor-chofer
     AdminChoferesComponent,
     DialogoChoferComponent,
     EditorChoferComponent,
+    AdminTractoresComponent,
+    DialogoTractorComponent,
+    EditorTractorComponent,
   ],
 })
 export class ClModule {

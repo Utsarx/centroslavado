@@ -1,5 +1,5 @@
 export interface Tractor {
     id: string,
-    noEconomico: string,
+    noeconomico: string,
     empresaId: string,
 }

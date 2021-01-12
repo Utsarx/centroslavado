@@ -28,16 +28,17 @@ namespace CL.API.Controllers.Empresas
             log = logger;
         }
 
-        // GET: api/TractoresController
-        [HttpGet(Name = "GetTractores")]
-        public ActionResult<IEnumerable<EmpresaTransporte>> GetTractores(Guid empid)
+        // GET: Lista de tractores de la empresa
+        [HttpGet("empresa/{id}", Name = "GetTractores")]
+        public ActionResult<IEnumerable<EmpresaTransporte>> GetTractoresEmpresa(Guid id)
         {
             return Ok(
-                db.Tractores.Where(x => x.EmpresaId == empid)
+                db.Tractores.Where(x => x.EmpresaId == id)
                 .ToList().OrderBy(x => x.Noeconomico).ToList()
                 );
         }
 
+  
         // GET api/<TractoresController>/5
         [HttpGet("{id}", Name = "GetTractor")]
         public ActionResult GetTractor(Guid id)
@@ -52,7 +53,7 @@ namespace CL.API.Controllers.Empresas
 
         // POST api/Empresas/{empid}
         [HttpPost(Name = "PostTractor")]
-        public ActionResult<Guid> PostTractor(Guid empid, [FromBody] Tractor trac)
+        public ActionResult<Guid> PostTractor([FromBody] Tractor trac)
         {
 
             if (!ModelState.IsValid)
@@ -60,14 +61,13 @@ namespace CL.API.Controllers.Empresas
                 return BadRequest();
             }
 
-            var Empresa = db.Empresas.Find(empid);
+            var Empresa = db.Empresas.Find(trac.EmpresaId);
             if (Empresa == null)
             {
                 return NotFound();
             }
 
             trac.Id = Guid.NewGuid();
-            trac.EmpresaId = empid;
             db.Tractores.Add(trac);
             db.SaveChanges();
             return Ok(trac.Id);
