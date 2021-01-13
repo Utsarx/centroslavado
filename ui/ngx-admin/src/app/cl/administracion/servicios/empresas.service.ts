@@ -1,3 +1,4 @@
+import { Tractor } from './../modelos/tractor';
 import { Chofer } from './../modelos/chofer';
 import { environment } from './../../../../environments/environment';
 import { Observable } from 'rxjs';
@@ -57,9 +58,9 @@ export class EmpresasService {
     return `${environment.apiUrl}/api/choferes`;
   }
 
-  public GetChoferes(): Observable<Chofer[]> {
+  public GetChoferes(id: string): Observable<Chofer[]> {
     console.log(this.getApiEmpresas());
-    return this.http.get<Chofer[]>(this.getApiChofer());
+    return this.http.get<Chofer[]>(this.getApiChofer() + '/empresa/' + id );
   }
 
   public GetChofer(id: string): Observable<Chofer> {
@@ -82,6 +83,40 @@ export class EmpresasService {
     const headers = new HttpHeaders()
       .set('content-type', 'application/json');
     return this.http.delete<any>(this.getApiChofer() + `/${id}`, { 'headers': headers });
+  }
+
+
+  // API de Tractores
+   // ---------------------------------------------------------------------------
+  // ---------------------------------------------------------------------------
+  private getApiTractores(): string {
+    return `${environment.apiUrl}/api/tractores`;
+  }
+
+  public GetTractores(id: string): Observable<Tractor[]> {
+    return this.http.get<Tractor[]>(this.getApiTractores() + '/empresa/' + id );
+  }
+
+  public GetTractor(id: string): Observable<Tractor> {
+    return this.http.get<Tractor>(this.getApiTractores() + '/' + id);
+  }
+
+  public PostTractor(tractor: Tractor): Observable<string> {
+    const headers = new HttpHeaders()
+      .set('content-type', 'application/json');
+    return this.http.post<string>(this.getApiTractores(), tractor, { 'headers': headers });
+  }
+
+  public PutTractor(id: string, tractor: EmpresaTransporte): Observable<any> {
+    const headers = new HttpHeaders()
+      .set('content-type', 'application/json');
+    return this.http.put<any>(this.getApiTractores() + `/${id}` , tractor, { 'headers': headers });
+  }
+
+  public DelTractor(id: string): Observable<string> {
+    const headers = new HttpHeaders()
+      .set('content-type', 'application/json');
+    return this.http.delete<any>(this.getApiTractores() + `/${id}`, { 'headers': headers });
   }
 
 }

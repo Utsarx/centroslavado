@@ -26,7 +26,7 @@ export class NavegarEmpresaComponent  implements ViewCell {
   }
 
   NavegarTractores(){
-    console.log("Tractores " + this.value)
+    this.router.navigate(['/tractores', { empresaId: this.value }]); 
   }
 
   navigateToSomeRoute() {

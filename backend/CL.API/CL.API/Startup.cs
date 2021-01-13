@@ -56,11 +56,12 @@ namespace CL.API
                 // this defines a CORS policy called "default"
                 options.AddPolicy("default", policy =>
                 {
-                    policy.WithOrigins(apiep.Cors.Split(','))
-# if DEBUG
-                        .AllowAnyOrigin()
-#endif
-                        .AllowAnyHeader()
+                    //                    policy.WithOrigins(apiep.Cors.Split(','))
+                    //# if DEBUG
+                    //                        .AllowAnyOrigin()
+                    //#endif
+                    policy.AllowAnyOrigin()
+                                            .AllowAnyHeader()
                         .AllowAnyMethod();
                 });
             });
@@ -114,7 +115,7 @@ namespace CL.API
             {
                 app.UseDeveloperExceptionPage();
             }
-            
+
             app.UseHttpsRedirection();
             app.UseRouting();
             app.UseAuthorization();

@@ -43,10 +43,12 @@ export class EditorEmpresaComponent implements OnInit, OnChanges {
   }
 
   private UpdateUI() {
-    this.formaEmpresa.get('id').setValue(this.empresa.id);
-    this.formaEmpresa.get('nombre').setValue(this.empresa.nombre);
-    this.formaEmpresa.get('rfc').setValue(this.empresa.rfc);
-  }
+    if(this.empresa!=null){
+      this.formaEmpresa.get('id').setValue(this.empresa.id);
+      this.formaEmpresa.get('nombre').setValue(this.empresa.nombre);
+      this.formaEmpresa.get('rfc').setValue(this.empresa.rfc);
+    }
+    }
 
   ngOnInit(): void {
   }

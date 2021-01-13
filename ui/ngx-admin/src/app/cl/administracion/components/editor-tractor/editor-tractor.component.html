@@ -1,0 +1,12 @@
+<form [formGroup]="formaTractor">
+    <div class="form-group row">
+        <label for="noeconomico" class="label col-sm-3 col-form-label">Nombre</label>
+        <div class="col-sm-9" >
+            <input type="text" formControlName="noeconomico" required  nbInput fullWidth id="noeconomico"
+                placeholder="No. económico">
+            <input type="hidden" formControlName="id" nbInput id="id">
+            <input type="hidden" formControlName="empresaId" nbInput  id="empresaId">
+        </div>
+    </div>
+</form>
+

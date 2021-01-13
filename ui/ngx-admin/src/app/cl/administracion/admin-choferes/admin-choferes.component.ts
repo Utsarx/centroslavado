@@ -18,7 +18,7 @@ export class AdminChoferesComponent implements OnInit {
   source: LocalDataSource = new LocalDataSource();
   loading: boolean;
   private empresaId: string;
-   
+
   settings = {
     mode: 'external',
     add: {
@@ -35,7 +35,7 @@ export class AdminChoferesComponent implements OnInit {
       deleteButtonContent: '<i class="nb-trash"></i>',
       confirmDelete: true,
     },
-    actions:{
+    actions: {
       columnTitle: "Acciones",
     },
     columns: {
@@ -70,37 +70,39 @@ export class AdminChoferesComponent implements OnInit {
 
     this.route.params.pipe(first()).subscribe(params => {
       this.empresaId = params.empresaId;
-      // this.loading = true;
-    // this.apiEmpresas.GetEmpresas().subscribe(data=>{
-    //   this.source.load(data);
-    // }, 
-    // (err)=>{ this.log.Falla('', 'Error al obtener empresas:' + err) }, 
-    // ()=>{this.loading = false;})
-   });
+      this.loading = true;
+      this.apiEmpresas.GetChoferes(this.empresaId).subscribe(data => {
+        this.source.load(data);
+      },
+        (err) => { this.log.Falla('', 'Error al obtener empresas:' + err) },
+        () => { this.loading = false; })
+    });
 
   }
 
   edit(event) {
     const choferActual: Chofer = event.data;
+    console.log(choferActual);
     this.dialogService.open(DialogoChoferComponent, {
       context: {
         title: 'Actualizar chofer',
         chofer: choferActual
       },
     }).onClose.subscribe(chofer => {
-      if(chofer!=null){
+      console.log(chofer);
+      if (chofer != null) {
         this.loading = true;
         this.apiEmpresas.PutChofer(choferActual.id, chofer).
-        subscribe(
-        (ok) => {
-          console.log(chofer);
-          this.source.update(choferActual, chofer);
-          this.source.refresh();
-        }, 
-        (err) => { this.ManejarErrorHttp(err, 'el Chofer')  },
-        () => {this.loading = false;})
+          subscribe(
+            (ok) => {
+              console.log(chofer);
+              this.source.update(choferActual, chofer);
+              this.source.refresh();
+            },
+            (err) => { this.ManejarErrorHttp(err, 'el Chofer') },
+            () => { this.loading = false; })
       }
-    });;        
+    });;
   }
 
   create() {
@@ -110,47 +112,48 @@ export class AdminChoferesComponent implements OnInit {
         chofer: { id: EmptyId, empresaId: this.empresaId, nombre: '' }
       },
     }).onClose.subscribe(chofer => {
-      if(chofer!=null){
+      if (chofer != null) {
         this.loading = true;
         this.apiEmpresas.PostChofer(chofer).
-        subscribe(
-        (ok) => {
-            this.source.add(chofer);
-            this.source.refresh();
-        }, 
-        (err) => { this.ManejarErrorHttp(err, 'el Chofer')  },
-        () => {this.loading = false;})
+          subscribe(
+            (ok) => {
+              chofer.id = ok;
+              this.source.add(chofer);
+              this.source.refresh();
+            },
+            (err) => { this.ManejarErrorHttp(err, 'el Chofer') },
+            () => { this.loading = false; })
       }
     });
   }
-  
+
   delete(event) {
-    
+
     this.dialogService.open(ConfirmarEliminarComponent, {
       context: {
         nombre: event.data.nombre,
       },
     }).onClose.subscribe(eliminar => {
       console.log(eliminar);
-      if(eliminar){
+      if (eliminar) {
         this.loading = true;
-        this.apiEmpresas.DelEmpresa(event.data.id).
-        subscribe(
-        (ok) => {
-            this.source.remove(event.data);
-            this.source.refresh();
-        }, 
-        (err) => { this.ManejarErrorHttp(err, 'el Chofer')  },
-        () => {this.loading = false;})
+        this.apiEmpresas.DelChofer(event.data.id).
+          subscribe(
+            (ok) => {
+              this.source.remove(event.data);
+              this.source.refresh();
+            },
+            (err) => { this.ManejarErrorHttp(err, 'el Chofer') },
+            () => { this.loading = false; })
       }
-     
+
     });
   }
 
 
-  ManejarErrorHttp(err: any, tipo: string){
+  ManejarErrorHttp(err: any, tipo: string) {
     this.loading = false;
-    switch(parseInt(err.status)){
+    switch (parseInt(err.status)) {
       case 400:
         this.log.Advertencia('', `Los datos para ${tipo} no son correctos`);
         break;

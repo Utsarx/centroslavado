@@ -1,5 +1,7 @@
 ﻿using CL.Modelo;
+using CL.Repositorio;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,11 +11,24 @@ namespace CL.API.Controllers.Empresas
 {/// <summary>
  /// Administarción de choferes 
  /// </summary>
-    public partial class EmpresasController : ControllerBase 
 
+    [Route("api/[controller]")]
+    [ApiController]
+    public partial class ChoferesController : ControllerBase 
     {
-        //// GET: api/EmpresasController
-        [HttpGet("{empid}/choferes", Name = "GetChoferes")]
+
+        protected readonly ContextoAplicacion db;
+        protected readonly ILogger<ChoferesController> log;
+        public ChoferesController(
+             ILogger<ChoferesController> logger,
+             ContextoAplicacion contexto)
+        {
+            db = contexto;
+            log = logger;
+        }
+
+        // GET: api/EmpresasController
+        [HttpGet("empresa/{empid}", Name = "GetChoferesPorEmpresa")]
         public ActionResult<IEnumerable<EmpresaTransporte>> GetChoferes(Guid empid)
         {
             return Ok(
@@ -23,8 +38,8 @@ namespace CL.API.Controllers.Empresas
         }
 
 
-        //// GET api/<EmpresasController>/5
-        [HttpGet("choferes/{id}", Name = "GetChofer")]
+        // GET api/<EmpresasController>/5
+        [HttpGet("{id}", Name = "GetChofer")]
         public ActionResult GetChofer(Guid id)
         {
             var chof = db.Choferes.Find(id);
@@ -35,9 +50,9 @@ namespace CL.API.Controllers.Empresas
             return Ok(chof);
         }
 
-        //// POST api/Empresas/{empid}
-        [HttpPost("{empid}/choferes", Name = "PostChofer")]
-        public ActionResult<Guid> PostChofer(Guid empid, [FromBody] Chofer chof)
+        // POST api/Empresas/{empid}
+        [HttpPost( Name = "PostChofer")]
+        public ActionResult<Guid> PostChofer([FromBody] Chofer chof)
         {
 
             if (!ModelState.IsValid)
@@ -45,21 +60,21 @@ namespace CL.API.Controllers.Empresas
                 return BadRequest();
             }
 
-            var Empresa = db.Empresas.Find(empid);
+            var Empresa = db.Empresas.Find(chof.EmpresaId);
             if (Empresa == null)
             {
                 return NotFound();
             }
 
             chof.Id = Guid.NewGuid();
-            chof.EmpresaId = empid;
+            chof.EmpresaId = chof.EmpresaId;
             db.Choferes.Add(chof);
             db.SaveChanges();
             return Ok(chof.Id);
         }
 
-        //// PUT api/<EmpresasController>/5
-        [HttpPut("choferes/{id}", Name = "PutChofer")]
+        // PUT api/<EmpresasController>/5
+        [HttpPut("{id}", Name = "PutChofer")]
         public ActionResult PutChofer(Guid id, [FromBody] Chofer chof)
         {
             if (chof.Id != id) return BadRequest();
@@ -81,8 +96,8 @@ namespace CL.API.Controllers.Empresas
             return NoContent();
         }
 
-        //// DELETE api/EmpresasController>/5
-        [HttpDelete("choferes/{id}", Name = "DeleteChofer")]
+        // DELETE api/EmpresasController>/5
+        [HttpDelete("{id}", Name = "DeleteChofer")]
         public ActionResult DeleteChofer(Guid id)
 
         {
