@@ -67,11 +67,16 @@ export class AdminEmpresasComponent implements OnInit {
 
   ngOnInit(): void {
     this.loading = true;
-    this.apiEmpresas.GetEmpresas().subscribe(data=>{
+    this.apiEmpresas.GetEmpresas().subscribe(
+      data=>{
       this.source.load(data);
     }, 
-    (err)=>{ this.log.Falla('', 'Error al obtener empresas:' + err) }, 
-    ()=>{this.loading = false;})
+    (err)=>{ 
+      this.log.Falla('', 'Error al obtener empresas:' + err) ;
+    }, 
+    ()=>{
+      this.loading = false;
+    })
   }
 
 
@@ -99,6 +104,7 @@ export class AdminEmpresasComponent implements OnInit {
   }
 
   create() {
+    
     this.dialogService.open(DialogoEmpresaComponent, {
       context: {
         title: 'Crear empresa',
