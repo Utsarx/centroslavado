@@ -5,6 +5,7 @@ import { Observable } from 'rxjs';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { EmpresaTransporte } from '../modelos/empresa-trasnporte';
+import { Caja } from '../modelos/caja';
 
 export const EmptyId: string = '00000000-0000-0000-0000-000000000000';
 
@@ -117,6 +118,41 @@ export class EmpresasService {
     const headers = new HttpHeaders()
       .set('content-type', 'application/json');
     return this.http.delete<any>(this.getApiTractores() + `/${id}`, { 'headers': headers });
+  }
+
+
+
+  // API de Cajas
+   // ---------------------------------------------------------------------------
+  // ---------------------------------------------------------------------------
+  private getApiCajaes(): string {
+    return `${environment.apiUrl}/api/cajas`;
+  }
+
+  public GetCajaes(id: string): Observable<Caja[]> {
+    return this.http.get<Caja[]>(this.getApiCajaes() + '/empresa/' + id );
+  }
+
+  public GetCaja(id: string): Observable<Caja> {
+    return this.http.get<Caja>(this.getApiCajaes() + '/' + id);
+  }
+
+  public PostCaja(Caja: Caja): Observable<string> {
+    const headers = new HttpHeaders()
+      .set('content-type', 'application/json');
+    return this.http.post<string>(this.getApiCajaes(), Caja, { 'headers': headers });
+  }
+
+  public PutCaja(id: string, tractor: EmpresaTransporte): Observable<any> {
+    const headers = new HttpHeaders()
+      .set('content-type', 'application/json');
+    return this.http.put<any>(this.getApiCajaes() + `/${id}` , tractor, { 'headers': headers });
+  }
+
+  public DelCaja(id: string): Observable<string> {
+    const headers = new HttpHeaders()
+      .set('content-type', 'application/json');
+    return this.http.delete<any>(this.getApiCajaes() + `/${id}`, { 'headers': headers });
   }
 
 }

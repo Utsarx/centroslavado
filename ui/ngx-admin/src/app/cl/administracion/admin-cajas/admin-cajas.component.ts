@@ -1,20 +1,20 @@
-import { DialogoChoferComponent } from './../components/dialogo-chofer/dialogo-chofer.component';
-import { Chofer } from './../modelos/chofer';
+import { DialogoCajaComponent } from './../components/dialogo-caja/dialogo-caja.component';
+import { AppLogService } from './../../../services/app-log-service';
 import { Component, OnInit } from '@angular/core';
-import { NbDialogService } from '@nebular/theme';
-import { AppLogService } from 'app/services/app-log-service';
-import { LocalDataSource } from 'ng2-smart-table';
-import { EmpresasService, EmptyId } from '../servicios/empresas.service';
-import { ConfirmarEliminarComponent } from '../components/confirmar-eliminar/confirmar-eliminar.component';
 import { ActivatedRoute } from '@angular/router';
+import { LocalDataSource } from 'ng2-smart-table';
+import { NbDialogService } from '@nebular/theme';
 import { first } from 'rxjs/operators';
+import { ConfirmarEliminarComponent } from '../components/confirmar-eliminar/confirmar-eliminar.component';
+import { EmpresasService, EmptyId } from '../servicios/empresas.service';
+import { Caja } from '../modelos/caja';
 
 @Component({
-  selector: 'ngx-admin-choferes',
-  templateUrl: './admin-choferes.component.html',
-  styleUrls: ['./admin-choferes.component.scss']
+  selector: 'ngx-admin-cajas',
+  templateUrl: './admin-cajas.component.html',
+  styleUrls: ['./admin-cajas.component.scss']
 })
-export class AdminChoferesComponent implements OnInit {
+export class AdminCajasComponent implements  OnInit {
   source: LocalDataSource = new LocalDataSource();
   loading: boolean;
   private empresaId: string;
@@ -39,8 +39,8 @@ export class AdminChoferesComponent implements OnInit {
       columnTitle: "Acciones",
     },
     columns: {
-      nombre: {
-        title: 'Nombre',
+      noEconomico: {
+        title: 'No. económico',
         type: 'string',
       },
       id: {
@@ -69,60 +69,60 @@ export class AdminChoferesComponent implements OnInit {
   ngOnInit(): void {
 
     this.route.params.pipe(first()).subscribe(params => {
-      
       this.empresaId = params.empresaId;
       this.loading = true;
-      this.apiEmpresas.GetChoferes(this.empresaId).subscribe(data => {
+      this.apiEmpresas.GetCajaes(this.empresaId).subscribe(data => {
         this.source.load(data);
       },
-        (err) => { this.log.Falla('', 'Error al obtener empresas:' + err) },
+        (err) => { this.log.Falla('', 'Error al obtener trctores:' + err) },
         () => { this.loading = false; })
     });
 
   }
 
   edit(event) {
-    const choferActual: Chofer = event.data;
-    console.log(choferActual);
-    this.dialogService.open(DialogoChoferComponent, {
+    const CajaActual: Caja = event.data;
+
+    this.dialogService.open(DialogoCajaComponent, {
       context: {
-        title: 'Actualizar chofer',
-        chofer: choferActual
+        title: 'Actualizar Caja',
+        Caja: CajaActual
       },
-    }).onClose.subscribe(chofer => {
-      console.log(chofer);
-      if (chofer != null) {
+    }).onClose.subscribe(Caja => {
+      
+      if (Caja != null) {
         this.loading = true;
-        this.apiEmpresas.PutChofer(choferActual.id, chofer).
+        this.apiEmpresas.PutCaja(CajaActual.id, Caja).
           subscribe(
             (ok) => {
-              console.log(chofer);
-              this.source.update(choferActual, chofer);
+              console.log(Caja);
+              this.source.update(CajaActual, Caja);
               this.source.refresh();
             },
-            (err) => { this.ManejarErrorHttp(err, 'el Chofer') },
+            (err) => { this.ManejarErrorHttp(err, 'la caja') },
             () => { this.loading = false; })
       }
     });;
   }
 
   create() {
-    this.dialogService.open(DialogoChoferComponent, {
+    this.dialogService.open(DialogoCajaComponent, {
       context: {
-        title: 'Crear chofer',
-        chofer: { id: EmptyId, empresaId: this.empresaId, nombre: '' }
+        title: 'Crear Caja',
+        Caja: { id: EmptyId, empresaId: this.empresaId, noEconomico: '' }
       },
-    }).onClose.subscribe(chofer => {
-      if (chofer != null) {
+    }).onClose.subscribe(Caja => {
+      if (Caja != null) {
+        console.log(Caja);
         this.loading = true;
-        this.apiEmpresas.PostChofer(chofer).
+        this.apiEmpresas.PostCaja(Caja).
           subscribe(
             (ok) => {
-              chofer.id = ok;
-              this.source.add(chofer);
+              Caja.id = ok;
+              this.source.add(Caja);
               this.source.refresh();
             },
-            (err) => { this.ManejarErrorHttp(err, 'el Chofer') },
+            (err) => { this.ManejarErrorHttp(err, 'el Caja') },
             () => { this.loading = false; })
       }
     });
@@ -132,19 +132,19 @@ export class AdminChoferesComponent implements OnInit {
 
     this.dialogService.open(ConfirmarEliminarComponent, {
       context: {
-        nombre: event.data.nombre,
+        nombre: event.data.noeconomico,
       },
     }).onClose.subscribe(eliminar => {
       console.log(eliminar);
       if (eliminar) {
         this.loading = true;
-        this.apiEmpresas.DelChofer(event.data.id).
+        this.apiEmpresas.DelCaja(event.data.id).
           subscribe(
             (ok) => {
               this.source.remove(event.data);
               this.source.refresh();
             },
-            (err) => { this.ManejarErrorHttp(err, 'el Chofer') },
+            (err) => { this.ManejarErrorHttp(err, 'la Caja') },
             () => { this.loading = false; })
       }
 

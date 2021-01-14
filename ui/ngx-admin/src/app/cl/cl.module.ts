@@ -1,7 +1,8 @@
 import { ClRoutingModule } from './cl-routing.module';
 import { NavegarEmpresaComponent } from './administracion/components/navegar-empresa/navegar-empresa.component';
 import { NgModule } from '@angular/core';
-import { NbMenuModule, NbCardModule, NbDialogModule, NbButtonModule, NbInputModule, NbSpinnerModule, NbActionsModule, NbIconModule, NbTooltipModule } from '@nebular/theme';
+import { NbMenuModule, NbCardModule, NbDialogModule, NbButtonModule, NbInputModule, NbSpinnerModule,
+  NbActionsModule, NbIconModule, NbTooltipModule } from '@nebular/theme';
 import { ThemeModule } from '../@theme/theme.module';
 import { ClComponent } from './cl.component';
 import { AdminEmpresasComponent } from './administracion/admin-empresas/admin-empresas.component';
@@ -18,6 +19,9 @@ import { EditorChoferComponent } from './administracion/components/editor-chofer
 import { AdminTractoresComponent } from './administracion/admin-tractores/admin-tractores.component';
 import { DialogoTractorComponent } from './administracion/components/dialogo-tractor/dialogo-tractor.component';
 import { EditorTractorComponent } from './administracion/components/editor-tractor/editor-tractor.component';
+import { DialogoCajaComponent } from './administracion/components/dialogo-caja/dialogo-caja.component';
+import { EditorCajaComponent } from './administracion/components/editor-caja/editor-caja.component';
+import { AdminCajasComponent } from './administracion/admin-cajas/admin-cajas.component';
 
 @NgModule({
   imports: [
@@ -50,6 +54,9 @@ import { EditorTractorComponent } from './administracion/components/editor-tract
     AdminTractoresComponent,
     DialogoTractorComponent,
     EditorTractorComponent,
+    DialogoCajaComponent,
+    EditorCajaComponent,
+    AdminCajasComponent,
   ],
 })
 export class ClModule {

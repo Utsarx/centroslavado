@@ -9,7 +9,9 @@ import { ViewCell } from 'ng2-smart-table';
   encapsulation: ViewEncapsulation.None
 })
 export class NavegarEmpresaComponent  implements ViewCell {
+  
   constructor(private router: Router) { }
+
   @Input() value: string | number;
   @Input() rowData: any;
   renderValue: string;
@@ -22,14 +24,11 @@ export class NavegarEmpresaComponent  implements ViewCell {
   }
 
   NavegarCajas(){
-    console.log("Cajas " + this.value)
+    this.router.navigate(['/cajas', { empresaId: this.value }]); 
   }
 
   NavegarTractores(){
     this.router.navigate(['/tractores', { empresaId: this.value }]); 
   }
-
-  navigateToSomeRoute() {
-    this.router.navigate(['/some/path', this.value]); 
-  }
+  
 }
