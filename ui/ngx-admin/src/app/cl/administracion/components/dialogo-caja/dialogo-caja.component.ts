@@ -19,12 +19,16 @@ export class DialogoCajaComponent implements OnInit {
   public textoBoton = '';
 
   ngOnInit(): void {
+    console.log(this.Caja);
     this.textoBoton = (this.Caja.id !== EmptyId) ? 'Actualizar' : 'Crear';
   }
 
   constructor(
     protected ref: NbDialogRef<DialogoCajaComponent>,
-    private log: AppLogService) {}
+    private log: AppLogService) {
+      console.log("X dialogo");
+
+    }
   
   ngOnChanges(changes: SimpleChanges): void {
     

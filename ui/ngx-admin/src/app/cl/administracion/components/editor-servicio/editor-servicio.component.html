@@ -1,0 +1,20 @@
+<form [formGroup]="formaServicio">
+
+    <div class="form-group row">
+        <label for="nombre" class="label col-sm-3 col-form-label">Nombre</label>
+        <div class="col-sm-9" >
+            <input type="text" formControlName="nombre" required  nbInput fullWidth id="nombre"
+                placeholder="nombre del servicio">
+            <input type="hidden" formControlName="id" nbInput id="id">
+            <input type="hidden" formControlName="categoriaId" nbInput  id="categoriaId">
+        </div>
+    </div>
+
+    <div class="form-group row">
+        <label for="clave" class="label col-sm-3 col-form-label">Clave</label>
+        <div class="col-sm-9">
+            <input type="text" formControlName="clave" nbInput fullWidth id="clave" placeholder="clave del servicio">
+        </div>
+    </div>
+
+</form>

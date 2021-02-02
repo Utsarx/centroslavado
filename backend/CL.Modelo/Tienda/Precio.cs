@@ -27,7 +27,7 @@ namespace CL.Modelo
         /// Determina si el precio es el aplicable por default
         /// </summary>
         [Required]
-        [DefaultValue(true)]
+        [DefaultValue(false)]
         public bool EsDefault { get; set; }
         
         public Guid ServicioId { get; set; }

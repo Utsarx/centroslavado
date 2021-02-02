@@ -1,0 +1,20 @@
+<div class="row">
+    <div class="col-lg-12">
+        <nb-card accent="danger" [nbSpinner]="loading" nbSpinnerStatus="danger">
+            <nb-card-header>
+                Servicios
+            </nb-card-header>
+        
+            <nb-card-body>
+                <ng2-smart-table 
+                    [settings]="settings" 
+                    [source]="source" 
+                    (create) = "create()"
+                    (edit) = "edit($event)"
+                    (delete) = "delete($event)"
+                >
+                </ng2-smart-table>
+            </nb-card-body>
+        </nb-card>
+    </div>
+</div>

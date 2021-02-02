@@ -1,0 +1,11 @@
+<form [formGroup]="formaCategoria">
+
+    <div class="form-group row">
+        <label for="nombre" class="label col-sm-3 col-form-label">Nombre</label>
+        <div class="col-sm-9" >
+            <input type="text" formControlName="nombre" required  nbInput fullWidth id="nombre"
+                placeholder="Nombre de la categoria">
+            <input type="hidden" formControlName="id" nbInput fullWidth id="id">
+        </div>
+    </div>
+</form>

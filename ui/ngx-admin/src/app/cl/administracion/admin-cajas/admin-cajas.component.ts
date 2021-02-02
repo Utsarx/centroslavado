@@ -71,10 +71,10 @@ export class AdminCajasComponent implements  OnInit {
     this.route.params.pipe(first()).subscribe(params => {
       this.empresaId = params.empresaId;
       this.loading = true;
-      this.apiEmpresas.GetCajaes(this.empresaId).subscribe(data => {
+      this.apiEmpresas.GetCajas(this.empresaId).subscribe(data=>{ 
         this.source.load(data);
       },
-        (err) => { this.log.Falla('', 'Error al obtener trctores:' + err) },
+        (err) => { this.log.Falla('', 'Error al obtener cajas:' + err) },
         () => { this.loading = false; })
     });
 
@@ -106,6 +106,7 @@ export class AdminCajasComponent implements  OnInit {
   }
 
   create() {
+    console.log("alfo");
     this.dialogService.open(DialogoCajaComponent, {
       context: {
         title: 'Crear Caja',

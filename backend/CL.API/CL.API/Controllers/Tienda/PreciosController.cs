@@ -11,20 +11,30 @@ using System.Threading.Tasks;
 
 namespace CL.API.Controllers.Tienda
 {
-
-   
-    public partial class CategoriasController : ControllerBase
+    [Route("api/[controller]")]
+    [ApiController]
+    public partial class PreciosController : ControllerBase
     {
-     
+
+        protected readonly ContextoAplicacion db;
+        protected readonly ILogger<CategoriasController> log;
+
+        public PreciosController(ILogger<CategoriasController> logger, ContextoAplicacion contexto)
+        {
+
+            db = contexto;
+            log = logger;
+
+        }
         // GET: api/<PreciosController>
-        [HttpGet("{servid}/precios", Name = "GetPrecios")]
+        [HttpGet("servicio/{servid}", Name = "GetPrecios")]
         public ActionResult <IEnumerable<Precio>> GetPrecios(Guid servid) 
         {
             return Ok(db.Precios.Where(x => x.ServicioId == servid).ToList().OrderBy(x => x.Id).ToList()); 
         }
 
         // GET api/<PreciosController>/5
-        [HttpGet("precios/{id}", Name = "GetPrecio")]
+        [HttpGet("{id}", Name = "GetPrecio")]
         public ActionResult Get(Guid id)
         {
             log.LogError($"Id{id}");
@@ -37,35 +47,37 @@ namespace CL.API.Controllers.Tienda
         }
 
         // POST api/<PreciosController>
-        [HttpPost("servicios/{servid}/precios", Name = "PostPrecio")]
-        public ActionResult<Guid> PostPrecio(Guid servid, [FromBody] Precio precio)
+        [HttpPost(Name = "PostPrecio")]
+        public ActionResult<Guid> PostPrecio([FromBody] Precio precio)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest();
             }
-            var servicio = db.Servicios.Find(servid);
+            var servicio = db.Servicios.Find(precio.ServicioId);
 
             if (servicio == null)
             {
-                return NotFound(servid);
+                return NotFound(precio.ServicioId);
             }
 
+
             precio.Id = Guid.NewGuid();
-            precio.ServicioId = servid; 
+            precio.ServicioId = precio.ServicioId; 
             db.Precios.Add(precio);
             db.SaveChanges();
             return Ok(precio.Id); 
         }
 
         // PUT api/<PreciosController>/5
-        [HttpPut("precios/{id}")]
+        [HttpPut("{id}")]
         public ActionResult Put(Guid id, [FromBody] Precio precio)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(); 
             }
+
             var pre = db.Precios.Find(id); 
             if(pre == null)
             {
@@ -98,7 +110,7 @@ namespace CL.API.Controllers.Tienda
         }
 
         // DELETE api/<PreciosController>/5
-        [HttpDelete("precios/{id}")]
+        [HttpDelete("{id}")]
         public ActionResult Delete(Guid id)
         {
             log.LogError($"Eliminar Id{id}");

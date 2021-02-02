@@ -1,0 +1,10 @@
+<nb-card>
+    <nb-card-header>{{ title }}</nb-card-header>
+    <nb-card-body>
+        <ngx-editor-servicio [servicio]="servicio"></ngx-editor-servicio>
+    </nb-card-body>
+    <nb-card-footer>
+      <button nbButton ghost (click)="dismiss()">Cancelar</button>
+      <button nbButton ghost status="primary" (click)="procesar()">{{textoBoton}}</button>
+    </nb-card-footer>
+  </nb-card>

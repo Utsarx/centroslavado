@@ -30,7 +30,7 @@ namespace CL.API.Controllers.Empresas
 
 
         // GET: api/EmpresasController
-        [HttpGet(Name = "GetCajas")]
+        [HttpGet("empresa/{empid}", Name = "GetCajas")]
         public ActionResult<IEnumerable<EmpresaTransporte>> GetCajas(Guid empid)
         {
             return Ok(
@@ -54,22 +54,22 @@ namespace CL.API.Controllers.Empresas
 
         // POST api/Empresas/{empid}
         [HttpPost(Name = "PostCaja")]
-        public ActionResult<Guid> PostCaja(Guid empid, [FromBody] Caja caja)
+        public ActionResult<Guid> PostCaja([FromBody] Caja caja)
         {
+            Console.WriteLine(System.Text.Json.JsonSerializer.Serialize(caja) );
 
             if (!ModelState.IsValid)
             {
                 return BadRequest();
             }
 
-            var Empresa = db.Empresas.Find(empid);
+            var Empresa = db.Empresas.Find(caja.EmpresaId);
             if (Empresa == null)
             {
                 return NotFound();
             }
 
             caja.Id = Guid.NewGuid();
-            caja.EmpresaId = empid;
             db.Cajas.Add(caja);
             db.SaveChanges();
             return Ok(caja.Id);

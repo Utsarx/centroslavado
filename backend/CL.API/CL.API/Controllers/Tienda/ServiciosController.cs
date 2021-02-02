@@ -11,12 +11,23 @@ using System.Threading.Tasks;
 
 namespace CL.API.Controllers.Tienda
 {
-   
-    public partial class CategoriasController : ControllerBase
+    [Route("api/[controller]")]
+    [ApiController]
+    public partial class ServiciosController : ControllerBase
     {
-        
+
+        protected readonly ContextoAplicacion db;
+        protected readonly ILogger<CategoriasController> log;
+
+        public ServiciosController(ILogger<CategoriasController> logger, ContextoAplicacion contexto)
+        {
+
+            db = contexto;
+            log = logger;
+
+        }
         // GET: api/<ServiciosController>
-        [HttpGet("{categoid}/servicios", Name = "GetServicios")]
+        [HttpGet("categoria/{categoid}", Name = "GetServicios")]
         public ActionResult <IEnumerable<Servicio>> GetServicios(Guid categoid)
         {
             return Ok(db.Servicios.Where(x => x.CategoriaId == categoid).ToList().OrderBy(x => x.Nombre)
@@ -25,7 +36,7 @@ namespace CL.API.Controllers.Tienda
         }
 
         // GET api/<ServiciosController>/5
-        [HttpGet("servicios/{id}", Name = "GetServicio")]
+        [HttpGet("{id}", Name = "GetServicio")]
         public ActionResult<Servicio> GetServicio(Guid id)
         {
             log.LogError($"Id{id}");
@@ -37,22 +48,22 @@ namespace CL.API.Controllers.Tienda
             return Ok(serv); 
         }
         // POST api/<ServiciosController>
-        [HttpPost("{categoid}/servicios", Name = "PostServicio")]
-        public ActionResult<Guid> PostServicio(Guid categoid, [FromBody] Servicio servicio)
+        [HttpPost(Name = "PostServicio")]
+        public ActionResult<Guid> PostServicio([FromBody] Servicio servicio)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(); 
             }
 
-            var categoria = db.Categorias.Find(categoid);
+            var categoria = db.Categorias.Find(servicio.CategoriaId);
             if (categoria == null)
             {
-                return NotFound(categoid); 
+                return NotFound();
             }
 
             servicio.Id = Guid.NewGuid();
-            servicio.CategoriaId = categoid; 
+            servicio.CategoriaId = servicio.CategoriaId; 
             db.Servicios.Add(servicio);
             db.SaveChanges();
             return Ok(servicio.Id); 
@@ -60,7 +71,7 @@ namespace CL.API.Controllers.Tienda
         }
 
         // PUT api/<ServiciosController>/5
-        [HttpPut("servicios/{id}")]
+        [HttpPut("{id}")]
         public ActionResult PutServicio(Guid id, [FromBody] Servicio servicio)
         {
             if (!ModelState.IsValid)
@@ -100,7 +111,7 @@ namespace CL.API.Controllers.Tienda
         }
 
         // DELETE api/<ServiciosController>/5
-        [HttpDelete("servicios/{id}")]
+        [HttpDelete("{id}")]
         public ActionResult DeleteServicio(Guid id)
         {
             var serv = db.Servicios.Find(id);
