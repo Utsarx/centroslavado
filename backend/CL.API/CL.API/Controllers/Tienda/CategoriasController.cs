@@ -27,7 +27,7 @@ namespace CL.API.Controllers.Tienda
         }
         // GET: api/<CategoriaController>
         [HttpGet]
-        public ActionResult<IEnumerable<Categoria>> GetCategorias()
+        public ActionResult<IEnumerable<Categoria>> Get()
         {
             return db.Categorias.ToList().OrderBy(x => x.Nombre).ToList(); 
 

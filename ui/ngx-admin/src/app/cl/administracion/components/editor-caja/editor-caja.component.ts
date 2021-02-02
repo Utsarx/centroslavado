@@ -17,7 +17,7 @@ export class EditorCajaComponent implements OnInit, OnChanges {
 
     this.formaCaja = this.fb.group({
       id: '',
-      noeconomico: '',
+      noEconomico: '',
       empresaId: '',
     });
 
@@ -43,7 +43,7 @@ export class EditorCajaComponent implements OnInit, OnChanges {
     console.log(this.caja);
      if (this.caja!=null){
       this.formaCaja.get('id').setValue(this.caja.id);
-      this.formaCaja.get('noeconomico').setValue(this.caja.noEconomico);
+      this.formaCaja.get('noEconomico').setValue(this.caja.noEconomico);
       this.formaCaja.get('empresaId').setValue(this.caja.empresaId);
      }
 

@@ -1,0 +1,19 @@
+<form [formGroup]="formaPrecio">
+
+    <div class="form-group row">
+        <label for="descripcion" class="label col-sm-3 col-form-label">Descripcion</label>
+        <div class="col-sm-9" >
+            <input type="text" formControlName="descripcion" required  nbInput fullWidth id="descripcion"
+                placeholder="Descripcion">
+            <input type="hidden" formControlName="id" nbInput fullWidth id="id">
+            <input type="hidden" formControlName="servicioId" nbInput  id="servicioId">
+        </div>
+    </div>
+
+    <div class="form-group row">
+        <label for="monto" class="label col-sm-3 col-form-label">Monto</label>
+        <div class="col-sm-9">
+            <input type="text" formControlName="monto" nbInput fullWidth id="monto" placeholder="Monto">
+        </div>
+    </div>
+</form>

@@ -22,6 +22,22 @@ import { EditorTractorComponent } from './administracion/components/editor-tract
 import { DialogoCajaComponent } from './administracion/components/dialogo-caja/dialogo-caja.component';
 import { EditorCajaComponent } from './administracion/components/editor-caja/editor-caja.component';
 import { AdminCajasComponent } from './administracion/admin-cajas/admin-cajas.component';
+import { AdminClComponent } from './administracion/admin-cl/admin-cl.component';
+import { NavegarCentroComponent } from './administracion/components/navegar-centro/navegar-centro.component';
+import { DialogoCentroComponent } from './administracion/components/dialogo-centro/dialogo-centro.component';
+import { EditorCentroComponent } from './administracion/components/editor-centro/editor-centro.component';
+import { AdminEmpleadosComponent } from './administracion/admin-empleados/admin-empleados.component';
+import { AdminCategoriasComponent } from './administracion/admin-categorias/admin-categorias.component';
+import { NavegarCategoriaComponent } from './administracion/components/navegar-categoria/navegar-categoria.component';
+import { AdminServiciosComponent } from './administracion/admin-servicios/admin-servicios.component';
+import { DialogoCategoriaComponent } from './administracion/components/dialogo-categoria/dialogo-categoria.component';
+import { EditorCategoriaComponent } from './administracion/components/editor-categoria/editor-categoria.component';
+import { DialogoServicioComponent } from './administracion/components/dialogo-servicio/dialogo-servicio.component';
+import { EditorServicioComponent } from './administracion/components/editor-servicio/editor-servicio.component';
+import { NavegarServicioComponent } from './administracion/components/navegar-servicio/navegar-servicio.component';
+import { AdminPreciosComponent } from './administracion/admin-precios/admin-precios.component';
+import { DialogoPrecioComponent } from './administracion/components/dialogo-precio/dialogo-precio.component';
+import { EditorPrecioComponent } from './administracion/components/editor-precio/editor-precio.component';
 
 @NgModule({
   imports: [
@@ -57,6 +73,22 @@ import { AdminCajasComponent } from './administracion/admin-cajas/admin-cajas.co
     DialogoCajaComponent,
     EditorCajaComponent,
     AdminCajasComponent,
+    AdminClComponent,
+    NavegarCentroComponent,
+    DialogoCentroComponent,
+    EditorCentroComponent,
+    AdminEmpleadosComponent,
+    AdminCategoriasComponent,
+    NavegarCategoriaComponent,
+    AdminServiciosComponent,
+    DialogoCategoriaComponent,
+    EditorCategoriaComponent,
+    DialogoServicioComponent,
+    EditorServicioComponent,
+    NavegarServicioComponent,
+    AdminPreciosComponent,
+    DialogoPrecioComponent,
+    EditorPrecioComponent, //x
   ],
 })
 export class ClModule {
