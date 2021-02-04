@@ -4,6 +4,7 @@ using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Text;
+using System.Text.Json.Serialization;
 
 namespace CL.Modelo
 {
@@ -31,8 +32,11 @@ namespace CL.Modelo
         public bool EsDefault { get; set; }
         
         public Guid ServicioId { get; set; }
+
+        [JsonIgnore]
         public Servicio Servicio { get; set; }
-        
+
+        [JsonIgnore]
         public ICollection<ServiciosCentroLavado> PrecioCentroLavado { get; set; }
     }
 }

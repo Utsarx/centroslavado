@@ -18,6 +18,12 @@ export const routes: Routes = [
       .then(m => m.ClModule),
   },
   {
+    path: '',
+    canActivate: [AuthGuard],
+    loadChildren: () => import('./punto-venta/punto-venta.module')
+      .then(m => m.PuntoVentaModule),
+  },
+  {
     path: 'pages',
     loadChildren: () => import('./pages/pages.module')
       .then(m => m.PagesModule),

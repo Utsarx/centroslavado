@@ -4,7 +4,7 @@ export const MENU_ITEMS: NbMenuItem[] = [
   {
     title: 'Punto de venta',
     icon: 'shopping-cart-outline',
-    link: '',
+    link: '/terminal',
     home: true,
   },
   {
@@ -26,11 +26,11 @@ export const MENU_ITEMS: NbMenuItem[] = [
       },
       {
         title: 'Centros de lavado',
-        link: '/centros',
+        link: '/Empresas',
       },
       {
         title: 'Servicios',
-        link: '/categorias',
+        link: '/Empresas',
       },
     ],
   },
