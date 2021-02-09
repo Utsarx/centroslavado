@@ -1,0 +1,86 @@
+<form [formGroup]="selectorform">
+  <input type="hidden" formControlName="CategoriaId" >
+  <input type="hidden" formControlName="Monto" >
+  <input type="hidden" formControlName="PrecioId" >
+  <input type="hidden" formControlName="Moneda" >
+  <div class="row">
+    <div class="col-sm-12">
+      <div class="form-group">
+        <label for="ddlcl" class="label">Centro de lavado</label>
+        <nb-select placeholder="Centro de lavado" [(selected)]="centrolavado" 
+        formControlName="CentroLavadoId"
+        (selectedChange) = "selectedChangeCentro($event)"
+                  id="ddlcl" fullWidth="true" >
+          <nb-option *ngFor="let option of configuracion" [value]="option.centro.id">
+            {{ option.centro.nombre }}
+          </nb-option>
+        </nb-select>
+      </div>
+    </div>
+    <div class="col-sm-12">
+      <div class="form-group">
+
+        <label for="ddlempresa" class="label">Empresa</label>
+        <input
+        [formControl]="inputEmpresas"
+        nbInput
+        type="text"
+        placeholder="Elija una empresa"
+        [nbAutocomplete]="autoControl" fullWidth="true" />
+  
+      <nb-autocomplete #autoControl (selectedChange)="selectedChange($event)">
+        <nb-option *ngFor="let option of empresasFiltradas$ | async" [value]="option.texto">
+          {{ option.texto }}
+        </nb-option>
+      </nb-autocomplete>
+    
+      </div>
+    </div>
+    <div class="col-sm-12">
+      <div class="form-group">
+        <label for="ddlVehiculo" class="label">Tractores/cajas</label>
+        <input
+        [formControl]="inputVehiculos"
+        nbInput
+        type="text"
+        placeholder="Elija un tractor/caja de la empresa"
+        [nbAutocomplete]="autoControlVehiculos" fullWidth="true" />
+  
+      <nb-autocomplete #autoControlVehiculos (selectedChange)="selectedChangeCaja($event)">
+        <nb-option *ngFor="let option of vehiculosFiltrados$ | async" [value]="option.texto">
+          {{ option.texto }}
+        </nb-option>
+      </nb-autocomplete>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+  
+    <div class="col-sm-12">
+      <div class="form-group">
+        <label for="ddlcategoria" class="label">Servicio</label>
+        <nb-select placeholder="Categoria" [(selected)]="servicio" id="ddlcategoria" 
+        formControlName="ServicioId"        
+        (selectedChange) = "selectedChangeServicio($event)"
+        fullWidth="true">
+          <nb-option *ngFor="let option of servicios" [value]="option.id">
+            {{ option.nombre }}
+          </nb-option>
+        </nb-select>
+      </div>
+    </div>
+    <div class="col-sm-12">
+      <div class="form-group">
+        <label for="ddlPrecios" class="label">Precio</label>
+        <nb-select placeholder="Precio" [(selected)]="precio" 
+        (selectedChange) = "selectedChangePrecio($event)"
+        id="ddlPrecios" fullWidth="true">
+          <nb-option *ngFor="let option of precios" [value]="option.id">
+            {{ option.monto }}
+          </nb-option>
+        </nb-select>
+      </div>
+    </div>
+  </div>
+</form>

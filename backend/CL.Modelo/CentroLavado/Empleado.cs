@@ -38,14 +38,16 @@ namespace CL.Modelo
         /// NO DEBE LLENARSE EN EL CRUD
         /// </summary>
         [MaxLength(500)]
+        [JsonIgnore]
         public string Hash { get; set; }
 
         /// <summary>
         /// NO DEBE LLENARSE EN EL CRUD
         /// </summary>
         [MaxLength(50)]
+        [JsonIgnore]
         public string Salt { get; set; }
-        
+
         /// <summary>
         /// Especifica si un usuario de sistema se encuentra activo
         /// </summary>

@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
-
-import { MENU_ITEMS } from './cl-menu';
+import { MENU_ITEMS } from 'app/activos/cl-menu';
 
 @Component({
   selector: 'ngx-cl',

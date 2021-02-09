@@ -77,6 +77,12 @@ namespace CL.Modelo.Contabilidad
         /// </summary>
         public Guid? CajaId { get; set; }
 
+
+        /// <summary>
+        /// Identificador único del precio utilizado
+        /// </summary>
+        public Guid? PrecioId{ get; set; }
+
         /// <summary>
         /// Añadir todas las propiedades de navegación para las FK 
         /// </summary>

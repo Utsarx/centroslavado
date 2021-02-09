@@ -29,7 +29,7 @@ namespace CL.API.Controllers.Empresas
 
         // GET: api/EmpresasController
         [HttpGet("empresa/{empid}", Name = "GetChoferesPorEmpresa")]
-        public ActionResult<IEnumerable<EmpresaTransporte>> GetChoferes(Guid empid)
+        public ActionResult<IEnumerable<Chofer>> GetChoferes(Guid empid)
         {
             return Ok(
                 db.Choferes.Where(x => x.EmpresaId == empid )
