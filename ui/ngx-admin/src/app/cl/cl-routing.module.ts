@@ -10,7 +10,6 @@ import { RouterModule, Routes } from '@angular/router';
 import { NgModule, Component } from '@angular/core';
 
 import { ClComponent } from './cl.component';
-import { AuthGuard } from 'app/services/auth-guard';
 import { AdminServiciosComponent } from './administracion/admin-servicios/admin-servicios.component';
 
 

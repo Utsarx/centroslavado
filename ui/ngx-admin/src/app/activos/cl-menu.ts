@@ -26,11 +26,11 @@ export const MENU_ITEMS: NbMenuItem[] = [
       },
       {
         title: 'Centros de lavado',
-        link: '/Empresas',
+        link: '/centros',
       },
       {
         title: 'Servicios',
-        link: '/Empresas',
+        link: '/categorias',
       },
     ],
   },

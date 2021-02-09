@@ -32,6 +32,8 @@ namespace CL.API.Autenticacion
 
             user = db.Empleados.Where(u => u.NombreUsuario == authentication.Email).FirstOrDefault();
 
+            Console.WriteLine($"{user==null}");
+            Console.WriteLine($"{authentication.Password} = {System.Text.Json.JsonSerializer.Serialize(user)}" );
             bool validPassword = user.Hash == authentication.Password;
             Console.WriteLine($"{validPassword}");
             if (validPassword)

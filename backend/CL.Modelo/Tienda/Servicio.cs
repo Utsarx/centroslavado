@@ -16,7 +16,7 @@ namespace CL.Modelo
         /// <summary>
         /// Clave del servicio
         /// </summary>
-        [MaxLength(200), MinLength(5)]
+        [MaxLength(200), MinLength(1)]
         public string Clave { get; set; }
 
         /// <summary>

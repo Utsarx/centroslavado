@@ -1,4 +1,3 @@
-import { NbIconModule } from '@nebular/theme';
 /**
  * @license
  * Copyright Akveo. All Rights Reserved.
@@ -13,6 +12,7 @@ import { ThemeModule } from './@theme/theme.module';
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 import {
+  NbAutocompleteModule,
   NbChatModule,
   NbDatepickerModule,
   NbDialogModule,
@@ -21,12 +21,11 @@ import {
   NbToastrModule,
   NbWindowModule,
 } from '@nebular/theme';
-import { FormsModule } from '@angular/forms';
-import { ReactiveFormsModule } from '@angular/forms';
-import { AppLogService } from './services/app-log-service';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NbEvaIconsModule } from '@nebular/eva-icons';
-import { AuthInterceptorService } from './services/auth-interceptor-service';
 import { AuthGuard } from './services/auth-guard';
+import { AppLogService } from './services/app-log-service';
+import { AuthInterceptorService } from './services/auth-interceptor-service';
 
 @NgModule({
   declarations: [AppComponent],
@@ -37,8 +36,8 @@ import { AuthGuard } from './services/auth-guard';
     BrowserAnimationsModule,
     HttpClientModule,
     AppRoutingModule,
-    NbSidebarModule.forRoot(),
     NbEvaIconsModule,
+    NbSidebarModule.forRoot(),
     NbMenuModule.forRoot(),
     NbDatepickerModule.forRoot(),
     NbDialogModule.forRoot(),
@@ -47,6 +46,7 @@ import { AuthGuard } from './services/auth-guard';
     NbChatModule.forRoot({
       messageGoogleMapKey: 'AIzaSyA_wNuCzia92MAmdLRzmqitRGvCF7wCZPY',
     }),
+    NbAutocompleteModule,
     CoreModule.forRoot(),
     ThemeModule.forRoot(),
   ],

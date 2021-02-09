@@ -7,7 +7,6 @@ import { ThemeModule } from '../@theme/theme.module';
 import { ClComponent } from './cl.component';
 import { AdminEmpresasComponent } from './administracion/admin-empresas/admin-empresas.component';
 import { Ng2SmartTableModule } from 'ng2-smart-table';
-import { Ng2CompleterModule } from 'ng2-completer';
 import { EditorEmpresaComponent } from './administracion/components/editor-empresa/editor-empresa.component';
 import { DialogoEmpresaComponent } from './administracion/components/dialogo-empresa/dialogo-empresa.component';
 import { FormsModule } from '@angular/forms';
@@ -50,7 +49,6 @@ import { EditorPrecioComponent } from './administracion/components/editor-precio
     NbMenuModule,
     NbIconModule,
     ClRoutingModule,
-    Ng2CompleterModule,
     Ng2SmartTableModule,
     NbCardModule,
     NbDialogModule,

@@ -1,8 +1,9 @@
+import { environment } from './../../../environments/environment';
 import { ConfiguracionVentaeCentroLavado } from './../modelos/configuracion-ventae-centrollavado';
 import { Observable } from 'rxjs';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { environment } from 'environments/environment';
+import { ParOrdenado } from '../modelos/par-ordenado';
 export const EmptyId: string = '00000000-0000-0000-0000-000000000000';
 
 @Injectable({
@@ -23,6 +24,16 @@ export class TerminalServices {
   public GetConfiguracion(): Observable<ConfiguracionVentaeCentroLavado[]> {
     console.log(this.getApiTerminal());
     return this.http.get<ConfiguracionVentaeCentroLavado[]>(this.getApiTerminal() + '/configuracion');
+  }
+
+  public GetEmpresas(buscar: string): Observable<ParOrdenado[]> {
+    console.log(this.getApiTerminal());
+    return this.http.get<ParOrdenado[]>(this.getApiTerminal() + `/empresas?buscar=${buscar}`);
+  }
+
+  public GetVehiculosEmpresa(id: string): Observable<ParOrdenado[]> {
+    console.log(this.getApiTerminal());
+    return this.http.get<ParOrdenado[]>(this.getApiTerminal() + `/vehiculos/${id}`);
   }
 
 //   public GetEmpresa(id: string): Observable<EmpresaTransporte> {

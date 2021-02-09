@@ -46,4 +46,5 @@ export interface Precio {
     esDefault: boolean;
     servicioId: string;
     moneda: number;
+    categoriaId?: string;
 }

@@ -4,7 +4,6 @@ import { RouterModule, Routes } from '@angular/router';
 import { NgModule } from '@angular/core';
 
 import { PuntoVentaComponent} from './punto-venta.component';
-import { AuthGuard } from 'app/services/auth-guard';
 
 const routes: Routes = [{
   path: '',

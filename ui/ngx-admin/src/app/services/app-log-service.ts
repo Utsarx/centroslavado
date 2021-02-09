@@ -1,5 +1,5 @@
 import { Injectable } from "@angular/core";
-import { NbGlobalLogicalPosition, NbToastrService } from "@nebular/theme";
+import { NbGlobalLogicalPosition, NbIconConfig, NbToastrService } from "@nebular/theme";
 
 @Injectable({
     providedIn: 'root',
@@ -25,10 +25,14 @@ export class AppLogService {
       }
     
       private showToast(t: string, m: string, i: string) {
+
+        const iconConfig: NbIconConfig = { icon: i, pack: 'eva' };
+    
+
         this.toastrService.show(
           `${t}`,
           `${m}`,
-          { icon: i , iconPack: 'eva',	limit: 3,
+          { icon: iconConfig , limit: 3,
           position: NbGlobalLogicalPosition.BOTTOM_END, preventDuplicates: false });
       }
 }

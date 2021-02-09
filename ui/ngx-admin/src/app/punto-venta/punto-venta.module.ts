@@ -3,17 +3,17 @@ import { NgModule } from '@angular/core';
 import { PuntoVentaComponent } from './punto-venta.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NbTooltipModule, NbSpinnerModule, NbActionsModule, NbMenuModule, NbIconModule, 
-  NbCardModule, NbDialogModule, NbButtonModule, NbInputModule } from '@nebular/theme';
-import { ThemeModule } from 'app/@theme/theme.module';
-import { Ng2CompleterModule } from 'ng2-completer';
+  NbCardModule, NbDialogModule, NbButtonModule, NbInputModule, NbSelectModule, NbAutocompleteModule } from '@nebular/theme';
 import { Ng2SmartTableModule } from 'ng2-smart-table';
 import { TerminalComponent } from './terminal/terminal.component';
 import { ConsultaComponent } from './consulta/consulta.component';
+import { SelectorPvComponent } from './components/selector-pv/selector-pv.component';
+import { ThemeModule } from '../@theme/theme.module';
 
 
 
 @NgModule({
-  declarations: [PuntoVentaComponent, TerminalComponent, ConsultaComponent],
+  declarations: [PuntoVentaComponent, TerminalComponent, ConsultaComponent, SelectorPvComponent],
   imports: [
     FormsModule,
     NbTooltipModule,
@@ -24,12 +24,13 @@ import { ConsultaComponent } from './consulta/consulta.component';
     NbMenuModule,
     NbIconModule,
     PuntoVentaRoutingModule,
-    Ng2CompleterModule,
     Ng2SmartTableModule,
     NbCardModule,
     NbDialogModule,
     NbButtonModule,
-    NbInputModule
+    NbInputModule,
+    NbSelectModule,
+    NbAutocompleteModule,
   ],
 })
 export class PuntoVentaModule { }

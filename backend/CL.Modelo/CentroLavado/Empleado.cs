@@ -38,7 +38,6 @@ namespace CL.Modelo
         /// NO DEBE LLENARSE EN EL CRUD
         /// </summary>
         [MaxLength(500)]
-        [NotMapped]
         [JsonIgnore]
         public string Hash { get; set; }
 
@@ -46,7 +45,6 @@ namespace CL.Modelo
         /// NO DEBE LLENARSE EN EL CRUD
         /// </summary>
         [MaxLength(50)]
-        [NotMapped]
         [JsonIgnore]
         public string Salt { get; set; }
 
