@@ -1,4 +1,5 @@
 ﻿using CL.API.Modelos;
+using CL.API.Servicios;
 using CL.Modelo;
 using CL.Modelo.Contabilidad;
 using CL.Repositorio;
@@ -31,8 +32,13 @@ namespace CL.API.Controllers.Dashboard
         [HttpGet("configuracion")]
         public async Task<ActionResult<List<ConfiguracionVentaeCentroLavado>>> GetCentrosLavado()
         {
+            Guid UserId = Guid.Parse("43955a9c-af92-441a-883d-851c3fec8767");
+            ServicioConfiguracionPuntoVenta servicio = new ServicioConfiguracionPuntoVenta(db);
+
+            servicio.MisCentros(UserId);
+
             await Task.Delay(1);
-            return Ok(DatosDemo.CentrosDemo());
+            return Ok(servicio.MisCentros(UserId));
         }
 
 

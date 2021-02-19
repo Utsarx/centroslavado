@@ -2,7 +2,7 @@ import { ClRoutingModule } from './cl-routing.module';
 import { NavegarEmpresaComponent } from './administracion/components/navegar-empresa/navegar-empresa.component';
 import { NgModule } from '@angular/core';
 import { NbMenuModule, NbCardModule, NbDialogModule, NbButtonModule, NbInputModule, NbSpinnerModule,
-  NbActionsModule, NbIconModule, NbTooltipModule } from '@nebular/theme';
+  NbActionsModule, NbIconModule, NbTooltipModule, NbCheckboxModule } from '@nebular/theme';
 import { ThemeModule } from '../@theme/theme.module';
 import { ClComponent } from './cl.component';
 import { AdminEmpresasComponent } from './administracion/admin-empresas/admin-empresas.component';
@@ -37,6 +37,9 @@ import { NavegarServicioComponent } from './administracion/components/navegar-se
 import { AdminPreciosComponent } from './administracion/admin-precios/admin-precios.component';
 import { DialogoPrecioComponent } from './administracion/components/dialogo-precio/dialogo-precio.component';
 import { EditorPrecioComponent } from './administracion/components/editor-precio/editor-precio.component';
+import { DialogoEmpleadoComponent } from './administracion/components/dialogo-empleado/dialogo-empleado.component';
+import { EditorEmpleadoComponent } from './administracion/components/editor-empleado/editor-empleado.component';
+import { MostarUsuariosistemaComponent } from './administracion/components/mostar-usuariosistema/mostar-usuariosistema.component';
 
 @NgModule({
   imports: [
@@ -53,7 +56,8 @@ import { EditorPrecioComponent } from './administracion/components/editor-precio
     NbCardModule,
     NbDialogModule,
     NbButtonModule,
-    NbInputModule
+    NbInputModule,
+    NbCheckboxModule
   ],
   declarations: [
     ClComponent,
@@ -86,7 +90,10 @@ import { EditorPrecioComponent } from './administracion/components/editor-precio
     NavegarServicioComponent,
     AdminPreciosComponent,
     DialogoPrecioComponent,
-    EditorPrecioComponent, //x
+    EditorPrecioComponent,
+    DialogoEmpleadoComponent,
+    EditorEmpleadoComponent,
+    MostarUsuariosistemaComponent, //x
   ],
 })
 export class ClModule {

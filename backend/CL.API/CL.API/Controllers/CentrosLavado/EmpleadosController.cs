@@ -28,17 +28,43 @@ namespace CL.API.Controllers.CentrosLavado
         }
 
         // GET: api/CentroLavadoController
-        [HttpGet( Name = "GetEmpleados")]
-        public ActionResult<IEnumerable<Empleado>> Get()
+        [HttpGet("centro/{clid}", Name = "GetEmpleadosCentroLavado")]
+        public ActionResult<IEnumerable<Empleado>> Get(Guid clid)
         {
-            return db.Empleados.ToList().OrderBy(x => x.Nombre).ToList(); 
+            //return db.Empleados.ToList().OrderBy(x => x.Nombre).ToList();
 
             //return Ok(new List<Empleado>());
 
-            //return Ok(
-            //    db.Empleados.Where(x => x.CentroLavadoId == clid)
-            //    .ToList().OrderBy(x => x.Nombre).ToList()
-            //    );
+            Console.WriteLine($"{clid}");
+            List<Empleado> lista = new List<Empleado>();
+            var ecl = db.EmpleadosCentroLavado.Where(x => x.CentroLavadoId == clid)
+                .ToList();
+
+            Console.WriteLine($"{ecl.Count}");
+
+            foreach (var e in ecl)
+            {
+                var emp = db.Empleados.Where(x => x.Id == e.EmpleadoId).FirstOrDefault();
+                lista.Add(new Empleado()
+                {
+                    Id = emp.Id,
+                    Nombre = emp.Nombre, NombreUsuario = emp.NombreUsuario, 
+                    Hash = emp.Hash, Salt = emp.Salt, 
+                    UsuarioSistema = emp.UsuarioSistema,
+                    RefreshTokens = emp.RefreshTokens, 
+                    UltimoAcceso = emp.UltimoAcceso,
+                    Activo = emp.Activo, 
+                     
+
+                }) ;
+
+            }
+
+            return Ok(
+                
+                lista
+
+                );
         }
 
         // GET api/Empleados/5
@@ -54,7 +80,7 @@ namespace CL.API.Controllers.CentrosLavado
         }
 
         // POST api/centrolavado
-        [HttpPost( Name = "PostEmpleado")]
+        [HttpPost(Name = "PostEmpleado")]
         public ActionResult<Guid> PostEmpleado([FromBody] Empleado empleado)
         {
 
@@ -74,7 +100,7 @@ namespace CL.API.Controllers.CentrosLavado
                     empleado.Salt = empleado.Hash;
                 }
 
-                if(db.Empleados.Any(x=>x.NombreUsuario.ToLower() == empleado.NombreUsuario.ToLower()))
+                if (db.Empleados.Any(x => x.NombreUsuario.ToLower() == empleado.NombreUsuario.ToLower()))
                 {
                     return BadRequest("El nombre del usuario ya esta en uso");
                 }
@@ -87,6 +113,59 @@ namespace CL.API.Controllers.CentrosLavado
             return Ok(empleado.Id);
 
         }
+
+
+        // POST api/centrolavado
+        [HttpPost("centro/{idcentro}", Name = "PostEmpleadoCentro")]
+        public ActionResult<Guid> PostEmpleadoPorCentro(Guid idcentro, [FromBody] Empleado empleado)
+        {
+            Console.WriteLine(System.Text.Json.JsonSerializer.Serialize(empleado));
+            if (!ModelState.IsValid)
+            {
+                foreach (var modelState in ModelState.Values)
+                {
+                    foreach (var modelError in modelState.Errors)
+                    {
+                        Console.WriteLine(modelError.ErrorMessage);
+                    }
+
+                }
+                return BadRequest();
+               
+            }
+            
+            if (empleado.UsuarioSistema)
+            {
+                if (string.IsNullOrEmpty(empleado.Hash) ||
+                    string.IsNullOrEmpty(empleado.NombreUsuario))
+                {
+                    return BadRequest("Debe icluir una contraseña en el campo Hash y un nombre de usuario");
+                }
+                else
+                {
+                    empleado.Salt = empleado.Hash;
+                }
+
+                if (db.Empleados.Any(x => x.NombreUsuario.ToLower() == empleado.NombreUsuario.ToLower()))
+                { 
+                    return BadRequest("El nombre del usuario ya esta en uso");
+                }
+            }
+
+            empleado.Activo = true;
+            empleado.Id = Guid.NewGuid();
+            db.Empleados.Add(empleado);
+            
+
+            db.EmpleadosCentroLavado.Add(new EmpleadoCentroLavado()
+            {
+                CentroLavadoId = idcentro, EmpleadoId = empleado.Id
+            });
+            db.SaveChanges();
+            return Ok(empleado.Id);
+
+        }
+
 
         // PUT api/<CentroLavadoController>/5
         [HttpPut("{id}", Name = "PutEmpleado")]
@@ -122,11 +201,11 @@ namespace CL.API.Controllers.CentrosLavado
             {
                 return NotFound(id);
             }
-
+            
             db.Empleados.Remove(emp);
             db.SaveChanges();
             return NoContent();
-
         }
+
     }
 }

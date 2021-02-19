@@ -39,7 +39,7 @@ export class AdminPreciosComponent implements OnInit {
       columnTitle: "Acciones",
     },
     columns: {
-      nombre: {
+      descripcion: {
         title: 'Descripción',
         type: 'string',
       },

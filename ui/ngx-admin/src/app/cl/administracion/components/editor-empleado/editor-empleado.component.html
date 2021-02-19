@@ -1,0 +1,50 @@
+<form [formGroup]="formaEmpleado">
+
+    <div class="form-group row">
+        <label for="nombre" class="label col-sm-3 col-form-label">Nombre</label>
+        <div class="col-sm-9" >
+            <input type="text" formControlName="nombre" required  nbInput fullWidth id="nombre"
+                placeholder="Nombre del empleado">
+            <input type="hidden" formControlName="id" nbInput id="id">
+         <input type="hidden" formControlName="centroLavadoId" nbInput  id="centroLavadoId">  
+        </div>
+    </div>
+
+    <div class="form-group row">
+        <label for="usuarioSistema" class="label col-sm-3 col-form-label">&nbsp;</label>
+        <div class="col-sm-9" >
+            <nb-checkbox formControlName="usuarioSistema" id="usuarioSistema" (checkedChange)="toggle($event)">Usuario sistema</nb-checkbox>
+        </div>
+    </div>
+
+    <div class="form-group row">
+            <div *ngIf="mostrarTodo">
+                    <div class="form-group row">
+                    <label for="nombreUsuario" class="label col-sm-3 col-form-label">Correo</label>
+                    <div class="col-sm-9" >
+                        <input type="text" formControlName="nombreUsuario" required  nbInput fullWidth id="nombreUsuario"
+                        placeholder="Correo electrónico">
+                    </div>
+                    </div>
+                
+                    <div class="form-group row">
+                    <label for="hash" class="label col-sm-3 col-form-label">Contraseña</label>
+                    <div class="col-sm-9" >
+                        <input type="text" formControlName="hash" required  nbInput fullWidth id="hash"
+                        placeholder="Contraseña">
+                    </div>
+                    </div>
+
+                    <div class="form-group row">
+                    <label for="salt" class="label col-sm-3 col-form-label">Confirmación de contraseña</label>
+                    <div class="col-sm-9" >
+                    <input type="text" formControlName="salt" required  nbInput fullWidth id="salt"
+                        placeholder="Confirmación de contraseña">
+                    </div>
+                </div>
+
+             </div>
+        
+    
+    </div>        
+</form>
