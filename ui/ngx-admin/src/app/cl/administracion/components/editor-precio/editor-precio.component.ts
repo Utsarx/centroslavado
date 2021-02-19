@@ -21,6 +21,7 @@ export class EditorPrecioComponent implements OnInit {
       id: '',
       descripcion: '',
       monto: '',
+      esDefault: '',
       servicioId:'',
     });
 
@@ -31,6 +32,9 @@ export class EditorPrecioComponent implements OnInit {
 
   }
 
+  public toggle(activo:boolean){
+    console.log(activo); 
+  }
 
   public ObtienePrecio(): Precio {
     return { 
@@ -38,7 +42,7 @@ export class EditorPrecioComponent implements OnInit {
       descripcion: this.formaPrecio.get('descripcion').value,
       monto:  Number.parseFloat( this.formaPrecio.get('monto').value),
       moneda: 0,
-      esDefault: false,
+      esDefault: this.formaPrecio.get('esDefault').value,
       servicioId: this.formaPrecio.get('servicioId').value,
     }
   }
@@ -53,6 +57,7 @@ export class EditorPrecioComponent implements OnInit {
       this.formaPrecio.get('id').setValue(this.precio.id);
       this.formaPrecio.get('descripcion').setValue(this.precio.descripcion);
       this.formaPrecio.get('servicioId').setValue(this.precio.servicioId);
+      this.formaPrecio.get('esDefault').setValue(this.precio.esDefault); 
      }
 
   }

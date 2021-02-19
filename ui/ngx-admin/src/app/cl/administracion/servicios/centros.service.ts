@@ -50,6 +50,7 @@ export class CentrosService {
   }
 
 
+
   // API de Empleados
   // ---------------------------------------------------------------------------
   // ---------------------------------------------------------------------------
@@ -57,14 +58,22 @@ export class CentrosService {
     return `${environment.apiUrl}/api/empleados`;
   }
 
-  public GetEmpleados(id: string): Observable<Empleado[]> {
+  public GetEmpleadosCentroLavado(centroLavadoId: string): Observable<Empleado[]> {
     console.log(this.getApiCentrosLavado());
-    return this.http.get<Empleado[]>(this.getApiEmpleado() + '/centro/' + id );
+    return this.http.get<Empleado[]>(this.getApiEmpleado()+ '/centro/' + centroLavadoId);
   }
 
   public GetEmpleado(id: string): Observable<Empleado> {
     return this.http.get<Empleado>(this.getApiEmpleado() + '/' + id);
   }
+
+
+  public PostEmpleadoCentro(empleado: Empleado, centroLavadoId: string): Observable<string> {
+    const headers = new HttpHeaders()
+      .set('content-type', 'application/json');
+    return this.http.post<string>(this.getApiEmpleado() + '/centro/' + centroLavadoId  , empleado, { 'headers': headers });
+  }
+
 
   public PostEmpleado(empleado: Empleado): Observable<string> {
     const headers = new HttpHeaders()
@@ -82,6 +91,12 @@ export class CentrosService {
     const headers = new HttpHeaders()
       .set('content-type', 'application/json');
     return this.http.delete<any>(this.getApiEmpleado() + `/${id}`, { 'headers': headers });
+  }
+
+  public RemoverEmpleado(centroLavadoId: string, empleadoId: string): Observable<string> {
+    const headers = new HttpHeaders()
+      .set('content-type', 'application/json');
+    return this.http.delete<any>(this.getApiCentrosLavado() + `/${centroLavadoId}` + '/empleados'+ `/${empleadoId}`, { 'headers': headers });
   }
 
 }

@@ -9,7 +9,9 @@
                 <ng2-smart-table 
                     [settings]="settings" 
                     [source]="source" 
-                
+                    (create) = "create()"
+                    (edit) = "edit($event)"
+                    (delete) = "delete($event)"
                 >
                 </ng2-smart-table>
             </nb-card-body>

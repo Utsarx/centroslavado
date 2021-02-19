@@ -16,4 +16,11 @@
             <input type="text" formControlName="monto" nbInput fullWidth id="monto" placeholder="Monto">
         </div>
     </div>
+
+    <div class="form-group row">
+        <label for="esDefault" class="label col-sm-3 col-form-label">&nbsp;</label>
+        <div class="col-sm-9" >
+            <nb-checkbox formControlName="esDefault" id="esDefault" (checkedChange)="toggle($event)">Es default</nb-checkbox>
+        </div>
+    </div>
 </form>
